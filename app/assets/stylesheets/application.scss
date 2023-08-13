@@ -13,3 +13,23 @@
  *= require_tree .
  *= require_self
  */
+
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.head{
+  background-color: #FFFFDD	;
+  color: #3f312b;
+}
+
+.td{
+  background-color: #FFFFEE	;
+  color: #3f312b;
+}
+
+.user_name{
+  background-color: #FFFF99;
+  color: #3f312b;
+}

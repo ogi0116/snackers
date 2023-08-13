@@ -1,0 +1,28 @@
+<!-- ユーザーの詳細 -->
+<div class='container px-5 my-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3 '>
+      <h2>プロフィール</h2>
+      <h2>おかしを紹介する</h2>
+     <%= render 'public/items/form', item: @item %>
+    </div>
+
+
+    <div class='col-md-8 offset-md-1'>
+     <table class="table table-user">
+     <% @items.each do |item| %>
+      <div>
+        <p>
+           <%= image_tag item.get_image, size: '300x300' %>
+        </p>
+        <p>
+          <%= link_to item_path(item.id) do %>
+           <%= image_tag item.user.get_profile_image(100,100) %>
+           <%= item.user.name %>
+          <% end %>
+        </p>
+        <p><%= item.body %></p>
+     </div>
+    <% end %>
+  </div>
+</div>

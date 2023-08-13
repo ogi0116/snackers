@@ -1,13 +1,13 @@
 class Public::ItemsController < ApplicationController
   def new
-    item = Item.new
+    @item = Item.new
   end
 
   def create
     @item = Item.new(item_params)
     @item.user_id = current_user.id
     if @item.save
-     redirect_to items_path, notice: "You have created tweet successfully."
+     redirect_to item_path(@item), notice: "You have created tweet successfully."
     else
      @items = Item.all
      @user = current_user
@@ -34,8 +34,8 @@ class Public::ItemsController < ApplicationController
 
   private
 
-  def tweet_params
-    params.require(:item).permit(:name, :body, :image)
+  def item_params
+    params.require(:item).permit(:user_id, :title, :body, :company, :area, :image)
   end
 
 end

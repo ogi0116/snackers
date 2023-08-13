@@ -1,2 +1,55 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class='container px-5 my-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3 '>
+      <h2>プロフィール</h2>
+      <h2>おかしを紹介する</h2>
+      <%= render 'form', item: @new_item %>
+    </div>
+
+
+    <div class='col-md-8 offset-md-1'>
+      <h2>投稿内容</h2>
+      <table class="table text-nowrap table-bordered">
+
+      <tr class ="head">
+        <th class="align-middle text-center user_name head"><%= @item.user.name %>さん</th>
+        <th class="align-middle text-center head" colspan="5">投稿画像</th>
+      </tr>
+
+       <tr>
+         <td class="align-middle text-center td"><%= image_tag @item.user.get_profile_image(300,300) %></td>
+         <td class="align-middle text-center td" colspan="5"><%= image_tag @item.get_image, size:'300x300' %></td>
+       </tr>
+
+       <tr>
+        <th class="align-middle text-center head">商品名</th>
+        <td class="align-middle text-center td" colspan="2"><%= @item.title %></td>
+        <th class="align-middle text-center head">会社</th>
+        <td class="align-middle text-center td" colspan="2"><%= @item.company %></td>
+      </tr>
+
+       <tr>
+         <th class="align-middle text-center head">感想</th>
+         <td class="align-middle text-center td" style="white-space: normal;" colspan="5"><%= @item.body %></td>
+       </tr>
+       
+       
+
+      <tr>
+        <th class="align-middle text-center head">購入場所</th>
+        <td class="align-middle text-center td" colspan="2"><%= @item.area %></td>
+        <th class="align-middle text-center head">星評価</th>
+        <td class="align-middle"colspan="2"></td>
+      </tr>
+
+      <tr>
+        <td>
+         <% if @item.user == current_user %>
+          <%= link_to "投稿を削除", item_path(@item), method: :delete %>
+        <% end %>
+        </td>
+      </tr>
+     </table>
+   </div>
+  </div>
+</div>
