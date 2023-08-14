@@ -1,2 +1,27 @@
-<h1>Public::Users#edit</h1>
-<p>Find me in app/views/public/users/edit.html.erb</p>
+<%= form_with model: @user do |f| %>
+  <div class = "form-group">
+    <label for="inputName">ユーザー名</label><br>
+  <%= f.text_field :name, autofocus: true, id:"inputName form-control" ,class: "inputName form-control" %>
+  </div>
+
+
+  <div class = "form-group">
+    <label for="inputImage">プロフィール画像</label><br>
+  <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
+  </div>
+
+<div class = "form-group">
+  <label for="inputIntroduction">自己紹介</label><br>
+  <%= f.text_area :introduction, autofocus: true, id:"inputintroduction",class: "inputIntroduction form-control"  %>
+</div>
+
+
+  <div class = "form-group">
+    <label for="inputAddress">ホームページ</label><br>
+  <%= f.text_field :address, autofocus: true, id:"inputAddress form-control" ,class: "inputAddress form-control" %>
+  </div>
+
+<div class = "form-group">
+  <%= f.submit "更新する",class: "btn btn-secondary" %>
+  <% end %>
+</div>

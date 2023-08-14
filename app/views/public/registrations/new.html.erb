@@ -27,7 +27,6 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-
    <%= f.radio_button :position_status, User.position_statuses.key(0) %>
    <%= f.label :position_status, User.position_statuses_i18n[:normal], value: User.position_statuses.key(0) %>
 

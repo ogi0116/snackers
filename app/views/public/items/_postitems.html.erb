@@ -1,0 +1,32 @@
+<table class="table text-nowrap table-bordered">
+ 　　　　 <% @items.each do |item| %>
+      <tr class="table_group">
+        <th class="align-middle text-center user_name"><%= item.user.name %>さん</th>
+        <th class="align-middle text-center head" colspan="5">投稿画像</th>
+      </tr>
+
+       <tr class= "table_group">
+         <td class="align-middle text-center td"><%= image_tag item.user.get_profile_image(300,300) %></td>
+         <td class="align-middle text-center td" colspan="5"><%= image_tag item.get_image, size:'300x300' %></td>
+       </tr>
+
+       <tr class= "table_group">
+        <th class="align-middle text-center head">商品名</th>
+        <td class="align-middle text-center td" colspan="2"><%= item.title %></td>
+        <th class="align-middle text-center head">会社</th>
+        <td class="align-middle text-center td" colspan="2"><%= item.company %></td>
+      </tr>
+
+       <tr class= "table_group">
+         <th class="align-middle text-center head">感想</th>
+         <td class="align-middle text-center td" style="white-space: normal;" colspan="5"><%= item.body %></td>
+       </tr>
+
+      <tr class= "table_group">
+        <th class="align-middle text-center head">購入場所</th>
+        <td class="align-middle text-center td" colspan="2"><%= item.area %></td>
+        <th class="align-middle text-center head">星評価</th>
+        <td class="align-middle td"colspan="2"></td>
+      </tr>
+  <% end %>
+</table>

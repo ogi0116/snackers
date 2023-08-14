@@ -5,48 +5,12 @@
 
       <h2>おかしを紹介する</h2>
        <%= render 'form', item: @item %>
-
-
-
     </div>
+
     <div class='col-md-8 offset-md-1'>
-      <h2>投稿一覧表示</h2>
-      
-<table class="table table-user">
-  <% @items.each do |item| %>
-    <tr>
-      <td><%= image_tag item.get_image, size: '200x200' %></td>
-    </tr>
-    <tr>
-      <td>
-          <%= item.user.name %><br>
-        <%= link_to item.body, item_path(item) %>
-      </td>
-    </tr>
-    
-     <tr>
-      <td>
-          <%= item.title %>
-      </td>
-    </tr>
-    
-      <tr>
-      <td>
-          <%= item.company %>
-      </td>
-    </tr>
-    
-       <tr>
-      <td>
-          <%= item.area %>
-      </td>
-    </tr>
-    
-    </tr>
-  <% end %>
-</table>
-      
-      
+     <%= render 'postitems', items: @items %>
+
+
     </div>
   </div>
 </div>

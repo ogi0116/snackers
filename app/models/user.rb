@@ -6,14 +6,17 @@ class User < ApplicationRecord
 
 
  has_many :items, dependent: :destroy
+ has_many :favorites, dependent: :destroy
+ has_many :post_comments, dependent: :destroy
  has_one_attached :profile_image
 
 
-  enum position_status: { normal: 0, company: 1 }
+  enum position_status: { "一般": 0, "企業": 1 }
 
 
 
-  
+
+
 def get_profile_image(width, height)
   unless profile_image.attached?
     file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -21,7 +24,7 @@ def get_profile_image(width, height)
   end
   profile_image.variant(resize_to_limit: [width, height]).processed
 end
-  
-  
+
+
 
 end
