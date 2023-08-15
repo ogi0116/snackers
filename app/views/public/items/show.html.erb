@@ -1,7 +1,8 @@
 <div class='container px-5 my-5 px-sm-0'>
   <div class='row'>
     <div class='col-md-3 '>
-      <h2>プロフィール</h2>
+      <%= render 'public/users/info', user: @user %>
+
       <h2>おかしを紹介する</h2>
       <%= render 'form', item: @new_item %>
     </div>
@@ -11,7 +12,7 @@
       <table class="table text-nowrap table-bordered">
 
       <tr class ="head">
-        <th class="align-middle text-center user_name head"><%= @item.user.name %>さん</th>
+        <th class="align-middle text-center user_name head"><%= image_tag @item.user.get_profile_image(30,30) %><%= @item.user.name %>さん</th>
         <th class="align-middle text-center head" colspan="5">投稿画像
         <% if @item.user == current_user %>
           <%= link_to item_path(@item), method: :delete do %>
@@ -22,7 +23,6 @@
       </tr>
 
        <tr>
-         <td class="align-middle text-center td"><%= image_tag @item.user.get_profile_image(300,300) %></td>
          <td class="align-middle text-center td" colspan="5"><%= image_tag @item.get_image, size:'300x300' %></td>
        </tr>
 
@@ -51,16 +51,15 @@
         <td class="align-middle text-center td" colspan="2">◯◯回表示</td>
         <td class="align-middle text-center td"><%= render 'favorite', item: @item %></td>
       </tr>
-      
      </table>
-     
+
      <div class="col-3 offset-9"><span>投稿日　</span><%= @item.created_at.strftime('%Y/%m/%d') %></div>
-     
+
      <%= render 'postcomment', item: @item, post_comment: @post_comment %>
-     
+
    </div>
   </div>
 
-  
+
 
 </div>

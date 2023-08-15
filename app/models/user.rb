@@ -12,10 +12,23 @@ class User < ApplicationRecord
 
 
   enum position_status: { "一般": 0, "企業": 1 }
+  
+  #フォロー機能の実装
+  has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id
+  has_many :followings, through: :active_relationships, source: :follower
 
-
-
-
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
+  has_many :followers, through: :passive_relationships, source: :following
+  
+  #DM機能の実装
+  has_many :user_rooms
+  has_many :chats
+  has_many :rooms, through: :user_rooms
+  
+  def followed_by?(user)
+    # フォローしているかどうかを調べる
+    passive_relationships.find_by(following_id: user.id).present?
+  end
 
 def get_profile_image(width, height)
   unless profile_image.attached?

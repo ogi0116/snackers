@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
- 
- 
+
+
   def show
     @user = User.find(params[:id])
     @items = @user.items
@@ -22,11 +22,21 @@ class Public::UsersController < ApplicationController
     user.update(user_params)
     redirect_to user_path(user)
   end
-  
+
+  def follows
+    user = User.find(params[:id])
+    @users = user.followings
+  end
+
+  def followers
+    user = User.find(params[:id])
+    @users = user.followers
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction, :is_deleted, :position_status)
   end
-  
+
 end

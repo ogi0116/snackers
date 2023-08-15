@@ -1,14 +1,13 @@
 <!-- ユーザーの詳細 -->
 <div class='container px-5 my-5 px-sm-0'>
   <div class='row'>
-    <div class='col-md-3 '>
-      <h2>プロフィール</h2>
-       <%= render 'info', user: @user %>
-      <h2>おかしを紹介する</h2>
+    <div class='col-md-3'>
+       <!-- ユーザープロフィール-->
+      <%= render 'info', user: @user %>
+       <!-- おかし投稿フォーム-->
      <%= render 'public/items/form', item: @item %>
     </div>
-
-
+    
     <div class='col-md-8 offset-md-1'>
      <table class="table table-user">
     <%= render 'public/items/postitems', items: @items %>

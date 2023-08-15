@@ -83,3 +83,20 @@
   -webkit-transform: rotate(145deg);
   transform: rotate(145deg);
 }
+
+.info_text{
+  font-size: 70%;
+}
+
+.form_text{
+  font-size: 90%;
+}
+
+tbody{
+  background-color: #FFFFEE	;
+}
+
+img {
+    border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+    border: 9px solid #000000;
+}

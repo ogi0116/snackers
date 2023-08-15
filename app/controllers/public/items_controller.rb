@@ -25,6 +25,7 @@ class Public::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @new_item = Item.new
     @post_comment = PostComment.new
+    @user = @item.user
   end
 
   def destroy

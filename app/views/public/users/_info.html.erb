@@ -1,29 +1,64 @@
+
+<h4 class="align-middle text-center">プロフィール</h4>
+<h4>
+<% if current_user != user && current_user.followed_by?(user) && user.followed_by?(current_user) %>
+  <%= link_to 'チャットを始める', chat_path(user.id), class: "ml-3" %>
+<% end %>
+</h4>
+
 <table class='table'>
   <tr>
-  <th><%= image_tag user.get_profile_image(100,100) %></th>
+  <th class="align-middle text-center" colspan="2"><%= image_tag user.get_profile_image(80,80) %></th>
 
   </tr>
   <tr>
-	  <th>ユーザー</th>
-	  <th><%= user.name %></th>
+	  <th class="align-middle text-center info_text">ユーザー名</th>
+	  <th class="align-middle text-center info_text"><%= user.name %></th>
   </tr>
   <tr>
-	  <th>自己紹介</th>
-	  <th><%= user.introduction %></th>
+	  <th class="align-middle text-center info_text">自己紹介</th>
+	  <th class="align-middle text-center info_text"><%= user.introduction %></th>
   </tr>
   <tr>
-    <th>ホームページ</th>
-    <th><%= user.address %></th>
+    <th class="align-middle text-center info_text">ホームページ</th>
+    <th class="align-middle text-center info_text"><%= user.address %></th>
   </tr>
   <tr>
-    <th>状態</th>
-    <th><%= user.position_status %></th>
+    <th class="align-middle text-center info_text">ステータス</th>
+    <th class="align-middle text-center info_text"><%= user.position_status %></th>
   </tr>
+
+  <tr>
+     <th class="align-middle text-center info_text">フォロー数
+      <%= link_to follows_user_path(user) do %>
+        <%= "#{user.active_relationships.count}" %>
+      <% end %>
+    </th>
+    <th class="align-middle text-center info_text">フォロワー数
+      <%= link_to followers_user_path(user) do %>
+       <%= "#{user.passive_relationships.count}" %>
+      <% end %>
+    </th>
+  </tr>
+
+  <tr>
+    <th class="align-middle text-center" colspan="2">
+       <% if current_user != user %>
+          <% if user.followed_by?(current_user) %>
+              <p><%=link_to "フォロー中", user_relationships_path(user.id), method: :delete, class: 'btn btn-danger btn-sm' %></p>
+          <% else %>
+              <p><%=link_to "フォローする", user_relationships_path(user.id), method: :post, class: 'btn btn-success btn-sm' %></p>
+          <% end %>
+      <% end %>
+    </th>
+  </tr>
+
 
 </table>
 
+
 <div class='row'>
-  <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
+  <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block mb-5" do %>
     <i class="fas fa-user-cog"></i>
   <% end %>
 </div>

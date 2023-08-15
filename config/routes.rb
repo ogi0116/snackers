@@ -20,7 +20,14 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
       resource :favorites, only: [:create, :destroy]
       resource :post_comments, only: [:create, :destroy]
     end
-    resources :users, only: [:show, :edit, :update]
+    resources :users, only: [:show, :edit, :update] do
+      resource :relationships, only: [:create, :destroy]
+      get :follows, on: :member
+      get :followers, on: :member
+    end
+
+    resources :chats, only: [:show, :create]
+
   end
 
 
