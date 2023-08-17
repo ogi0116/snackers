@@ -15,7 +15,15 @@
  */
 
 
+header{
+   background-color: #AEFFBD;
+  border-bottom: 20px double #CBFFD3;
+  font-family: serif;
+}
 
+footer{
+  background-color: #AEFFBD;
+}
 
 .head{
   background-color: #FFFFAA	;
@@ -24,17 +32,21 @@
 
 .td{
   background-color: #FFFFEE	;
-  color: #3f312b;
 }
 
 .user_name{
   background-color: #FFFF99;
   color: #3f312b;
+  font-family: serif;
+}
+
+table {
+  font-family: serif;
 }
 
 .table_group {
   font-family: serif;
-  margin-bottom: 5px;
+  background-color: #FFFFEE;
 }
 
 
@@ -67,7 +79,7 @@
   position: relative;
   width: calc(100% - 56px);
   padding: 16px;
-  background: #ffffff;
+  background: #E6FFE9;
   border-radius: 15px;
   line-height: 1.5;
   word-break: break-all;
@@ -92,8 +104,16 @@
   font-size: 90%;
 }
 
-tbody{
-  background-color: #FFFFEE	;
+.background{
+  background: #FFFFEE;
+  background-size:cover;
+}
+
+.title{
+  background-color: #FFFF99;
+  border-radius: 20px;
+  color: #3f312b;
+  width: 45%;
 }
 
 img {

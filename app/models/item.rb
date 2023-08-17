@@ -3,7 +3,10 @@ class Item < ApplicationRecord
   has_one_attached :image
   belongs_to :user
   has_many :favorites, dependent: :destroy
+  #レビューにコメントする機能
   has_many :post_comments, dependent: :destroy
+   #閲覧数のカウントする機能
+  has_many :read_counts, dependent: :destroy
 
   def get_image
     unless image.attached?

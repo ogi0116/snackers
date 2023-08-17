@@ -3,7 +3,6 @@
     <div class='col-md-3 '>
       <%= render 'public/users/info', user: @user %>
 
-      <h2>おかしを紹介する</h2>
       <%= render 'form', item: @new_item %>
     </div>
 
@@ -42,13 +41,13 @@
         <th class="align-middle text-center head">購入場所</th>
         <td class="align-middle text-center td" colspan="2"><%= @item.area %></td>
         <th class="align-middle text-center head">星評価</th>
-        <td class="align-middle"colspan="2"></td>
+        <td class="align-middle text-center td"colspan="2"><%= render "public/items/static_rate", item: @item %></td>
       </tr>
 
       <tr>
          <th class="align-middle text-center head">コメント数</th>
         <td class="align-middle text-center td"><%= @item.post_comments.count %>件</td>
-        <td class="align-middle text-center td" colspan="2">◯◯回表示</td>
+        <td class="align-middle text-center td" colspan="2"><%= @item.read_counts.count %>回表示</td>
         <td class="align-middle text-center td"><%= render 'favorite', item: @item %></td>
       </tr>
      </table>

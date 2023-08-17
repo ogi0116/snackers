@@ -26,7 +26,14 @@ class Public::ItemsController < ApplicationController
     @new_item = Item.new
     @post_comment = PostComment.new
     @user = @item.user
+
+    unless ReadCount.find_by(user_id: current_user.id, item_id: @item.id)
+      current_user.read_counts.create(item_id: @item.id)
+    end
   end
+
+
+
 
   def destroy
     item = Item.find(params[:id])
@@ -37,7 +44,7 @@ class Public::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:user_id, :title, :body, :company, :area, :image)
+    params.require(:item).permit(:user_id, :title, :body, :company, :area, :image, :star)
   end
 
 end

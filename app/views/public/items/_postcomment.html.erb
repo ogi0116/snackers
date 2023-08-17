@@ -18,7 +18,7 @@
 <% end %>
 
 <div class= "row">
-  <div class= "col-10 offset-2 mt-5">
+  <div class= "col-6 offset-4 mt-5">
   <%= form_with model: [item, post_comment] do |f| %>
     <%= f.text_area :comment, style: "width:70%", rows: '5', placeholder: "コメントをしよう" %><br>
     <%= f.submit "コメントする", class: "btn btn-outline-success" %>

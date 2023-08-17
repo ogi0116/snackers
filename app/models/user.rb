@@ -7,7 +7,10 @@ class User < ApplicationRecord
 
  has_many :items, dependent: :destroy
  has_many :favorites, dependent: :destroy
+ #レビューにコメントする機能
  has_many :post_comments, dependent: :destroy
+ #閲覧数のカウントする機能
+ has_many :read_counts, dependent: :destroy
  has_one_attached :profile_image
 
 

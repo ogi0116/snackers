@@ -1,18 +1,24 @@
-<div class="chat-messages">
-  <% chats.each do |chat| %>
-    <% if chat.user_id == current_user.id %>
-      <div class="message self">
-        <div class="message-body">
-          <%= chat.message %>
+    <% chats.each do |chat| %>
+      <% if chat.user_id == current_user.id %>
+       <div class="col-2 text-center">
+         <%= image_tag chat.user.get_profile_image(100,100), class: "rounded-circle" %><br>
+       </div>
+       <div class= "col-10">
+         <span><%= chat.user.name %>さん</span><br>
+        <div class="says w-auto">
+            <%= chat.message %>
         </div>
       </div>
-    <% else %>
-      <div class="message other">
-        <div class="message-sender"><%= chat.user.name %></div>
-        <div class="message-body">
-          <%= chat.message %>
+      <% else %>
+       <div class= "col-10 text-right">
+         <span><%= chat.user.name %>さん</span><br>
+        <div class="other-user-says w-auto">
+            <%= chat.message %>
         </div>
       </div>
+       <div class="col-2 text-center">
+         <%= image_tag chat.user.get_profile_image(100,100), class: "rounded-circle" %><br>
+       </div>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+
