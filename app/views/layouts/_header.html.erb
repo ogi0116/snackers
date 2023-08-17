@@ -128,6 +128,9 @@
                   <p class="col-lg-2 col-12 flex-fill">
                     <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-dark" %>
                   </p>
+                  <p class="col-lg-1 col-12 flex-fill">
+                    <%= render 'layouts/search' %>
+                  </p>
                 </div>
               </ul>
             </div>

@@ -23,6 +23,13 @@ class Public::UsersController < ApplicationController
     redirect_to user_path(user)
   end
 
+  def favorites
+    @user = User.find(params[:id])
+    favorites = Favorite.where(user_id:@user.id).pluck(:item_id)
+    @favorite_items =Item.find(favorites)
+    @item = Item.new
+  end
+
   def follows
     user = User.find(params[:id])
     @users = user.followings

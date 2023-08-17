@@ -17,11 +17,12 @@
 
 header{
    background-color: #AEFFBD;
-  border-bottom: 20px double #CBFFD3;
-  font-family: serif;
+   border-bottom: 20px double #CBFFD3;
+   font-family: serif;
 }
 
 footer{
+  border-top: 20px double #CBFFD3;
   background-color: #AEFFBD;
 }
 
@@ -49,7 +50,6 @@ table {
   background-color: #FFFFEE;
 }
 
-
 // 自分のメッセージの吹き出し
 .says {
   float: left;
@@ -60,6 +60,7 @@ table {
   border-radius: 15px;
   line-height: 2.0;
   word-break: break-all;
+  font-family: serif;
 }
 .says:after {
   content: "";
@@ -83,6 +84,7 @@ table {
   border-radius: 15px;
   line-height: 1.5;
   word-break: break-all;
+  font-family: serif;
 }
 .other-user-says:after {
   content: "";
@@ -105,8 +107,9 @@ table {
 }
 
 .background{
-  background: #FFFFEE;
+  background: #FFFFAA;
   background-size:cover;
+  font-family: serif;
 }
 
 .title{

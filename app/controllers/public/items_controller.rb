@@ -23,17 +23,13 @@ class Public::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    unless ViewCount.find_by(user_id: current_user.id, item_id: @item.id)
+      current_user.view_counts.create(item_id: @item.id)
+    end
     @new_item = Item.new
     @post_comment = PostComment.new
     @user = @item.user
-
-    unless ReadCount.find_by(user_id: current_user.id, item_id: @item.id)
-      current_user.read_counts.create(item_id: @item.id)
-    end
   end
-
-
-
 
   def destroy
     item = Item.find(params[:id])

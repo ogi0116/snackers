@@ -4,7 +4,9 @@
        position_status:
           normal: "一般"
           company: "企業"
-
+       range:
+          User: "ユーザー名"
+          Item: "商品名"
     activerecord:
         errors:
           messages:

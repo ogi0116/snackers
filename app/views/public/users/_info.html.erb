@@ -1,15 +1,13 @@
 
-<h4 class="align-middle text-center">プロフィール</h4>
-<h4>
+<h4 class="align-middle text-center">プロフィール
 <% if current_user != user && current_user.followed_by?(user) && user.followed_by?(current_user) %>
-  <%= link_to 'チャットを始める', chat_path(user.id), class: "ml-3" %>
+  <%= link_to 'DM', chat_path(user.id), class: "btn btn-info btn-sm" %>
 <% end %>
 </h4>
 
 <table class='table'>
   <tr>
   <th class="align-middle text-center" colspan="2"><%= image_tag user.get_profile_image(80,80) %></th>
-
   </tr>
   <tr>
 	  <th class="align-middle text-center info_text">ユーザー名</th>
@@ -42,7 +40,7 @@
   </tr>
 
   <tr>
-    <th class="align-middle text-center" colspan="2">
+    <th class="align-middle text-center">
        <% if current_user != user %>
           <% if user.followed_by?(current_user) %>
               <p><%=link_to "フォロー中", user_relationships_path(user.id), method: :delete, class: 'btn btn-danger btn-sm' %></p>
@@ -51,9 +49,8 @@
           <% end %>
       <% end %>
     </th>
+     <th><%=link_to"いいね一覧",favorites_user_path(user), class: 'btn btn-primary btn-sm' %></th>
   </tr>
-
-
 </table>
 
 

@@ -16,17 +16,19 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   scope module: :public do
     root to: "homes#top"
     get "/about" => "homes#about"
+    get "search" => "searches#search"
     resources :items, only: [:new, :index, :show, :create, :destroy, :create] do
       resource :favorites, only: [:create, :destroy]
       resource :post_comments, only: [:create, :destroy]
     end
     resources :users, only: [:show, :edit, :update] do
+      get :favorites, on: :member
       resource :relationships, only: [:create, :destroy]
       get :follows, on: :member
       get :followers, on: :member
     end
-
     resources :chats, only: [:show, :create]
+
 
   end
 
