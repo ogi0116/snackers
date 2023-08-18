@@ -10,29 +10,29 @@
   <th class="align-middle text-center" colspan="2"><%= image_tag user.get_profile_image(80,80) %></th>
   </tr>
   <tr>
-	  <th class="align-middle text-center info_text">ユーザー名</th>
-	  <th class="align-middle text-center info_text"><%= user.name %></th>
+	  <th class="align-middle text-center info_text w-50">ユーザー名</th>
+	  <th class="align-middle text-center info_text w-50"><%= user.name %></th>
   </tr>
   <tr>
-	  <th class="align-middle text-center info_text">自己紹介</th>
-	  <th class="align-middle text-center info_text"><%= user.introduction %></th>
+	  <th class="align-middle text-center info_text w-50">自己紹介</th>
+	  <th class="align-middle text-center info_text w-50"><%= user.introduction %></th>
   </tr>
   <tr>
-    <th class="align-middle text-center info_text">ホームページ</th>
-    <th class="align-middle text-center info_text"><%= user.address %></th>
+    <th class="align-middle text-center info_text w-50">ホームページ</th>
+    <th class="align-middle text-center info_text w-50"><%= user.address %></th>
   </tr>
   <tr>
-    <th class="align-middle text-center info_text">ステータス</th>
-    <th class="align-middle text-center info_text"><%= user.position_status %></th>
+    <th class="align-middle text-center info_text w-50">ステータス</th>
+    <th class="align-middle text-center info_text w-50"><%= user.position_status %></th>
   </tr>
 
   <tr>
-     <th class="align-middle text-center info_text">フォロー数
+     <th class="align-middle text-center info_text w-50">フォロー数
       <%= link_to follows_user_path(user) do %>
         <%= "#{user.active_relationships.count}" %>
       <% end %>
     </th>
-    <th class="align-middle text-center info_text">フォロワー数
+    <th class="align-middle text-center info_text w-50">フォロワー数
       <%= link_to followers_user_path(user) do %>
        <%= "#{user.passive_relationships.count}" %>
       <% end %>

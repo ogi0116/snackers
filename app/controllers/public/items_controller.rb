@@ -16,7 +16,7 @@ class Public::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all
+    @items = Item.page(params[:page])
     @user = current_user
     @item = Item.new
   end

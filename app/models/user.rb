@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
 
   enum position_status: { "一般": 0, "企業": 1 }
-
+  #検索機能の日本語化
   enum range: { "User": 0, "Item": 1 }
 
   #フォロー機能の実装

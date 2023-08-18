@@ -22,6 +22,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
       resource :post_comments, only: [:create, :destroy]
     end
     resources :users, only: [:show, :edit, :update] do
+       get :unscribe, on: :member
+       patch :withdrawal, on: :member
       get :favorites, on: :member
       resource :relationships, only: [:create, :destroy]
       get :follows, on: :member

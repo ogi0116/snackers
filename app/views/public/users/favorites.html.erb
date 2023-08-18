@@ -1,13 +1,15 @@
-<div class='container px-5 my-5 px-sm-0'>
+<div class='container py-5 px-sm-0'>
   <div class='row'>
     <div class='col-md-3 '>
       <%= render 'info', user: @user %>
-
-       <%= render 'public/items/form', item: @item %>
+      <%= render 'public/items/form', item: @item %>
     </div>
-
     <div class='col-md-8 offset-md-1'>
-     <%= render 'public/items/postitems', items: @favorite_items %>
+      <%= render 'public/items/postitems', items: @favorite_items %>
     </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <%= paginate @favorite_items %>
   </div>
 </div>

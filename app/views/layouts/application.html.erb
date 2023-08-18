@@ -13,13 +13,14 @@
   </head>
 
   <body>
-   <header>
-   <%= render 'layouts/header' %>
-  </header>
-    <%= yield %>
+    <header>
+     <%= render 'layouts/header' %>
+    </header>
+    <div id="main">
+      <%= yield %>
+    </div>
+    <footer>
+      <%= render 'layouts/footer' %>
+    </footer>
   </body>
-  </div>
-    <%= render 'layouts/footer' %>
-  </div>
-
 </html>

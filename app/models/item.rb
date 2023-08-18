@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   has_many :post_comments, dependent: :destroy
    #閲覧数のカウントする機能
   has_many :view_counts, dependent: :destroy
-  
+
   #商品名e検索機能
   def self.looks(search, word)
     if search == "perfect_match"

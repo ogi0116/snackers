@@ -1,0 +1,11 @@
+ <div class="text-center">
+  <div class="py-5"></div>
+ <h5 class="font-weight-bold py-5">本当に退会しますか？</h5>
+  <p class="mb-5">
+   退会すると、会員登録情報や<br>
+   これまでの投稿履歴が閲覧できなくなります。<br>
+   退会する場合は、「退会する」をクリックしてください。
+  </p>
+  <span><%= link_to "退会しない", user_path(current_user) ,class: "btn btn-sm btn-primary px-5 mr-3" %></span>
+  <span><%= link_to "退会する", withdrawal_user_path ,method: :patch ,class: "btn btn-sm btn-danger px-5 my-sm-0 my-4", data: { confilm: "本当に退会しますか？" } %></span>
+</div>

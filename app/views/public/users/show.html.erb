@@ -1,15 +1,19 @@
 <!-- ユーザーの詳細 -->
-<div class='container px-5 my-5 px-sm-0'>
+<div class='container py-5 px-sm-0'>
   <div class='row'>
-    <div class='col-md-3'>
-       <!-- ユーザープロフィール-->
+      <div class='col-md-3'>
+      <!-- ユーザープロフィール-->
       <%= render 'info', user: @user %>
-       <!-- おかし投稿フォーム-->
-     <%= render 'public/items/form', item: @item %>
+      <!-- おかし投稿フォーム-->
+      <%= render 'public/items/form', item: @item %>
     </div>
 
     <div class='col-md-8 offset-md-1'>
-     <table class="table table-user">
-    <%= render 'public/items/postitems', items: @items %>
+      <table class="table table-user">
+      <%= render 'public/items/postitems', items: @items %>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <%= paginate @items %>
   </div>
 </div>
