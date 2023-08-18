@@ -15,7 +15,9 @@
             </td>
              <td class="align-middle text-center" style="width: 25%"><%= user.introduction %></td>
              <td class="align-middle text-center" style="width: 20%"><%= user.address %></td>
-             <td class="align-middle text-center" style="width: 20%">商品一覧を見る</td>
+             <td class="align-middle text-center" style="width: 20%">
+              <%= link_to "商品一覧を見る",user_products_path(user) %>
+             </td>
              <td class="align-middle text-center" style="width: 15%">
               <% if current_user != user %>
                 <% if user.followed_by?(current_user) %>

@@ -11,10 +11,11 @@ class User < ApplicationRecord
  has_many :post_comments, dependent: :destroy
  #閲覧数のカウントする機能
  has_many :view_counts, dependent: :destroy
+ has_many :products, dependent: :destroy
  has_one_attached :profile_image
 
 
-  enum position_status: { "一般": 0, "企業": 1 }
+  enum position_status: { "normal": 0, "company": 1 }
   #検索機能の日本語化
   enum range: { "User": 0, "Item": 1 }
 

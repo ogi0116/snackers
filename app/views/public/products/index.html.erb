@@ -1,0 +1,34 @@
+<div class= "container py-5 px-sm-0">
+  <div class="row">
+    <div class="col-lg-2 col-md-3 col-sm-11 col-9 text-center">
+    <h4>商品一覧</h4>
+    </div>
+  </div>
+    <div class= "row">
+    <table class='table table_group'>
+      <tr class="head align-middle text-center">
+        <th>商品ID</th>
+        <th>商品名</th>
+        <th>税抜価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
+      </tr>
+      <% @products.each do |product| %>
+      <tr class="td mb-sm-0 align-middle text-center">
+        <td><%= product.id %></td>
+        <td><%= link_to product.name, user_product_path(@user, product) %></td>
+        <td><%= product.price %></td>
+        <td><%= product.genre.name %></td>
+        <td><%= product.active_status_i18n %></td>
+      </tr>
+      <% end %>
+    </table>
+    </div>
+  <div class="row justify-content-center">
+    <div class= "col-2">
+      <%= link_to new_user_product_path(@user), class: "btn btn-success" do %>
+        <span>商品を投稿する</span>
+      <% end %>
+    </div>
+  </div>
+</div>

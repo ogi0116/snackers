@@ -1,12 +1,12 @@
 class Item < ApplicationRecord
 
-  has_one_attached :image
   belongs_to :user
   has_many :favorites, dependent: :destroy
   #レビューにコメントする機能
   has_many :post_comments, dependent: :destroy
    #閲覧数のカウントする機能
   has_many :view_counts, dependent: :destroy
+  has_one_attached :image
 
   #商品名e検索機能
   def self.looks(search, word)

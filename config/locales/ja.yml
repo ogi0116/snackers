@@ -7,6 +7,11 @@
        range:
           User: "ユーザー名"
           Item: "商品名"
+      product:
+       active_status:
+          sale: "販売中"
+          limited_time_sale: "期間限定販売"
+          end_of_sale: "販売終了"
     activerecord:
         errors:
           messages:

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-
+  namespace :admin do
+    get 'homes/top'
+  end
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :users,skip: [:passwords], controllers: {
@@ -22,6 +24,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
       resource :post_comments, only: [:create, :destroy]
     end
     resources :users, only: [:show, :edit, :update] do
+       resources :products, only: [:new, :index, :show, :create, :destroy, :create, :edit, :update]
        get :unscribe, on: :member
        patch :withdrawal, on: :member
       get :favorites, on: :member
@@ -30,9 +33,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
       get :followers, on: :member
     end
     resources :chats, only: [:show, :create]
-
-
   end
 
-
+  namespace :admin do
+    root to: "homes#top"
+   resources :genres, only: [:index, :create, :edit, :update]
+  end
 end
