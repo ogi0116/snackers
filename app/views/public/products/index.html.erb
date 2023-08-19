@@ -25,10 +25,13 @@
     </table>
     </div>
   <div class="row justify-content-center">
-    <div class= "col-2">
+    <div class= "col-2 my-5">
       <%= link_to new_user_product_path(@user), class: "btn btn-success" do %>
         <span>商品を投稿する</span>
       <% end %>
     </div>
   </div>
+  <div class="row justify-content-center">
+     <%= paginate @products %>
+　</div>
 </div>

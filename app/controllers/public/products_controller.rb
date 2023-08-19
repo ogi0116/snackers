@@ -8,6 +8,7 @@ class Public::ProductsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @products = @user.products
+    @products = @user.products.page(params[:page])
   end
 
   def create
@@ -27,6 +28,27 @@ class Public::ProductsController < ApplicationController
   end
 
   def edit
+     @user = User.find(params[:user_id])
+     @product = Product.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:user_id])
+    @product = Product.find(params[:id])
+    if current_user == @user
+      @product.update(product_params)
+      redirect_to user_product_path(@user)
+    else
+      render "edit"
+      flash[:alert]
+    end
+  end
+
+  def destroy
+    @user = User.find(params[:user_id])
+    @product = Product.find(params[:id])
+    @product.destroy
+    redirect_to user_products_path(@user)
   end
 
    private
