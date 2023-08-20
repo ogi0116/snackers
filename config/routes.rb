@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
-
   namespace :admin do
-    get 'users/edit'
-  end
-  namespace :admin do
-    get 'items/index'
-    get 'items/show'
+    get 'reports/index'
   end
 # 顧客用
 # URL /customers/sign_in ...
@@ -27,6 +22,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :items, only: [:new, :index, :show, :create, :destroy, :create] do
       resource :favorites, only: [:create, :destroy]
       resource :post_comments, only: [:create, :destroy]
+      resource :reports, only: [:new, :create]
+      get :complete, on: :member
     end
     resources :users, only: [:show, :edit, :update] do
        resources :products, only: [:new, :index, :show, :create, :destroy, :create, :edit, :update] do
@@ -47,6 +44,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get "search" => "searches#search"
    resources :genres, only: [:index, :create, :edit, :update]
    resources :items, only: [:new, :index, :show, :create, :destroy, :create]
+   resources :reports, only: [:index]
    resources :users, only: [:show, :edit, :update]
   end
 

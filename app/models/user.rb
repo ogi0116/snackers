@@ -14,6 +14,8 @@ class User < ApplicationRecord
  has_many :products, dependent: :destroy
  #商品の評価点平均値を表示する機能
  has_many :reviews, dependent: :destroy
+ #問題のある投稿を管理者へ報告する機能
+  has_many :reports, dependent: :destroy
  has_one_attached :profile_image
 
 

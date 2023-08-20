@@ -1,0 +1,53 @@
+<div class= "container py-5 px-sm-0">
+<% @reports.each do |report| %>
+  <div class= "row">
+    <div class="col-8 offset-2">
+     <table class="table text-nowrap table-bordered">
+      <tr class ="head">
+        <th class="align-middle text-center user_name head"><%= image_tag report.item.user.get_profile_image(30,30) %><%= report.item.user.name %>さん</th>
+        <th class="align-middle text-center head" colspan="5">投稿画像</th>
+      </tr>
+       <tr>
+         <td class="align-middle text-center td" colspan="5"><%= image_tag report.item.get_image, size:'300x300' %></td>
+       </tr>
+       <tr>
+        <th class="align-middle text-center head">商品名</th>
+        <td class="align-middle text-center td" colspan="2"><%= report.item.title %></td>
+        <th class="align-middle text-center head">会社</th>
+        <td class="align-middle text-center td" colspan="2"><%= report.item.company %></td>
+      </tr>
+       <tr>
+         <th class="align-middle text-center head">レビュー</th>
+         <td class="align-middle text-center td" style="white-space: normal;" colspan="5"><%= report.item.body %></td>
+       </tr>
+      <tr>
+        <th class="align-middle text-center head">購入場所</th>
+        <td class="align-middle text-center td" colspan="2"><%= report.item.area %></td>
+        <th class="align-middle text-center head">スター数</th>
+        <td class="align-middle text-center td"colspan="2"><%= render "public/items/static_rate", item: report.item %></td>
+      </tr>
+      <tr>
+        <th class="align-middle text-center head">コメント数</th>
+        <td class="align-middle text-center td"><%= report.item.post_comments.count %>件</td>
+        <td class="align-middle text-center td" colspan="2"><%= report.item.view_counts.count %>回表示</td>
+        <td class="align-middle text-center td"><%= link_to "退会処理をする", edit_admin_user_path(report.item.user), class: "text-dark" %></td>
+      </tr>
+     </table>
+    </div>
+  </div>
+ <div class= "row">
+   <div class= "col-8 offset-2">
+    <table class="table text-nowrap table-bordered">
+      <tr>
+        <th class="align-middle text-center head">報告者</th>
+        <td class="align-middle text-center td"><%= report.user.name %></td>
+      </tr>
+      <tr>
+        <th class="align-middle text-center head">報告内容</th>
+        <td class="align-middle text-center td"><%= report.report %></td>
+      </tr>
+    </table>
+   </div>
+ </div>
+<% end %>
+</div>

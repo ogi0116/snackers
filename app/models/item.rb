@@ -6,6 +6,8 @@ class Item < ApplicationRecord
   has_many :post_comments, dependent: :destroy
    #閲覧数のカウントする機能
   has_many :view_counts, dependent: :destroy
+ #問題のある投稿を管理者へ報告する機能
+  has_many :reports, dependent: :destroy
   has_one_attached :image
 
   #検索方法分岐(検索窓の追加 商品名/会社名)

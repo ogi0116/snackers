@@ -8,6 +8,4 @@ class Admin::ItemsController < ApplicationController
     @post_comment = PostComment.new
     @user = @item.user
   end
-
-
 end
