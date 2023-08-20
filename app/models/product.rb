@@ -2,6 +2,8 @@ class Product < ApplicationRecord
 
   belongs_to :genre
   belongs_to :user
+  #商品の評価点平均値を表示する機能
+  has_many :reviews, dependent: :destroy
   has_one_attached :image
 
   #販売ステータスの設定

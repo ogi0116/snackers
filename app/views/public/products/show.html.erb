@@ -10,6 +10,10 @@
         </div>
         <div class='col-lg-8 col-md-6 offset-lg-1 offset-md-3'>
             <div class='group mb-3 text-center row justify-content-between'>
+                <div class='col-sm-3 col-12'>製造会社</div>
+                <div class= 'col-sm-9 col-12'> <%= @product.user.name %> </div>
+            </div>
+            <div class='group mb-3 text-center row justify-content-between'>
                 <div class='col-sm-3 col-12'>商品名</div>
                 <div class= 'col-sm-9 col-12'> <%= @product.name %> </div>
             </div>
@@ -29,9 +33,41 @@
                 <div class='col-lg-3 col-md-4 col-sm-3 col-12'>ステータス</div>
                 <div class= 'col-sm-9 col-12'><%= @product.active_status_i18n %></div>
             </div>
+
+            <!-- スター投稿フォーム-->
+            <%= form_with model: @review, url: user_product_reviews_path(current_user,@product.id), local: true do |f|%>
+            <div class='row group mt-5 text-center'>
+              <div class= "col-4 offset-2">
+                  <div id="star">
+                    <div id="post_raty"></div>
+                     <!-- スターの表示 -->
+                      <script>
+                        $(document).on('turbolinks:load', function() {
+                          let elem = document.querySelector('#post_raty');
+                          if (elem == null) return;
+
+                          elem.innerHTML = ""
+                          let opt = {
+                            starOn: "<%= asset_path('star-on.png') %>",
+                            starOff: "<%= asset_path('star-off.png') %>",
+                            starHalf: "<%= asset_path('star-half.png') %>",
+                            scoreName: 'review[all_rating]',
+                          };
+                          raty(elem, opt);
+                        });
+                      </script>
+                    </div>
+                </div>
+                <div class= "col-1">
+                  <%= f.submit "評価する", class: 'btn btn-outline-secondary' %>
+                </div>
+     　      </div>
+     　      <% end %>
+
             <div class='group mb-3 text-center row justify-content-around'>
-                <div class='col-lg-3 col-md-4 col-sm-3 col-12 mt-5'><%= link_to "編集する",edit_user_product_path(@user, @product), class: "btn btn-success px-4 py-2" %></div>
-                <div class= 'col-lg-3 col-12 mt-5'><%= link_to "削除する", user_product_path(@user, @product) ,  method: :delete , "data-confirm" => "商品を削除しますか？" , class: "btn btn-danger px-4 py-2" %></div>
+                <div class='col-lg-3 col-md-4 col-sm-3 col-12 mt-3'><%= link_to "編集する",edit_user_product_path(@user, @product), class: "btn btn-success px-4 py-2" %></div>
+                <div class= 'col-lg-3 col-12 mt-3'><%= link_to "削除する", user_product_path(@user, @product) ,  method: :delete , "data-confirm" => "商品を削除しますか？" , class: "btn btn-danger px-4 py-2" %></div>
+            </div>
             </div>
         </div>
     </div>

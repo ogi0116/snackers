@@ -6,7 +6,7 @@
           company: "企業"
        range:
           User: "ユーザー名"
-          Item: "商品名"
+          Item: "商品名/会社名"
       product:
        active_status:
           sale: "販売中"

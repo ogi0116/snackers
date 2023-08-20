@@ -12,6 +12,8 @@ class User < ApplicationRecord
  #閲覧数のカウントする機能
  has_many :view_counts, dependent: :destroy
  has_many :products, dependent: :destroy
+ #商品の評価点平均値を表示する機能
+ has_many :reviews, dependent: :destroy
  has_one_attached :profile_image
 
 
@@ -45,6 +47,7 @@ class User < ApplicationRecord
       @user = User.all
     end
   end
+
 
   def followed_by?(user)
     # フォローしているかどうかを調べる

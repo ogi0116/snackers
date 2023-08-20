@@ -1,5 +1,4 @@
 <%= form_with(model: [user, product],local: true) do |f| %>
-
   <div class="form-group row">
     <label>商品画像</label>
 　　<%= f.file_field :image, class:'ml-3',accept: "image/*" %>

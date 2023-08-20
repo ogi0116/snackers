@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  all_rating: 1.5
+  rating1: 1.5
+  rating2: 1.5
+  rating3: 1.5
+  rating4: 1.5
+  user: one
+  item: one
+
+two:
+  all_rating: 1.5
+  rating1: 1.5
+  rating2: 1.5
+  rating3: 1.5
+  rating4: 1.5
+  user: two
+  item: two

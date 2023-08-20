@@ -8,16 +8,16 @@ class Item < ApplicationRecord
   has_many :view_counts, dependent: :destroy
   has_one_attached :image
 
-  #商品名e検索機能
+  #検索方法分岐(検索窓の追加 商品名/会社名)
   def self.looks(search, word)
     if search == "perfect_match"
-      @item = Item.where("title LIKE?","#{word}")
+      @item = Item.where("title LIKE(?) OR company LIKE(?)","#{word}","#{word}")
     elsif search == "forward_match"
-      @item = Item.where("title LIKE?","#{word}%")
+      @item = Item.where("title LIKE(?) OR company LIKE(?)","#{word}%","#{word}%")
     elsif search == "backward_match"
-      @item = Item.where("title LIKE?","%#{word}")
+      @item = Item.where("title LIKE(?) OR company LIKE(?)","%#{word}","%#{word}")
     elsif search == "partial_match"
-      @item = Item.where("title LIKE?","%#{word}%")
+      @item = Item.where("title LIKE(?) OR company LIKE(?)","%#{word}%","%#{word}%")
     else
       @item = Item.all
     end

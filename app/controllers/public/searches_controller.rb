@@ -3,13 +3,12 @@ class Public::SearchesController < ApplicationController
 
   def search
     @range = params[:range]
+    @word = params[:word]
 
     if @range == "User"
-      @users = User.looks(params[:search], params[:word])
-      @users = User.page(params[:page])
+      @users = User.looks(params[:search], params[:word]).page(params[:page])
     else
-      @items = Item.looks(params[:search], params[:word])
-      @items = Item.page(params[:page])
+      @items = Item.looks(params[:search], params[:word]).page(params[:page])
     end
   end
 

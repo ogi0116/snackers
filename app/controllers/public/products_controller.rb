@@ -9,6 +9,7 @@ class Public::ProductsController < ApplicationController
     @user = User.find(params[:user_id])
     @products = @user.products
     @products = @user.products.page(params[:page])
+    @reviews = Review.all
   end
 
   def create
@@ -25,6 +26,9 @@ class Public::ProductsController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @product = Product.find(params[:id])
+    @review = Review.new
+    @reviews = @product.reviews.includes(:user)
+    @all_rating = '総合評価'
   end
 
   def edit
