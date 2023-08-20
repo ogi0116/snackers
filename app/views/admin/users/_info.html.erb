@@ -1,0 +1,52 @@
+<h4 class="align-middle text-center">プロフィール</h4>
+<table class='table'>
+  <tr>
+  <th class="align-middle text-center" colspan="2"><%= image_tag user.get_profile_image(80,80) %></th>
+  </tr>
+  <tr>
+	  <th class="align-middle text-center info_text w-50">ユーザー名</th>
+	  <th class="align-middle text-center info_text w-50"><%= user.name %></th>
+  </tr>
+  <tr>
+	  <th class="align-middle text-center info_text w-50">自己紹介</th>
+	  <th class="align-middle text-center info_text w-50"><%= user.introduction %></th>
+  </tr>
+  <tr>
+    <th class="align-middle text-center info_text w-50">ホームページ</th>
+    <th class="align-middle text-center info_text w-50"><%= user.address %></th>
+  </tr>
+  <tr>
+    <th class="align-middle text-center info_text w-50">ステータス</th>
+    <th class="align-middle text-center info_text w-50"><%= user.position_status_i18n %></th>
+  </tr>
+  <tr>
+    <th class="align-middle text-center info_text w-50">会員ステータス</th>
+    <th class="align-middle text-center info_text w-50">
+     <% if user.is_deleted == true %>
+       <span class="text-secondary font-weight-bold">
+         <%= "退会" %>
+       </span>
+     <% else %>
+       <span class="text-success font-weight-bold">
+         <%= "有効" %>
+       </span>
+     <% end %>
+    </th>
+  </tr>
+
+  <tr>
+     <th class="align-middle text-center info_text w-50">フォロー数
+        <%= "#{user.active_relationships.count}" %>
+    </th>
+    <th class="align-middle text-center info_text w-50">フォロワー数
+       <%= "#{user.passive_relationships.count}" %>
+    </th>
+  </tr>
+</table>
+
+<div class='row'>
+  <%= link_to edit_admin_user_path(user), class: "btn btn-outline-secondary btn-block mb-3" do %>
+    <i class="fas fa-user-cog"></i>
+  <% end %>
+</div>
+

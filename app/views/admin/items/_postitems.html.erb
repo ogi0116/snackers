@@ -2,13 +2,7 @@
   <table class="table text-nowrap table-bordered">
      <tr class ="head">
         <th class="align-middle text-center user_name head"><%= image_tag item.user.get_profile_image(30,30) %><%= item.user.name %>さん</th>
-        <th class="align-middle text-center head" colspan="5">投稿画像
-        <% if item.user == current_user %>
-          <%= link_to item_path(item), method: :delete do %>
-           <i class="fa-solid fa-eraser"></i>削除
-          <% end %>
-        <% end %>
-        </th>
+        <th class="align-middle text-center head" colspan="5">投稿画像</th>
       </tr>
        <tr>
          <td class="align-middle text-center td" colspan="5"><%= image_tag item.get_image, size:'300x300' %></td>
@@ -30,15 +24,14 @@
         <td class="align-middle text-center td"colspan="2"><%= render "public/items/static_rate", item: item %></td>
       </tr>
       <tr>
-         <th class="align-middle text-center head">コメント数</th>
+        <th class="align-middle text-center head">コメント数</th>
         <td class="align-middle text-center td"><%= item.post_comments.count %>件</td>
         <td class="align-middle text-center td" colspan="2"><%= item.view_counts.count %>回表示</td>
-        <td class="align-middle text-center td"><%= render 'public/items/favorite', item: item %></td>
+        <td class="align-middle text-center td"><%= link_to "詳細を見る",admin_item_path(item), class: "text-dark" %></td>
       </tr>
   </table>
- <div class="row justify-content-around">
-  <div class="col-3 mb-3 align-middle text-center background "><strong><%= link_to "コメントをする" ,item, class: "text-dark" %></strong></div>
-  <div class="col-3  mb-3 align-middle text-center background"><span>投稿日　</span><%= item.created_at.strftime('%Y/%m/%d') %></div>
+ <div class="row">
+  <div class="col-3 offset-8 mb-3 align-middle text-center background"><span>投稿日　</span><%= item.created_at.strftime('%Y/%m/%d') %></div>
  </div>
 <% end %>
 

@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+
   namespace :admin do
-    get 'homes/top'
+    get 'users/edit'
+  end
+  namespace :admin do
+    get 'items/index'
+    get 'items/show'
   end
 # 顧客用
 # URL /customers/sign_in ...
@@ -39,6 +44,11 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   namespace :admin do
     root to: "homes#top"
+    get "search" => "searches#search"
    resources :genres, only: [:index, :create, :edit, :update]
+   resources :items, only: [:new, :index, :show, :create, :destroy, :create]
+   resources :users, only: [:show, :edit, :update]
   end
+
+
 end

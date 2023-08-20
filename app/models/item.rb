@@ -30,9 +30,9 @@ class Item < ApplicationRecord
     end
     image
   end
-
-  def favorited_by?(user)
-    favorites.exists?(user_id: user.id)
+  #adminでは商品詳細でいいね機能を使わないため
+    def favorited_by?(user)
+      favorites.exists?(user_id: user.id)
   end
 
 end
