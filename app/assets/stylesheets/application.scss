@@ -23,6 +23,7 @@ header{
 
 #main{
   background-color: #E6FFE9;
+  font-family: serif;
 }
 
 footer{
@@ -42,16 +43,12 @@ footer{
 .user_name{
   background-color: #FFFF99;
   color: #3f312b;
-  font-family: serif;
 }
 
-table {
-  font-family: serif;
-}
-
-.table_group {
-  font-family: serif;
-  background-color: #FFFFEE;
+.genre_table{
+  background-color: #FFFFAA	;
+  border-radius: 20px;
+  border: 2px solid #DDDDDD;
 }
 
 // 自分のメッセージの吹き出し
@@ -125,5 +122,4 @@ table {
 
 img {
     border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
-    border: 9px solid #000000;
 }

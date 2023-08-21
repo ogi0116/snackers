@@ -1,0 +1,19 @@
+
+<div class="py-3 genre_table">
+  <h4 class="text-center">企業商品</h4>
+  <p class="text-center"><i class="fa-solid fa-grip-vertical" style="color: #4c2e30;"></i>
+  <span>ジャンル検索</span></p>
+  <div class="row justify-content-center" >
+    <table>
+      <% genres.each do |genre| %>
+        <tr>
+          <td>
+            <%= link_to genre_path(genre.id),class: "text-dark" do %>
+              <%= genre.name %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

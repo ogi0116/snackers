@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'reports/index'
-  end
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :users,skip: [:passwords], controllers: {
@@ -36,6 +33,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
       get :follows, on: :member
       get :followers, on: :member
     end
+    resources :genres, only: [:show]
     resources :chats, only: [:show, :create]
   end
 

@@ -1,0 +1,36 @@
+<div class='container py-5 px-sm-0'>
+  <div class='row'>
+    <div class= 'col-lg-9 col-md-8 col-sm-10 col-9 offset-lg-1 offset-md-2 offset-1'>
+    <h4 class="mb-4">ジャンル検索 [<%= @genre.name %>]<span style= font-size:20px>(全<%= @genre.products.count %>件)</span></h4>
+    </div>
+  </div>
+  <div class= 'row'>
+    <table class='table table_group'>
+      <tr class="head align-middle text-center">
+        <th>製造会社</th>
+        <th>商品名</th>
+        <th>税抜価格</th>
+        <th>ジャンル</th>
+        <th>5点満点評価</th>
+        <th>評価数</th>
+        <th>ステータス</th>
+      </tr>
+      <% @genre_pages.each do |product| %>
+      <tr class="td mb-sm-0 align-middle text-center">
+        <td><%= product.user.name %></td>
+        <td><%= link_to product.name, user_product_path(product.user, product) %></td>
+        <td><%= product.price %><span>円</span></td>
+        <td><%= product.genre.name %></td>
+        <td class="average-review-rating" data-score=<%= product.reviews.average(:all_rating) %>>
+        　<%= product.reviews.average(:all_rating).to_f.round(1) %>
+        </td>
+        <td><%= product.reviews.count %><span>人</span></td>
+        <td><%= product.active_status_i18n %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="row justify-content-center">
+    <%= paginate @genre_pages %>
+  </div>
+</div>

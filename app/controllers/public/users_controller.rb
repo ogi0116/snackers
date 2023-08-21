@@ -2,6 +2,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @genres = Genre.all
     @items = @user.items.page(params[:page])
     @item = Item.new
   end
@@ -34,9 +35,11 @@ class Public::UsersController < ApplicationController
 
   def favorites
     @user = User.find(params[:id])
-    favorites = Favorite.where(user_id:@user.id).pluck(:item_id)
+    favorites = Favorite.where(user_id: @user.id).pluck(:item_id)
     @favorite_items = Item.find(favorites)
-    @favorite_items = Item.page(params[:page])
+    #findで取得した値はページ付け可能配列ではない配列（array)として返ってくるため、通常とは違う記述が必要
+    @favorite_items = Kaminari.paginate_array(@favorite_items).page(params[:page])
+
     @item = Item.new
   end
 

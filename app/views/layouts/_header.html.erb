@@ -6,7 +6,7 @@
         <div class="row">
           <nav class="navbar navbar-expand-lg navbar-light w-100 d-flex flex-wrap">
             <div class="col-md-2 col-12 justify-content-center pull-left flex-fill">
-              <%= link_to root_path do %>
+              <%= link_to admin_root_path do %>
                 <%= "Snackers" %>
               <% end %>
             </div>
@@ -18,6 +18,9 @@
                 <ul class="navbar-nav col-12 justify-content-end">
                   <div class="d-flex flex-wrap col-md-11 justify-content-end text-center">
                     <p class="col-lg-2 col-12 px-0 flex-fill">
+                    <p class="col-lg-2 col-12 px-0 flex-fill">
+                      <%= link_to "データ一覧", admin_root_path, class: "text-dark" %>
+                    </p>
                       <%= link_to "報告リスト", admin_reports_path, class: "text-dark" %>
                     </p>
                     <p class="col-lg-2 col-12 px-0 flex-fill">

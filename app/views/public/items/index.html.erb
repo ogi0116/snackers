@@ -2,10 +2,9 @@
   <div class='row'>
     <div class='col-md-3 '>
       <%= render 'public/users/info', user: @user %>
-
-       <%= render 'form', item: @item %>
+      <%= render 'form', item: @item %>
+      <%= render 'public/genres/genre_search', genres: @genres %>
     </div>
-
     <div class='col-md-8 offset-md-1'>
      <%= render 'postitems', items: @items %>
     </div>

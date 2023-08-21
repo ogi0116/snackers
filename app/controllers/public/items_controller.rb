@@ -19,10 +19,13 @@ class Public::ItemsController < ApplicationController
     @items = Item.page(params[:page])
     @user = current_user
     @item = Item.new
+    @genres = Genre.all
+    @products = Product.all
   end
 
   def show
     @item = Item.find(params[:id])
+    @genres = Genre.all
     unless ViewCount.find_by(user_id: current_user.id, item_id: @item.id)
       current_user.view_counts.create(item_id: @item.id)
     end

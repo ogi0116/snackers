@@ -2,10 +2,9 @@
 <div class='container py-5 px-sm-0'>
   <div class='row'>
       <div class='col-md-3'>
-      <!-- ユーザープロフィール-->
       <%= render 'info', user: @user %>
-      <!-- おかし投稿フォーム-->
       <%= render 'public/items/form', item: @item %>
+      <%= render 'public/genres/genre_search', genres: @genres %>
     </div>
 
     <div class='col-md-8 offset-md-1'>
