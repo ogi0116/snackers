@@ -6,36 +6,35 @@
     </div>
     <div class='row'>
         <div class='col-md-3 '>
-            <%= image_tag @product.get_image, size:'300x300' %>
+        <%= image_tag @product.get_image, size:'300x300' %>
         </div>
         <div class='col-lg-8 col-md-6 offset-lg-1 offset-md-3'>
-            <div class='group mb-3 text-center row justify-content-between'>
-                <div class='col-sm-3 col-12'>製造会社</div>
-                <div class= 'col-sm-9 col-12'> <%= @product.user.name %> </div>
-            </div>
-            <div class='group mb-3 text-center row justify-content-between'>
-                <div class='col-sm-3 col-12'>商品名</div>
-                <div class= 'col-sm-9 col-12'> <%= @product.name %> </div>
-            </div>
-            <div class='group mb-3 text-center row justify-content-between'>
-                <div class='col-lg-3 col-md-4 col-sm-3 col-12'>商品説明</div>
-                <div class= 'col-sm-9 col-12'><%= @product.introduction %></div>
-            </div>
-            <div class='group mb-3 text-center row justify-content-between'>
-                <div class='col-lg-3 col-md-4 col-sm-3 col-12'>税抜価格</div>
-                <div class= 'col-sm-9 col-12'><%= @product.price %><span>円</span></div>
-            </div>
-            <div class='group mb-3 text-center row justify-content-between'>
-                <div class='col-lg-3 col-md-4 col-sm-3 col-12'>ジャンル</div>
-                <div class= 'col-sm-9 col-12'><%= @product.genre.name %></div>
-            </div>
-            <div class='group mb-3 text-center row justify-content-between'>
-                <div class='col-lg-3 col-md-4 col-sm-3 col-12'>ステータス</div>
-                <div class= 'col-sm-9 col-12'><%= @product.active_status_i18n %></div>
-            </div>
-
-            <!-- スター投稿フォーム-->
-            <%= form_with model: @review, url: user_product_reviews_path(current_user,@product.id), local: true do |f|%>
+        <div class='group mb-3 text-center row justify-content-between'>
+            <div class='col-sm-3 col-12'>製造会社</div>
+            <div class= 'col-sm-9 col-12'> <%= @product.user.name %> </div>
+        </div>
+        <div class='group mb-3 text-center row justify-content-between'>
+            <div class='col-sm-3 col-12'>商品名</div>
+            <div class= 'col-sm-9 col-12'> <%= @product.name %> </div>
+        </div>
+        <div class='group mb-3 text-center row justify-content-between'>
+            <div class='col-lg-3 col-md-4 col-sm-3 col-12'>商品説明</div>
+            <div class= 'col-sm-9 col-12'><%= @product.introduction %></div>
+        </div>
+        <div class='group mb-3 text-center row justify-content-between'>
+            <div class='col-lg-3 col-md-4 col-sm-3 col-12'>税抜価格</div>
+            <div class= 'col-sm-9 col-12'><%= @product.price %><span>円</span></div>
+        </div>
+        <div class='group mb-3 text-center row justify-content-between'>
+            <div class='col-lg-3 col-md-4 col-sm-3 col-12'>ジャンル</div>
+            <div class= 'col-sm-9 col-12'><%= @product.genre.name %></div>
+        </div>
+        <div class='group mb-3 text-center row justify-content-between'>
+            <div class='col-lg-3 col-md-4 col-sm-3 col-12'>ステータス</div>
+            <div class= 'col-sm-9 col-12'><%= @product.active_status_i18n %></div>
+        </div>
+        <!-- スター投稿フォーム-->
+        <%= form_with model: @review, url: user_product_reviews_path(current_user,@product.id), local: true do |f|%>
             <div class='row group mt-5 text-center'>
               <div class= "col-4 offset-2">
                   <div id="star">
@@ -56,20 +55,20 @@
                           raty(elem, opt);
                         });
                       </script>
-                    </div>
-                </div>
-                <div class= "col-1">
-                  <%= f.submit "評価する", class: 'btn btn-outline-secondary' %>
-                </div>
-     　      </div>
-     　      <% end %>
-
-            <div class='group mb-3 text-center row justify-content-around'>
-                <div class='col-lg-3 col-md-4 col-sm-3 col-12 mt-3'><%= link_to "編集する",edit_user_product_path(@user, @product), class: "btn btn-success px-4 py-2" %></div>
-                <div class= 'col-lg-3 col-12 mt-3'><%= link_to "削除する", user_product_path(@user, @product) ,  method: :delete , "data-confirm" => "商品を削除しますか？" , class: "btn btn-danger px-4 py-2" %></div>
-            </div>
-            </div>
-        </div>
+                  </div>
+              </div>
+              <div class= "col-1">
+               <%= f.submit "評価する", class: 'btn btn-outline-secondary' %>
+              </div>
+             </div>
+             <% end %>
+         </div>
     </div>
+    <% if current_user == @user %>
+    <div class='row group mb-3 text-center'>
+        <div class='col-3 offset-4 mt-5'><%= link_to "編集する",edit_user_product_path(@user, @product), class: "btn btn-success px-4 py-2" %></div>
+        <div class='col-3 mt-5'><%= link_to "削除する", user_product_path(@user, @product) ,  method: :delete , "data-confirm" => "商品を削除しますか？" , class: "btn btn-danger px-4 py-2" %></div>
+   </div>
+   <% end %>
 </div>
 

@@ -21,7 +21,8 @@ class Public::ChatsController < ApplicationController
     @chat = current_user.chats.new(chat_params)
     @room = @chat.room
     @chats = @room.chats
-    render :validater unless @chat.save
+    @chat.save
+    redirect_back fallback_location: root_path
   end
 
   private

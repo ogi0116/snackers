@@ -12,7 +12,7 @@ class Admin::UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     if  user.update(user_params)
-    redirect_to admin_root_path
+    redirect_to admin_reports_path
     else
       render "edit"
       flash[:alert]

@@ -37,8 +37,8 @@
       </tr>
   </table>
  <div class="row justify-content-around">
-  <div class="col-3 mb-3 align-middle text-center background "><strong><%= link_to "コメントをする" ,item, class: "text-dark" %></strong></div>
-  <div class="col-3  mb-3 align-middle text-center background"><span>投稿日　</span><%= item.created_at.strftime('%Y/%m/%d') %></div>
+  <div class="col-3 mb-5 align-middle text-center background "><strong><%= link_to "コメントをする" ,item, class: "text-dark" %></strong></div>
+  <div class="col-3 mb-5 align-middle text-center background"><span>投稿日　</span><%= item.created_at.strftime('%Y/%m/%d') %></div>
  </div>
 <% end %>
 

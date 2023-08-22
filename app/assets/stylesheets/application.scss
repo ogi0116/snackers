@@ -13,7 +13,9 @@
  *= require_tree .
  *= require_self
  */
-
+body {
+  background-image: image-url("hoge.jpg");
+}
 
 header{
    background-color: #AEFFBD;
@@ -51,6 +53,10 @@ footer{
   border: 2px solid #DDDDDD;
 }
 
+.table_group {
+  background-color: #FFFFEE;
+}
+
 // 自分のメッセージの吹き出し
 .says {
   float: left;
@@ -81,7 +87,7 @@ footer{
   position: relative;
   width: calc(100% - 56px);
   padding: 16px;
-  background: #E6FFE9;
+  background: #AEFFBD;
   border-radius: 15px;
   line-height: 1.5;
   word-break: break-all;
@@ -94,7 +100,7 @@ footer{
   top: 3px;
   right: -19px;
   border: 8px solid transparent;
-  border-right: 18px solid #E6FFE9;
+  border-right: 18px solid #AEFFBD;
   -webkit-transform: rotate(145deg);
   transform: rotate(145deg);
 }

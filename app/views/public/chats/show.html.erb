@@ -1,12 +1,12 @@
 <div class="container py-3 px-sm-0">
-  <div class= "row justify-content-center col-10 offset-1 background">
+  <div class= "row justify-content-center col-10 offset-1">
     <h2 class="title text-center align-middle"><%= @user.name %>さんとのチャット</h2>
   </div>
   <div class= "row">
     <%= render "public/chats/messages", chats: @chats %>
   </div>
   <div class= "row justify-content-center col-10 offset-1 mt-5">
-     <%= form_with model: @chat, data: {remote: true} do |f| %>
+     <%= form_with model: @chat do |f| %>
       <%= f.text_area :message, style: "width:100%", rows: '7', placeholder: "メッセージを入力してください" %>
       <%= f.hidden_field :room_id, value: @room.id %>
       <%= f.submit "メッセージを送る", class: "btn btn-outline-success" %>

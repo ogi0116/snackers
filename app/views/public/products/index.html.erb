@@ -28,6 +28,7 @@
       <% end %>
     </table>
     </div>
+  <% if current_user == @user %>
   <div class="row justify-content-center">
     <div class= "col-2 my-5">
         <%= link_to new_user_product_path(@user), class: "btn btn-success" do %>
@@ -35,6 +36,7 @@
         <% end %>
     </div>
   </div>
+  <% end %>
   <div class="row justify-content-center">
      <%= paginate @products %>
 　</div>
