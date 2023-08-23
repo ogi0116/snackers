@@ -1,4 +1,5 @@
 class Public::ReviewsController < ApplicationController
+   before_action :authenticate_user!
 
   def create
     # フォーム送信成功時、showページに戻る際にproduct_idが必要なので、@productを定義

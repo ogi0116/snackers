@@ -8,9 +8,15 @@
        <table class='table table_group'>
         <tbody>
           <tr>
-            <td class="align-middle text-center" style="width: 20%"><%= link_to(user) do %>
-              <%= image_tag user.get_profile_image(100,100) %><br>
-              <%= user.name %>
+            <td class="align-middle text-center" style="width: 20%">
+              <% if user_signed_in? %>
+              <%= link_to(user) do %>
+                <%= image_tag user.get_profile_image(100,100) %><br>
+                <%= user.name %>
+                <% end %>
+              <% else %>
+                <%= image_tag user.get_profile_image(100,100) %><br>
+                <%= user.name %>
               <% end %>
             </td>
              <td class="align-middle text-center" style="width: 25%"><%= user.introduction %></td>
