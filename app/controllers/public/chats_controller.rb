@@ -23,7 +23,7 @@ class Public::ChatsController < ApplicationController
     @room = @chat.room
     @chats = @room.chats
     @chat.save
-    redirect_back fallback_location: root_path
+    #redirect_back fallback_location: root_path 非同期通信化
   end
 
   private

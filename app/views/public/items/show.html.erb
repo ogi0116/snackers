@@ -43,16 +43,21 @@
       </tr>
       <tr>
          <th class="align-middle text-center head">コメント数</th>
-        <td class="align-middle text-center td"><%= @item.post_comments.count %>件</td>
+        <td class="align-middle text-center td", id="comment_count"><%= @item.post_comments.count %><span>件</span></td>
         <td class="align-middle text-center td" colspan="2"><%= @item.view_counts.count %>回表示</td>
-        <td class="align-middle text-center td"><%= render 'favorite', item: @item %></td>
+        <td class="align-middle text-center td", id="favorite_buttons_<%= @item.id %>"><%= render 'public/favorites/favorite', item: @item %></td>
       </tr>
      </table>
- <div class="row justify-content-around">
-  <div class="col-5 mb-3 align-middle text-center background "><strong><%= link_to "不適切な投稿として報告する" ,new_item_reports_path(@item), class: "text-dark" %></strong></div>
-  <div class="col-3  mb-3 align-middle text-center background"><span>投稿日　</span><%= @item.created_at.strftime('%Y/%m/%d') %></div>
- </div>
-     <%= render 'postcomment', item: @item, post_comment: @post_comment %>
+     <div class="row justify-content-around">
+      <div class="col-5 mb-3 align-middle text-center background "><strong><%= link_to "不適切な投稿として報告する" ,new_item_reports_path(@item), class: "text-dark" %></strong></div>
+      <div class="col-3  mb-3 align-middle text-center background"><span>投稿日　</span><%= @item.created_at.strftime('%Y/%m/%d') %></div>
+     </div>
+     <div id="post-comments">
+      <%= render "public/post_comments/show" ,item: @item %><br>
+    </div>
+    <div id="comment-form">
+      <%= render "public/post_comments/form" ,item: @item , post_comment: @post_comment  %>
+    </div>
    </div>
   </div>
 </div>

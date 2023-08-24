@@ -1,0 +1,5 @@
+<%= form_with model: chat, local: false do |f| %>
+  <%= f.text_area :message, style: "width:100%", rows: '7', placeholder: "メッセージを入力してください" %>
+  <%= f.hidden_field :room_id, value: room.id %>
+  <%= f.submit "メッセージを送る", class: "btn btn-outline-success" %>
+<% end %>

@@ -45,7 +45,7 @@ class Public::UsersController < ApplicationController
     favorites = Favorite.where(user_id: @user.id).pluck(:item_id)
     @favorite_items = Item.find(favorites)
     #findで取得した値はページ付け可能配列ではない配列（array)として返ってくるため、通常とは違う記述が必要
-    @favorite_items = Kaminari.paginate_array(@favorite_items).order("created_at DESC").page(params[:page])
+    @favorite_items = Kaminari.paginate_array(@favorite_items).page(params[:page])
 
     @item = Item.new
   end
