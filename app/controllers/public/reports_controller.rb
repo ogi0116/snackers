@@ -10,8 +10,15 @@ class Public::ReportsController < ApplicationController
     item = Item.find(params[:item_id])
     report = current_user.reports.new(report_params)
     report.item_id = item.id
-    report.save
-    redirect_to complete_item_path(item)
+    if report.save
+      flash[:notice] = "管理者に報告しました"
+      redirect_to complete_item_path(item)
+    else
+      @report = Report.new
+      @item = Item.find(params[:item_id])
+      flash[:alert] = "正しい内容を入力してください"
+      render "new"
+    end
   end
 
   private

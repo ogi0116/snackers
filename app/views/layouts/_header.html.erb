@@ -7,7 +7,7 @@
           <nav class="navbar navbar-expand-lg navbar-light w-100 d-flex flex-wrap">
             <div class="col-md-2 col-12 justify-content-center pull-left flex-fill">
               <%= link_to admin_root_path do %>
-                <%= "Snackers" %>
+                <%= image_tag 'snackers_logo.jpg', width: '80%', height: '80%', class: 'img_logo' %>
               <% end %>
             </div>
             <div class="col-lg-9 col-md-10 col-12 offset-lg-1 offset-0 flex-fill justify-content-end">
@@ -45,8 +45,8 @@
       <div class="row">
         <nav class="navbar navbar-expand-lg navbar-light w-100 d-flex flex-wrap">
           <div class="col-md-2 col-12 justify-content-center pull-left flex-fill">
-            <%= link_to root_path do %>
-              <%= "Snackers" %>
+            <%= link_to user_path(current_user) do %>
+              <%= image_tag 'snackers_logo.jpg', width: '80%', height: '80%', class: 'img_logo' %>
             <% end %>
           </div>
           <div class="col-lg-3 col-md-4 col-12 flex-fill">
@@ -94,7 +94,7 @@
         <nav class="navbar navbar-expand-lg navbar-light w-100 d-flex flex-wrap">
           <div class="col-md-2 col-12 justify-content-center pull-left flex-fill">
             <%= link_to root_path do %>
-              <%= "Snackers" %>
+              <%= image_tag 'snackers_logo.jpg', width: '80%', height: '80%', class: 'img_logo' %>
             <% end %>
           </div>
           <div class="col-md-2 col-12 flex-fill">

@@ -9,7 +9,7 @@
         <tr>
           <td>
             <%= link_to genre_path(genre.id),class: "text-dark" do %>
-              <%= genre.name %>
+              <%= genre.name %>(<%= genre.products.count %>)
             <% end %>
           </td>
         </tr>

@@ -1,7 +1,7 @@
 <% item.post_comments.each do |post_comment| %>
   <div class= "row mt-3">
    <div class= "col-2 text-center">
-     <%= image_tag post_comment.user.get_profile_image(100,100), class: "rounded-circle" %><br>
+     <%= image_tag post_comment.user.get_profile_image(80,80),class: "img_icon" %><br>
    </div>
    <div class= "col-10">
     <span><%= post_comment.user.name %>さんからのコメント</span><br>

@@ -19,8 +19,10 @@ class Public::ProductsController < ApplicationController
     @user = User.find(params[:user_id])
     @product.user_id = @user.id
     if @product.save
+     flash[:notice] = "商品を登録しました"
      redirect_to user_products_path(@user)
     else
+      flash[:alert] = "正しい内容を入力してください"
       render :new
     end
   end
@@ -46,7 +48,7 @@ class Public::ProductsController < ApplicationController
       redirect_to user_product_path(@user)
     else
       render "edit"
-      flash[:alert]
+      flash[:alert] = "更新に失敗しました"
     end
   end
 

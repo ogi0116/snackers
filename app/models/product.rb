@@ -6,6 +6,12 @@ class Product < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_one_attached :image
 
+  validates :name, presence: true
+  validates :introduction, length: { in: 1..140 }
+  validates :price, presence: true
+  validates :active_status, presence: true
+
+
   #販売ステータスの設定
   enum active_status: { "sale": 0, "limited_time_sale": 1, "end_of_sale":2 }
 

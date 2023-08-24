@@ -8,7 +8,16 @@ class Item < ApplicationRecord
   has_many :view_counts, dependent: :destroy
  #問題のある投稿を管理者へ報告する機能
   has_many :reports, dependent: :destroy
+  #favoritesテーブルを介してuserテーブルに関連するUserモデルのコレクションを取得する
+  has_many :favorited_users, through: :favorites, source: :user
+   #post_commentテーブルを介してuserテーブルに関連するUserモデルのコレクションを取得する
+  has_many :commented_users, through: :post_comments, source: :user
   has_one_attached :image
+
+
+  validates :title, presence: true
+  validates :body, length: { in: 1..100 }
+  validates :company, presence: true
 
   #検索方法分岐(検索窓の追加 商品名/会社名)
   def self.looks(search, word)
@@ -24,6 +33,13 @@ class Item < ApplicationRecord
       @item = Item.all
     end
   end
+
+  #投稿一覧表示並び替え
+  scope :latest, -> { order(created_at: :desc) }
+  scope :most_commented, -> { includes(:commented_users)
+    .sort_by { |x| x.commented_users.includes(:post_comments).size }.reverse }
+  scope :most_favorited, -> { includes(:favorited_users)
+    .sort_by { |x| x.favorited_users.includes(:favorites).size }.reverse }
 
   #adminで投稿数の推移を表示する機能
   scope :created_today, -> { where(created_at: Time.zone.now.all_day) } # 今日

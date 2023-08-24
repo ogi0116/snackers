@@ -13,13 +13,10 @@
  *= require_tree .
  *= require_self
  */
-body {
-  background-image: image-url("hoge.jpg");
-}
 
 header{
    background-color: #AEFFBD;
-   border-bottom: 20px double #CBFFD3;
+   border-bottom: 10px double #CBFFD3;
    font-family: serif;
 }
 
@@ -126,6 +123,26 @@ footer{
   width: 45%;
 }
 
-img {
+.img_logo {
+    border-radius: 10px;  /* 角丸半径を50%にする(=円形にする) */
+    opacity: 0.9;
+}
+
+.img_icon {
     border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+    border: 2px solid #DDDDDD;
+}
+
+// フラッシュメッセージ設定
+#flash-notifications{
+  color: white;
+
+  .notice {
+    background-color: #3cb371;
+    padding: 12px 20px;
+  }
+
+  .alert {
+    background-color: #fa8072;
+  }
 }

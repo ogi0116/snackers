@@ -16,8 +16,13 @@ class User < ApplicationRecord
  has_many :reviews, dependent: :destroy
  #問題のある投稿を管理者へ報告する機能
   has_many :reports, dependent: :destroy
+  has_many :favorited_users, through: :favorites, source: :item
  has_one_attached :profile_image
 
+  validates :name,length: { in: 1..10 }
+  validates :introduction,length: { maximum:100 }
+  validates :address,length: { maximum:30 }
+  validates :is_deleted, inclusion: { in: [true, false] }
 
   enum position_status: { "normal": 0, "company": 1 }
   #検索機能の日本語化

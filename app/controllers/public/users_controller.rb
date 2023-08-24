@@ -4,9 +4,10 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @genres = Genre.all
-    @items = @user.items.page(params[:page])
+    @items = @user.items.order("created_at DESC").page(params[:page])
     @item = Item.new
   end
+
 
   def edit
     @user = User.find(params[:id])
@@ -19,8 +20,13 @@ class Public::UsersController < ApplicationController
 
   def update
     user = User.find(current_user.id)
-    user.update(user_params)
-    redirect_to user_path(user)
+    if user.update(user_params)
+      flash[:notice] = "変更を保存しました"
+     redirect_to user_path(current_user)
+    else
+     flash[:alert] ="ユーザー名を記入してください"
+     render "edit"
+    end
   end
 
   def unscribe
@@ -39,19 +45,19 @@ class Public::UsersController < ApplicationController
     favorites = Favorite.where(user_id: @user.id).pluck(:item_id)
     @favorite_items = Item.find(favorites)
     #findで取得した値はページ付け可能配列ではない配列（array)として返ってくるため、通常とは違う記述が必要
-    @favorite_items = Kaminari.paginate_array(@favorite_items).page(params[:page])
+    @favorite_items = Kaminari.paginate_array(@favorite_items).order("created_at DESC").page(params[:page])
 
     @item = Item.new
   end
 
   def follows
     user = User.find(params[:id])
-    @users = user.followings.page(params[:page])
+    @users = user.followings.order("created_at DESC").page(params[:page])
   end
 
   def followers
     user = User.find(params[:id])
-    @users = user.followers.page(params[:page])
+    @users = user.followers.order("created_at DESC").page(params[:page])
   end
 
   private

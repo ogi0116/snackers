@@ -1,0 +1,6 @@
+<!--notice,alertのフラッシュ設定関連-->
+<div id="flash-notifications">
+  <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class: "#{key}") %>
+  <% end %>
+</div>

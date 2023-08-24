@@ -8,20 +8,35 @@ class Public::ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.user_id = current_user.id
     if @item.save
-     redirect_to item_path(@item), notice: "You have created tweet successfully."
+      flash[:notice] = "投稿に成功しました"
+     redirect_to item_path(@item)
     else
-     @items = Item.all
+     @items = Item.order("created_at DESC").page(params[:page])
      @user = current_user
+     @genres = Genre.all
+     flash[:alert] = "投稿に失敗しました"
      render 'index'
     end
   end
 
   def index
-    @items = Item.page(params[:page])
+    @items = Item.order("created_at DESC").page(params[:page])
     @user = current_user
     @item = Item.new
     @genres = Genre.all
     @products = Product.all
+
+    if params[:latest]
+      @items = Item.latest.page(params[:page])
+    elsif params[:most_commented]
+      @items = Item.most_commented
+      @items = Kaminari.paginate_array(@items).page(params[:page])
+    elsif params[:most_favorited]
+      @items = Item.most_favorited
+      @items = Kaminari.paginate_array(@items).page(params[:page])
+    else
+      @items = Item.order("created_at DESC").page(params[:page])
+    end
   end
 
   def show
@@ -38,7 +53,8 @@ class Public::ItemsController < ApplicationController
   def destroy
     item = Item.find(params[:id])
     item.destroy
-    redirect_to items_path
+    flash[:notice] = "投稿を削除しました"
+    redirect_back fallback_location: root_path
   end
 
   private
