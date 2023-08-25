@@ -41,7 +41,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     root to: "homes#top"
     get "search" => "searches#search"
    resources :genres, only: [:index, :create, :edit, :update]
-   resources :items, only: [:new, :index, :show, :create, :destroy, :create]
+   resources :items, only: [:new, :index, :show, :create, :destroy]
    resources :reports, only: [:index]
    resources :users, only: [:show, :edit, :update]
   end

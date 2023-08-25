@@ -1,18 +1,16 @@
-<!-- ユーザーの詳細 -->
 <div class='container py-5 px-sm-0'>
   <div class='row'>
-      <div class='col-md-3'>
+    <div class='col-md-3 '>
       <%= render 'info', user: @user %>
       <%= render 'public/items/form', item: @item %>
       <%= render 'public/genres/genre_search', genres: @genres %>
     </div>
-
     <div class='col-md-8 offset-md-1'>
-      <table class="table table-user">
-      <%= render 'public/items/postitems', items: @items %>
+      <h4><%= @user.name %>さんの投稿一覧</h4>
+     <%= render 'public/items/postitems', items: @items %>
     </div>
   </div>
   <div class="row justify-content-center">
-    <%= paginate @items %>
-  </div>
+     <%= paginate @items %>
+　</div>
 </div>

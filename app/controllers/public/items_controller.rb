@@ -54,7 +54,7 @@ class Public::ItemsController < ApplicationController
     item = Item.find(params[:id])
     item.destroy
     flash[:notice] = "投稿を削除しました"
-    redirect_back fallback_location: root_path
+    redirect_to user_path(item.user)
   end
 
   private

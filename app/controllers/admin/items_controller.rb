@@ -6,7 +6,14 @@ class Admin::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @post_comment = PostComment.new
     @user = @item.user
   end
+
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
+    flash[:notice] = "投稿を削除しました"
+    redirect_to admin_reports_path
+  end
+
 end

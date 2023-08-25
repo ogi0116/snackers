@@ -7,8 +7,12 @@
       <h2>投稿内容</h2>
       <table class="table text-nowrap table-bordered">
       <tr class ="head">
-        <th class="align-middle text-center user_name head"><%= image_tag @item.user.get_profile_image(30,30) %><%= @item.user.name %>さん</th>
-        <th class="align-middle text-center head" colspan="5">投稿画像</th>
+        <th class="align-middle text-center user_name head"><%= image_tag @item.user.get_profile_image(30,30), class: "rounded-circle" %><%= @item.user.name %>さん</th>
+        <th class="align-middle text-center head" colspan="5">投稿画像
+         <%= link_to admin_item_path(@item), method: :delete, "data-confirm" => "投稿を削除しますか？" do %>
+          <i class="fa-solid fa-eraser"></i>削除
+         <% end %>
+        </th>
       </tr>
        <tr>
          <td class="align-middle text-center td" colspan="5"><%= image_tag @item.get_image, size:'300x300' %></td>

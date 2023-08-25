@@ -34,41 +34,22 @@
             <div class= 'col-sm-9 col-12'><%= @product.active_status_i18n %></div>
         </div>
         <!-- スター投稿フォーム-->
-        <%= form_with model: @review, url: user_product_reviews_path(current_user,@product.id), local: true do |f|%>
-            <div class='row group mt-5 text-center'>
-              <div class= "col-4 offset-2">
-                  <div id="star">
-                    <div id="post_raty"></div>
-                     <!-- スターの表示 -->
-                      <script>
-                        $(document).on('turbolinks:load', function() {
-                          let elem = document.querySelector('#post_raty');
-                          if (elem == null) return;
-
-                          elem.innerHTML = ""
-                          let opt = {
-                            starOn: "<%= asset_path('star-on.png') %>",
-                            starOff: "<%= asset_path('star-off.png') %>",
-                            starHalf: "<%= asset_path('star-half.png') %>",
-                            scoreName: 'review[all_rating]',
-                          };
-                          raty(elem, opt);
-                        });
-                      </script>
-                  </div>
-              </div>
-              <div class= "col-1">
-               <%= f.submit "評価する", class: 'btn btn-outline-secondary' %>
-              </div>
-             </div>
-             <% end %>
+        <% if @product.reviewed_by?(current_user) %>
+        <div class = "row">
+          <h3 class= "mt-5">🌟評価していただきありがとうございました🌟</h3>
          </div>
+        <% else %>
+        <div>
+        <%= render "public/products/starform" ,product: @product , review: @review %>
+        </div>
+        <% end %>
+        <% if current_user == @user %>
+        <div class='row group mb-3 text-center'>
+            <div class='col-3 offset-2 mt-5'><%= link_to "編集する",edit_user_product_path(@user, @product), class: "btn btn-success px-4 py-2" %></div>
+            <div class='col-3 mt-5'><%= link_to "削除する", user_product_path(@user, @product) ,  method: :delete , "data-confirm" => "商品を削除しますか？" , class: "btn btn-danger px-4 py-2" %></div>
+            <div class='col-3 offset-1 mt-5'><%= link_to "一覧に戻る",user_products_path(@user), class: "btn btn-secondary px-4 py-2" %></div>
+       </div>
+       <% end %>
     </div>
-    <% if current_user == @user %>
-    <div class='row group mb-3 text-center'>
-        <div class='col-3 offset-4 mt-5'><%= link_to "編集する",edit_user_product_path(@user, @product), class: "btn btn-success px-4 py-2" %></div>
-        <div class='col-3 mt-5'><%= link_to "削除する", user_product_path(@user, @product) ,  method: :delete , "data-confirm" => "商品を削除しますか？" , class: "btn btn-danger px-4 py-2" %></div>
-   </div>
-   <% end %>
 </div>
 

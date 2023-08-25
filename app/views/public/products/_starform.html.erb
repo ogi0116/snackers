@@ -1,0 +1,28 @@
+<%= form_with model: review, url: user_product_reviews_path(current_user,product.id), local: true do |f|%>
+  <div class='row group mt-5 text-center'>
+    <div class= "col-4 offset-2">
+        <div id="star">
+          <div id="post_raty"></div>
+           <!-- スターの表示 -->
+            <script>
+              $(document).on('turbolinks:load', function() {
+                let elem = document.querySelector('#post_raty');
+                if (elem == null) return;
+
+                elem.innerHTML = ""
+                let opt = {
+                  starOn: "<%= asset_path('star-on.png') %>",
+                  starOff: "<%= asset_path('star-off.png') %>",
+                  starHalf: "<%= asset_path('star-half.png') %>",
+                  scoreName: 'review[all_rating]',
+                };
+                raty(elem, opt);
+              });
+            </script>
+        </div>
+    </div>
+    <div class= "col-1">
+     <%= f.submit "評価する", class: 'btn btn-outline-secondary' %>
+    </div>
+  </div>
+<% end %>

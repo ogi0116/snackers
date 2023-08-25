@@ -1,6 +1,7 @@
+
 <% if items.blank? %>
  <h4 class= "col-4 offset-4 mt-5 background text-center">投稿はありません</h4>
-<% else %>
+<% end %>
  <% items.each do |item| %>
    <table class="table text-nowrap table-bordered">
       <tr class ="head">
@@ -44,6 +45,5 @@
    <div class="col-3 mb-5 align-middle text-center background"><span>投稿日　</span><%= item.created_at.strftime('%Y/%m/%d') %></div>
   </div>
  <% end %>
-<% end %>
 
 

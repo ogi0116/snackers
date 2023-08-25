@@ -1,3 +1,6 @@
+<% if items.blank? %>
+ <h4 class= "col-4 offset-4 mt-5 background text-center">投稿はありません</h4>
+<% end %>
 <% items.each do |item| %>
   <table class="table text-nowrap table-bordered">
      <tr class ="head">

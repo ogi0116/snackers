@@ -1,15 +1,5 @@
 <!--adminでも使用するため条件分岐が必要 -->
-<% if user_signed_in? %>
-  <div class="search_form">
-    <%= form_with url: search_path, local: true, method: :get do |f| %>
-      <%= f.text_field :word, placeholder:"Search" %>
-      <%= f.select :range, User.ranges.keys.map {|k| [I18n.t("enums.user.range.#{k}"), k]} %>
-      <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
-      <%= f.submit "検索", class: "btn btn-secondary btn-sm" %>
-    <% end %>
-  </div>
-  <% else %>
-  <% admin_signed_in? %>
+  <% if request.fullpath.include? "/admin" %>
   <div class="search_form">
     <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
       <%= f.text_field :word, placeholder:"Search" %>
@@ -18,4 +8,18 @@
       <%= f.submit "検索", class: "btn btn-secondary btn-sm" %>
     <% end %>
   </div>
-<% end %>
+<% else %>
+  <div class="search_form">
+    <%= form_with url: search_path, local: true, method: :get do |f| %>
+      <%= f.text_field :word, placeholder:"Search" %>
+      <%= f.select :range, User.ranges.keys.map {|k| [I18n.t("enums.user.range.#{k}"), k]} %>
+      <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
+      <%= f.submit "検索", class: "btn btn-secondary btn-sm" %>
+    <% end %>
+  </div>
+  <% end %>
+
+
+
+
+

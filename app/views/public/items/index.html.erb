@@ -6,6 +6,7 @@
       <%= render 'public/genres/genre_search', genres: @genres %>
     </div>
     <div class='col-md-8 offset-md-1'>
+     <h4>投稿一覧</h4>
      <%= link_to '新着順', items_path(latest: "true"), class: "text-dark" %> |
      <%= link_to 'コメント順', items_path(most_commented: "true"), class: "text-dark" %> |
      <%= link_to 'いいね順', items_path(most_favorited: "true"), class: "text-dark" %>

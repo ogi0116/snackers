@@ -28,7 +28,17 @@ header{
 footer{
   border-top: 20px double #CBFFD3;
   background-color: #AEFFBD;
+  margin-top: auto;
 }
+
+
+.container {
+      display: flex;
+      flex-direction: column;
+      min-height: 80vh;
+}
+
+
 
 .head{
   background-color: #FFFFAA	;

@@ -6,17 +6,17 @@
       <%= render 'public/genres/genre_search', genres: @genres %>
     </div>
     <div class='col-md-8 offset-md-1'>
-      <h2>投稿内容</h2>
+      <h2><%= @user.name %>さんの投稿詳細</h2>
       <table class="table text-nowrap table-bordered">
       <tr class ="head">
         <th class="align-middle text-center user_name head"><%= link_to(@item.user) do %>
-          <%= image_tag @item.user.get_profile_image(30,30) %>
+          <%= image_tag @item.user.get_profile_image(30,30), class: "rounded-circle" %>
           <%= @item.user.name %>さん
         <% end %>
         </th>
         <th class="align-middle text-center head" colspan="5">投稿画像
         <% if @item.user == current_user %>
-          <%= link_to item_path(@item), method: :delete do %>
+          <%= link_to item_path(@item), method: :delete, "data-confirm" => "投稿を削除しますか？" do %>
            <i class="fa-solid fa-eraser"></i>削除
           <% end %>
         <% end %>

@@ -4,7 +4,7 @@
     <div class="col-8 offset-2">
      <table class="table text-nowrap table-bordered">
       <tr class ="head">
-        <th class="align-middle text-center user_name head"><%= image_tag report.item.user.get_profile_image(30,30) %><%= report.item.user.name %>さん</th>
+        <th class="align-middle text-center user_name head"><%= image_tag report.item.user.get_profile_image(30,30), class: "rounded-circle" %><%= report.item.user.name %>さん</th>
         <th class="align-middle text-center head" colspan="5">投稿画像</th>
       </tr>
        <tr>
@@ -36,7 +36,10 @@
     </div>
   </div>
  <div class= "row">
-   <div class= "col-8 offset-2 mb-5">
+  <div class="col-2 offset-8 mb-3 align-middle text-center background"><span>投稿日　</span><%= report.item.created_at.strftime('%Y/%m/%d') %></div>
+ </div>
+ <div class= "row">
+   <div class= "col-8 offset-2">
     <table class="table text-nowrap table-bordered">
       <tr>
         <th class="align-middle text-center head">報告者</th>
@@ -49,5 +52,11 @@
     </table>
    </div>
  </div>
+ <div class= "row">
+  <div class="col-2 offset-8 mb-5 align-middle text-center background"><span>報告日　</span><%= report.created_at.strftime('%Y/%m/%d') %></div>
+ </div>
 <% end %>
+  <div class="row justify-content-center">
+     <%= paginate @reports %>
+　</div>
 </div>
