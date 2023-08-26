@@ -4,6 +4,6 @@ class Report < ApplicationRecord
   belongs_to :user
   belongs_to :item
 
-  validates :report, length: { in: 1..100 }
+  validates :report, length: { in: 1..100 }, presence: true
 
 end

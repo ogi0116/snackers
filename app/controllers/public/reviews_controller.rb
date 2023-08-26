@@ -7,6 +7,7 @@ class Public::ReviewsController < ApplicationController
     @product = Product.find(params[:product_id])
     @review = Review.create(review_params)
     if @review.save
+      flash[:notice] = "商品を評価しました"
       redirect_to user_products_path(@product.user)
     else
       @product = @review.product

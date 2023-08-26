@@ -1,3 +1,13 @@
 <footer>
+<% if admin_signed_in? %>
   <div style="height: 100px;"></div>
+<% elsif  user_signed_in? %>
+  <div style="height: 100px;"></div>
+<% else %> <!--以下adminでもcustomerでもログインしてない状態-->
+  <div style="height: 50px;">
+    <p class="col-lg-2 col-2 offset-10 mt-4 text-center">
+      <%= link_to "管理者ログイン", admin_session_path, class: "text-dark" %>
+    </p>
+  </div>
+<% end %>
 </footer>

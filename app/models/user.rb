@@ -19,7 +19,7 @@ class User < ApplicationRecord
   has_many :favorited_users, through: :favorites, source: :item
  has_one_attached :profile_image
 
-  validates :name,length: { in: 1..10 }
+  validates :name,length: { in: 1..10 }, presence: true
   validates :introduction,length: { maximum:100 }
   validates :address,length: { maximum:30 }
   validates :is_deleted, inclusion: { in: [true, false] }

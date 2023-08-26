@@ -13,11 +13,15 @@ class Item < ApplicationRecord
    #post_commentテーブルを介してuserテーブルに関連するUserモデルのコレクションを取得する
   has_many :commented_users, through: :post_comments, source: :user
   has_one_attached :image
-
+  belongs_to :product
 
   validates :title, presence: true
-  validates :body, length: { in: 1..100 }
+  validates :body, length: { in: 1..100 }, presence: true
   validates :company, presence: true
+  validates :area, presence: true
+  validates :star, numericality: {
+    less_than_or_equal_to: 5,
+    greater_than_or_equal_to: 1}, presence: true
 
   #検索方法分岐(検索窓の追加 商品名/会社名)
   def self.looks(search, word)

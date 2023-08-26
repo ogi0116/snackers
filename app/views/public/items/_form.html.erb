@@ -1,16 +1,17 @@
 <h4 class="align-middle text-center">おかしを紹介する</h4>
 <%= form_with model: item,local:true do |f| %>
-  <div class="form-group row justify-content-center">
-　　<%= f.file_field :image, class:'ml-3',accept: "image/*" %>
-  </div>
 
+  <div class="form-group row justify-content-center">
+    <div class="form-inline form_text">
+  　　<%= f.collection_select(:product_id, @products, :id, :product_display, {prompt: "商品画像を選ぶ"}, :required => true ,class: 'form-control') %>
+　　</div>
+  </div>
   <div class="form-group row justify-content-center">
     <div class="form-inline form_text">
       <label>商品名　</label>
       <%= f.text_field :title, class: 'form-control item_name ml-1 form w-15', placeholder:"商品名" %>
     </div>
   </div>
-
   <div class="form-group row justify-content-center">
     <div class="form-inline form_text">
       <label>製造会社</label>

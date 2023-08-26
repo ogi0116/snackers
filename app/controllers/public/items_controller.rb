@@ -2,6 +2,7 @@ class Public::ItemsController < ApplicationController
    before_action :authenticate_user!
   def new
     @item = Item.new
+    @products = Product.all
   end
 
   def create
@@ -14,17 +15,19 @@ class Public::ItemsController < ApplicationController
      @items = Item.order("created_at DESC").page(params[:page])
      @user = current_user
      @genres = Genre.all
+     @item = Item.new
+     @products = Product.all
      flash[:alert] = "投稿に失敗しました"
      render 'index'
     end
   end
 
   def index
+    @products = Product.all
     @items = Item.order("created_at DESC").page(params[:page])
     @user = current_user
     @item = Item.new
     @genres = Genre.all
-    @products = Product.all
 
     if params[:latest]
       @items = Item.latest.page(params[:page])
@@ -42,6 +45,7 @@ class Public::ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @genres = Genre.all
+    @products = Product.all
     unless ViewCount.find_by(user_id: current_user.id, item_id: @item.id)
       current_user.view_counts.create(item_id: @item.id)
     end
@@ -60,7 +64,7 @@ class Public::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:user_id, :title, :body, :company, :area, :image, :star)
+    params.require(:item).permit(:user_id, :title, :body, :company, :area, :image, :star, :product_id)
   end
 
 end

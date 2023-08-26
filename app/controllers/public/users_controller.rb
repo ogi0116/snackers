@@ -6,6 +6,7 @@ class Public::UsersController < ApplicationController
     @genres = Genre.all
     @items = @user.items.order("created_at DESC").page(params[:page])
     @item = Item.new
+    @products = Product.all
   end
 
 
@@ -41,6 +42,7 @@ class Public::UsersController < ApplicationController
   end
 
   def favorites
+    @products = Product.all
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:item_id)
     @favorite_items = Item.find(favorites)
