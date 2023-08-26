@@ -46,7 +46,6 @@
         <% if current_user == @user %>
         <div class='row group mb-3 text-center'>
             <div class='col-3 offset-2 mt-5'><%= link_to "編集する",edit_user_product_path(@user, @product), class: "btn btn-success px-4 py-2" %></div>
-            <div class='col-3 mt-5'><%= link_to "削除する", user_product_path(@user, @product) ,  method: :delete , "data-confirm" => "商品を削除しますか？" , class: "btn btn-danger px-4 py-2" %></div>
             <div class='col-3 offset-1 mt-5'><%= link_to "一覧に戻る",user_products_path(@user), class: "btn btn-secondary px-4 py-2" %></div>
        </div>
        <% end %>
