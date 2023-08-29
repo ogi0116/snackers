@@ -1,37 +1,38 @@
 <div class='container py-5 px-sm-0'>
     <div class='row'>
-        <div class='col-lg-2 col-md-3 mb-5 text-center'>
+        <div class='col-lg-2 col-md-3 mb-5 justify-content-sm-center text-center'>
             <h4>商品詳細</h4>
         </div>
     </div>
     <div class='row'>
-        <div class='col-md-3 '>
+        <!--画像をインライン要素からブロック要素に変換するとmx-autoが効く-->
+        <div class='col-md-3 offset-md-0 col-sm-4 col-8 mb-5 d-block mx-auto'>
         <%= image_tag @product.get_image, size:'300x300' %>
         </div>
-        <div class='col-lg-8 col-md-6 offset-lg-1 offset-md-3'>
+        <div class='col-lg-8 col-md-6 col-sm-12 offset-lg-1 offset-md-3'>
         <div class='group mb-3 text-center row justify-content-between'>
-            <div class='col-sm-3 col-12'>製造会社</div>
-            <div class= 'col-sm-9 col-12'> <%= @product.user.name %> </div>
+            <div class='col-md-3 col-12'>製造会社</div>
+            <div class='col-md-9 col-12'> <%= @product.user.name %> </div>
         </div>
         <div class='group mb-3 text-center row justify-content-between'>
-            <div class='col-sm-3 col-12'>商品名</div>
-            <div class= 'col-sm-9 col-12'> <%= @product.name %> </div>
+            <div class='col-md-3 col-12'>商品名</div>
+            <div class='col-md-9 col-12'> <%= @product.name %> </div>
         </div>
         <div class='group mb-3 text-center row justify-content-between'>
-            <div class='col-lg-3 col-md-4 col-sm-3 col-12'>商品説明</div>
-            <div class= 'col-sm-9 col-12'><%= @product.introduction %></div>
+            <div class='col-md-3 col-12'>商品説明</div>
+            <div class='col-md-9 col-12'><%= @product.introduction %></div>
         </div>
         <div class='group mb-3 text-center row justify-content-between'>
-            <div class='col-lg-3 col-md-4 col-sm-3 col-12'>税抜価格</div>
-            <div class= 'col-sm-9 col-12'><%= @product.price %><span>円</span></div>
+            <div class='col-md-3 col-12'>税抜価格</div>
+            <div class='col-md-9 col-12'><%= @product.price %><span>円</span></div>
         </div>
         <div class='group mb-3 text-center row justify-content-between'>
-            <div class='col-lg-3 col-md-4 col-sm-3 col-12'>ジャンル</div>
-            <div class= 'col-sm-9 col-12'><%= @product.genre.name %></div>
+            <div class='col-md-3 col-12'>ジャンル</div>
+            <div class='col-md-9 col-12'><%= @product.genre.name %></div>
         </div>
         <div class='group mb-3 text-center row justify-content-between'>
-            <div class='col-lg-3 col-md-4 col-sm-3 col-12'>ステータス</div>
-            <div class= 'col-sm-9 col-12'><%= @product.active_status_i18n %></div>
+            <div class='col-md-3 col-12'>ステータス</div>
+            <div class='col-md-9 col-12'><%= @product.active_status_i18n %></div>
         </div>
         <!-- スター投稿フォーム-->
         <% if @product.reviewed_by?(current_user) %>
@@ -45,8 +46,8 @@
         <% end %>
         <% if current_user == @user %>
         <div class='row group mb-3 text-center'>
-            <div class='col-3 offset-2 mt-5'><%= link_to "編集する",edit_user_product_path(@user, @product), class: "btn btn-success px-4 py-2" %></div>
-            <div class='col-3 offset-1 mt-5'><%= link_to "一覧に戻る",user_products_path(@user), class: "btn btn-secondary px-4 py-2" %></div>
+            <div class='col-md-5 col-sm-4 col-12 offset-md-1 offset-sm-2 mt-5'><%= link_to "編集する",edit_user_product_path(@user, @product), class: "btn btn-success px-4 py-2" %></div>
+            <div class='col-md-6 col-sm-4 col-12 offset-md-0 offset-sm-2 mt-5'><%= link_to "一覧に戻る",user_products_path(@user), class: "btn btn-secondary px-4 py-2" %></div>
        </div>
        <% end %>
     </div>

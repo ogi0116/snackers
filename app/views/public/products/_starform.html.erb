@@ -1,6 +1,6 @@
 <%= form_with model: review, url: user_product_reviews_path(current_user,product.id), local: true do |f|%>
   <div class='row group mt-5 text-center'>
-    <div class= "col-4 offset-2">
+    <div class= "col-sm-6 col-12 offset-sm-2 mb-sm-0 mb-3">
         <div id="star">
           <div id="post_raty"></div>
            <!-- スターの表示 -->
@@ -21,7 +21,7 @@
             </script>
         </div>
     </div>
-    <div class= "col-1">
+    <div class= "col-sm-1 col-12">
      <%= f.submit "評価する", class: 'btn btn-outline-secondary' %>
     </div>
   </div>

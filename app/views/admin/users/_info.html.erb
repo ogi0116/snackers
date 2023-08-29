@@ -1,27 +1,27 @@
 <h4 class="align-middle text-center">プロフィール</h4>
 <table class='table'>
-  <tr>
-  <th class="align-middle text-center" colspan="2"><%= image_tag user.get_profile_image(80,80), class: "rounded-circle" %></th>
+  <tr class="align-middle text-center">
+　  <th colspan="2"><%= image_tag user.get_profile_image(80,80), class: "rounded-circle" %></th>
   </tr>
-  <tr>
-	  <th class="align-middle text-center info_text w-50">ユーザー名</th>
-	  <th class="align-middle text-center info_text w-50"><%= user.name %></th>
+  <tr class="align-middle text-center info_text">
+	  <th style="width:30%;">ユーザー名</th>
+	  <th style="width:70%;"><%= user.name %></th>
   </tr>
-  <tr>
-	  <th class="align-middle text-center info_text w-50">自己紹介</th>
-	  <th class="align-middle text-center info_text w-50"><%= user.introduction %></th>
+  <tr class="align-middle text-center info_text">
+	  <th style="width:30%;">自己紹介</th>
+	  <th style="width:70%;"><%= user.introduction %></th>
   </tr>
-  <tr>
-    <th class="align-middle text-center info_text w-50">ホームページ</th>
-    <th class="align-middle text-center info_text w-50"><%= user.address %></th>
+  <tr class="align-middle text-center info_text">
+    <th style="width:30%;">ホームページ</th>
+    <th style="width:70%;"><%= user.address %></th>
   </tr>
-  <tr>
-    <th class="align-middle text-center info_text w-50">ステータス</th>
-    <th class="align-middle text-center info_text w-50"><%= user.position_status_i18n %></th>
+  <tr class="align-middle text-center info_text">
+    <th style="width:30%;">ステータス</th>
+    <th style="width:70%;"><%= user.position_status_i18n %></th>
   </tr>
-  <tr>
-    <th class="align-middle text-center info_text w-50">会員ステータス</th>
-    <th class="align-middle text-center info_text w-50">
+  <tr class="align-middle text-center info_text">
+    <th style="width:30%;">会員ステータス</th>
+    <th style="width:70%;">
      <% if user.is_deleted == true %>
        <span class="text-secondary font-weight-bold">
          <%= "退会" %>
@@ -33,18 +33,16 @@
      <% end %>
     </th>
   </tr>
-
-  <tr>
-     <th class="align-middle text-center info_text w-50">フォロー数
+  <tr class="align-middle text-center info_text">
+     <th style="width:50%;">フォロー数
         <%= "#{user.active_relationships.count}" %>
-    </th>
-    <th class="align-middle text-center info_text w-50">フォロワー数
+    </th style="width:50%;">
+    <th>フォロワー数
        <%= "#{user.passive_relationships.count}" %>
     </th>
   </tr>
 </table>
-
-<div class='row'>
+<div class='row mb-sm-3 col-md-12 offset-md-0 col-sm-8 offset-sm-2'>
   <%= link_to edit_admin_user_path(user), class: "btn btn-outline-secondary btn-block mb-3" do %>
     <i class="fas fa-user-cog"></i>
   <% end %>

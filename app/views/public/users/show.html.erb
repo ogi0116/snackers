@@ -2,10 +2,12 @@
   <div class='row'>
     <div class='col-md-3 '>
       <%= render 'info', user: @user %>
-      <%= render 'public/items/form', item: @item %>
+      <div class= "row d-none d-md-block">
+       <%= render 'public/items/form', item: @item %>
+      </div>
       <%= render 'public/genres/genre_search', genres: @genres %>
     </div>
-    <div class='col-md-8 offset-md-1'>
+    <div class='col-md-8 offset-md-1 mt-3'>
       <h4><%= @user.name %>さんの投稿一覧</h4>
      <%= render 'public/items/postitems', items: @items %>
     </div>

@@ -1,6 +1,6 @@
 <div class= "container py-5 px-sm-0">
   <div class="row">
-    <div class="col-lg-2 col-md-3 col-sm-11 col-9 text-center">
+    <div class="col-12">
     <h4>商品一覧</h4>
     </div>
   </div>
@@ -8,33 +8,35 @@
       <h4 class= "col-4 offset-4 mt-5 background text-center">投稿した商品はありません</h4>
     <% else %>
       <div class= "row">
-      <table class='table table_group'>
-        <tr class="head align-middle text-center">
-          <th>商品名</th>
-          <th>税抜価格</th>
-          <th>ジャンル</th>
-          <th>5点満点評価</th>
-          <th>評価数</th>
-          <th>ステータス</th>
-        </tr>
-        <% @products.each do |product| %>
-        <tr class="td mb-sm-0 align-middle text-center">
-          <td><%= link_to product.name, user_product_path(@user, product) %></td>
-          <td><%= product.price %><span>円</span></td>
-          <td><%= product.genre.name %></td>
-          <td class="average-review-rating" data-score=<%= product.reviews.average(:all_rating) %>></div>
-          　<%= product.reviews.average(:all_rating).to_f.round(1) %>
-          </td>
-          <td><%= product.reviews.count %><span>人</span></td>
-          <td><%= product.active_status_i18n %></td>
-        </tr>
-        <% end %>
-      </table>
+        <div class="col-12 table-responsive-sm">
+          <table class='table table_group text-nowrap'>
+            <tr class="head align-middle text-center">
+              <th>商品名</th>
+              <th>税抜価格</th>
+              <th>ジャンル</th>
+              <th>5点満点評価</th>
+              <th>評価数</th>
+              <th>ステータス</th>
+            </tr>
+            <% @products.each do |product| %>
+            <tr class="td mb-sm-0 align-middle text-center">
+              <td><%= link_to product.name, user_product_path(@user, product) %></td>
+              <td><%= product.price %><span>円</span></td>
+              <td><%= product.genre.name %></td>
+              <td class="average-review-rating" data-score=<%= product.reviews.average(:all_rating) %>></div>
+              　<%= product.reviews.average(:all_rating).to_f.round(1) %>
+              </td>
+              <td><%= product.reviews.count %><span>人</span></td>
+              <td><%= product.active_status_i18n %></td>
+            </tr>
+            <% end %>
+          </table>
+        </div>
       </div>
     <% end %>
   <% if current_user == @user %>
   <div class="row justify-content-center">
-    <div class= "col-2 my-5">
+    <div class= "my-5">
         <%= link_to new_user_product_path(@user), class: "btn btn-success" do %>
           <span>商品を投稿する</span>
         <% end %>

@@ -1,7 +1,12 @@
 <div class= "container py-5">
   <div class= "row">
-    <div class= "col-5 offset-1 my-3">
-    <h4>・新規登録者数の前日比・前週比</h4>
+    <div class="col-12">
+      <h4>・新規登録者数の前日比・前週比</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class= "col-lg-6 col-12 my-3">
+      <div class="col-12 table-responsive">
       <table class="table text-nowrap table-bordered">
         <thead>
           <tr class="align-middle text-center head">
@@ -23,34 +28,10 @@
           </tr>
         </tbody>
       </table>
+      </div>
     </div>
-    <div class= "col-5 offset-1 my-3">
-    <h4>・新規投稿数の前日比・前週比</h4>
-      <table class="table text-nowrap table-bordered">
-        <thead>
-          <tr class="align-middle text-center head">
-            <th>今日の新規投稿数</th>
-            <th>昨日の新規投稿数</th>
-            <th>前日比</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="align-middle text-center td"><%= @today_item.count %></td>
-            <td class="align-middle text-center td"><%= @yesterday_item.count %></td>
-            <% if @yesterday_item.count == 0 %>
-            <td class="align-middle text-center td">前日の新規登録者はなし</td>
-            <% else %>
-            <td class="align-middle text-center td"><% @the_day_before =   @today_item.count / @yesterday_item.count  %>
-            <%= (@the_day_before * 100).round %>%</td>
-            <% end %>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <div class= "row" >
-    <div class= "col-5 offset-1">
+    <div class= "col-lg-6 col-12 my-3">
+      <div class="col-12 table-responsive">
       <table class="table text-nowrap table-bordered">
         <thead>
           <tr class="align-middle text-center head">
@@ -72,8 +53,42 @@
           </tr>
         </tbody>
       </table>
+      </div>
     </div>
-    <div class= "col-5 offset-1">
+  </div>
+
+  <div class= "col-12 my-3">
+    <h4>・新規投稿数の前日比・前週比</h4>
+  </div>
+  <div class="row">
+    <div class= "col-lg-6 col-12 my-3">
+      <div class="col-12 table-responsive">
+      <table class="table text-nowrap table-bordered">
+        <thead>
+          <tr class="align-middle text-center head">
+            <th>今日の新規投稿数</th>
+            <th>昨日の新規投稿数</th>
+            <th>前日比</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="align-middle text-center td"><%= @today_item.count %></td>
+            <td class="align-middle text-center td"><%= @yesterday_item.count %></td>
+            <% if @yesterday_item.count == 0 %>
+            <td class="align-middle text-center td">前日の新規登録者はなし</td>
+            <% else %>
+            <td class="align-middle text-center td"><% @the_day_before =   @today_item.count / @yesterday_item.count  %>
+            <%= (@the_day_before * 100).round %>%</td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class= "col-lg-6 col-12 my-3">
+      <div class="col-12 table-responsive">
       <table class="table text-nowrap table-bordered">
         <thead>
           <tr class="align-middle text-center head">
@@ -95,11 +110,14 @@
           </tr>
         </tbody>
       </table>
+      </div>
     </div>
   </div>
+
+
   <!-- データーをグラフ化 -->
   <div class= "row">
-    <div class= "col-8 offset-2 my-5">
+    <div class= "col-lg-8 col-12 offset-lg-2 my-5">
     <h4>・データ推移</h4>
       <canvas id="myLineChart"></canvas>
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -165,9 +183,10 @@
     </div>
   </div>
   <div class= "row">
-    <div class= "col-10 offset-1">
+    <div class= "col-10 offset-1 my-3">
       <h4>・7日間分の新規登録者数</h4>
-      <table class='table table-bordered'>
+      <div class="col-12 table-responsive">
+      <table class='table table-bordered text-nowrap'>
         <thead>
           <tr class="align-middle text-center head">
             <th>６日前</th>
@@ -191,12 +210,14 @@
           </tr>
         </tbody>
       </table>
+      </div>
     </div>
   </div>
   <div class= "row">
-    <div class= "col-10 offset-1">
+    <div class= "col-10 offset-1 my-3">
       <h4>・7日間分の新規投稿数</h4>
-      <table class='table table-bordered'>
+      <div class="col-12 table-responsive">
+      <table class='table table-bordered text-nowrap'>
         <thead>
           <tr class="align-middle text-center head">
             <th>６日前</th>
@@ -220,6 +241,7 @@
           </tr>
         </tbody>
       </table>
+      </div>
     </div>
   </div>
 </div>

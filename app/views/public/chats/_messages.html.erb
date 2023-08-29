@@ -1,22 +1,22 @@
     <% chats.each do |chat| %>
       <% if chat.user_id == current_user.id %>
-       <div class="col-2 text-right mb-3">
+       <div class="col-2 text-right mb-3 w-30">
          <%= image_tag chat.user.get_profile_image(80,80),class: "img_icon" %><br>
        </div>
-       <div class= "col-10 mb-3">
+       <div class= "col-10 mb-3 w-70">
          <span><%= chat.user.name %>さん</span><br>
-        <div class="says w-auto">
+        <div class="says text-center">
             <%= chat.message %>
         </div>
       </div>
       <% else %>
-       <div class= "col-10 text-right mb-3">
+       <div class= "col-10 text-right mb-3 w-70">
          <span><%= chat.user.name %>さん</span><br>
-        <div class="other-user-says w-auto">
+        <div class="other-user-says text-center">
             <%= chat.message %>
         </div>
       </div>
-       <div class="col-2 text-left mb-3">
+       <div class="col-2 text-left mb-3 w-30">
          <%= image_tag chat.user.get_profile_image(80,80),class: "img_icon" %><br>
        </div>
       <% end %>

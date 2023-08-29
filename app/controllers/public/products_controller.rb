@@ -9,7 +9,6 @@ class Public::ProductsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @products = @user.products
     @products = @user.products.page(params[:page])
     @reviews = Review.all
   end
@@ -50,13 +49,6 @@ class Public::ProductsController < ApplicationController
       render "edit"
       flash[:alert] = "更新に失敗しました"
     end
-  end
-
-  def destroy
-    @user = User.find(params[:user_id])
-    @product = Product.find(params[:id])
-    @product.destroy
-    redirect_to user_products_path(@user)
   end
 
    private

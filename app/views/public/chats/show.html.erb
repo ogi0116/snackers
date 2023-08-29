@@ -1,8 +1,8 @@
 <div class="container py-3 px-sm-0">
-  <div class= "row justify-content-center col-10 offset-1">
-    <h2 class="title text-center align-middle"><%= @user.name %>さんとのチャット</h2>
+  <div class= "row justify-content-center col-8 offset-2">
+    <h4 class="text-center align-middle"><%= @user.name %>さんとのチャット</h4>
   </div>
-  <div class= "row", id="post-chats">
+  <div class= "row justify-content-center col-10 offset-1", id="post-chats">
       <%= render "public/chats/messages", chats: @chats %>
   </div>
   <div class= "row justify-content-center col-10 offset-1 mt-5", id="chat-form">

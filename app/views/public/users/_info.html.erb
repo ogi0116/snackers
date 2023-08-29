@@ -1,63 +1,66 @@
-<h4 class="align-middle text-center">プロフィール
-<% if current_user != user && current_user.followed_by?(user) && user.followed_by?(current_user) %>
-  <%= link_to 'DM', chat_path(user.id), class: "btn btn-info btn-sm" %>
-<% end %>
-</h4>
-<table class='table'>
-  <tr>
-  <th class="align-middle text-center" colspan="2"><%= image_tag user.get_profile_image(80,80),class: "rounded-circle" %></th>
-  </tr>
-  <tr>
-	  <th class="align-middle text-center info_text w-50">ユーザー名</th>
-	  <th class="align-middle text-center info_text w-50"><%= user.name %></th>
-  </tr>
-  <tr>
-	  <th class="align-middle text-center info_text w-50">自己紹介</th>
-	  <th class="align-middle text-center info_text w-50"><%= user.introduction %></th>
-  </tr>
-  <tr>
-    <th class="align-middle text-center info_text w-50">ホームページ</th>
-    <th class="align-middle text-center info_text w-50"><%= user.address %></th>
-  </tr>
-  <tr>
-    <th class="align-middle text-center info_text w-50">ステータス</th>
-    <th class="align-middle text-center info_text w-50"><%= user.position_status_i18n %></th>
-  </tr>
-
-  <tr>
-     <th class="align-middle text-center info_text w-50">フォロー数
-      <%= link_to follows_user_path(user) do %>
-        <%= "#{user.active_relationships.count}" %>
-      <% end %>
-    </th>
-    <th class="align-middle text-center info_text w-50">フォロワー数
-      <%= link_to followers_user_path(user) do %>
-       <%= "#{user.passive_relationships.count}" %>
-      <% end %>
-    </th>
-  </tr>
-  <tr>
-    <th class="align-middle text-center">
+<div class="row">
+  <div class="col-lg-12 col-md-10 offset-md-1">
+    <h4 class="align-middle text-center">プロフィール
+    <% if current_user != user && current_user.followed_by?(user) && user.followed_by?(current_user) %>
+      <%= link_to 'DM', chat_path(user.id), class: "btn btn-info btn-sm" %>
+    <% end %>
+    </h4>
+    <table class='table'>
+      <tr class="align-middle text-center">
+      <th colspan="2"><%= image_tag user.get_profile_image(80,80),class: "rounded-circle" %></th>
+      </tr>
+      <tr class="align-middle text-center info_text">
+    	  <th style="width:30%;">ユーザー名</th>
+    	  <th style="width:70%;"><%= user.name %></th>
+      </tr>
+      <tr class="align-middle text-center info_text">
+    	  <th style="width:30%;">自己紹介</th>
+    	  <th style="width:70%;"><%= user.introduction %></th>
+      </tr>
+      <tr class="align-middle text-center info_text">
+        <th style="width:30%;">ホームページ</th>
+        <th style="width:70%;"><%= user.address %></th>
+      </tr>
+      <tr class="align-middle text-center info_text">
+        <th style="width:30%;">ステータス</th>
+        <th style="width:70%;"><%= user.position_status_i18n %></th>
+      </tr>
+      <tr class="align-middle text-center info_text">
+         <th style="width:50%;">フォロー数
+          <%= link_to follows_user_path(user) do %>
+            <%= "#{user.active_relationships.count}" %>
+          <% end %>
+         </th>
+         <th style="width:50%;">フォロワー数
+          <%= link_to followers_user_path(user) do %>
+           <%= "#{user.passive_relationships.count}" %>
+          <% end %>
+         </th>
+      </tr>
+    </table>
+    <div class="row">
+    <div class="align-middle text-center mb-sm-3 col-md-6 offset-md-0 col-sm-4 offset-sm-2">
        <% if current_user != user %>
         <div id = "follow_contents_<%= user.id %>">
           <%= render "public/relationships/relationship", user: user %>
         </div>
       <% end %>
-    </th>
-     <th><%=link_to"いいね一覧",favorites_user_path(user), class: 'btn btn-primary btn-sm' %></th>
-  </tr>
-</table>
-
-<div class='row'>
-  <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block mb-3" do %>
-    <i class="fas fa-user-cog"></i>
-  <% end %>
-</div>
-
-<div class='row'>
-<% if user.company? %>
-  <%= link_to user_products_path(user), class: "btn btn-outline-info btn-block mb-3" do %>
-    <span>商品一覧を見る</span>
-  <% end %>
-<% end %>
+    </div>
+     <div class="align-middle text-center mb-3 col-md-6 col-sm-4">
+       <%=link_to"いいね一覧",favorites_user_path(user), class: 'btn btn-primary btn-sm' %>
+    </div>
+    </div>
+    <div class='row mb-sm-3 col-md-12 offset-md-0 col-sm-8 offset-sm-2'>
+      <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block mb-3 w-60" do %>
+        <i class="fas fa-user-cog"></i>
+      <% end %>
+    </div>
+    <div class='row mb-sm-3 col-md-12 offset-md-0 col-sm-8 offset-sm-2'>
+    <% if user.company? %>
+      <%= link_to user_products_path(user), class: "btn btn-outline-info btn-block mb-3 w-60" do %>
+        <span>商品一覧を見る</span>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
 </div>

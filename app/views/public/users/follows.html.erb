@@ -1,31 +1,7 @@
 <div class= "container py-5 px-sm-0">
   <div class= "row">
-    <h2 class= "col-12">フォロー一覧</h2>
-    <% if @users.blank? %>
-    <h4 class= "col-4 offset-4 mt-5 background text-center">ユーザーはいません</h4>
-    <% else %>
-    　<% @users.each do |user| %>
-       <table class='table table_group'>
-        <tbody>
-          <tr>
-            <td class="align-middle text-center" style="width: 20%"><%= link_to(user) do %>
-              <%= image_tag user.get_profile_image(90,90),class: "img_icon" %><br>
-              <%= user.name %>
-              <% end %>
-            </td>
-             <td class="align-middle text-center" style="width: 25%"><%= user.introduction %></td>
-             <td class="align-middle text-center" style="width: 20%"><%= "フォロー数: #{user.active_relationships.count}" %></td>
-             <td class="align-middle text-center" style="width: 20%"><%= "フォロワー数: #{user.passive_relationships.count}" %></td>
-             <td class="align-middle text-center" style="width: 15%", id="follow_contents_<%= user.id %>">
-              <% if current_user != user %>
-               <%= render "public/relationships/relationship", user: user %>
-              <% end %>
-             </td>
-          </tr>
-        </tbody>
-       </table>
-      <% end %>
-    <% end %>
+    <h4 class= "col-12">フォロー一覧</h4>
+    <%= render 'public/users/user_list', users: @users %>
   </div>
    <div class="row justify-content-center">
      <%= paginate @users %>

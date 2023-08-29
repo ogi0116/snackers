@@ -16,7 +16,7 @@ class Admin::UsersController < ApplicationController
     redirect_to admin_reports_path
     else
       render "edit"
-      flash[:alert]
+      flash[:alert] = "更新に失敗しました"
     end
   end
 

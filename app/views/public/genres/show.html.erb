@@ -5,7 +5,8 @@
     </div>
   </div>
   <div class= 'row'>
-    <table class='table table_group'>
+   <div class="col-12 table-responsive-md">
+    <table class='table table_group text-nowrap'>
       <tr class="head align-middle text-center">
         <th>製造会社</th>
         <th>商品名</th>
@@ -29,6 +30,7 @@
       </tr>
       <% end %>
     </table>
+   </div>
   </div>
   <div class="row justify-content-center">
     <%= paginate @genre_pages %>

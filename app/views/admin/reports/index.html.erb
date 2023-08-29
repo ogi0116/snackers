@@ -1,59 +1,63 @@
 <div class= "container py-5 px-sm-0">
 <% @reports.each do |report| %>
   <div class= "row">
-    <div class="col-8 offset-2">
-     <table class="table text-nowrap table-bordered">
-      <tr class ="head">
-        <th class="align-middle text-center user_name head"><%= image_tag report.item.user.get_profile_image(30,30), class: "rounded-circle" %><%= report.item.user.name %>さん</th>
-        <th class="align-middle text-center head" colspan="5">投稿画像</th>
-      </tr>
-       <tr>
-         <td class="align-middle text-center td" colspan="5"><%= image_tag report.item.product.get_image, size:'300x300' %></td>
-       </tr>
-       <tr>
-        <th class="align-middle text-center head">商品名</th>
-        <td class="align-middle text-center td" colspan="2"><%= report.item.title %></td>
-        <th class="align-middle text-center head">会社</th>
-        <td class="align-middle text-center td" colspan="2"><%= report.item.company %></td>
-      </tr>
-       <tr>
-         <th class="align-middle text-center head">レビュー</th>
-         <td class="align-middle text-center td" style="white-space: normal;" colspan="5"><%= report.item.body %></td>
-       </tr>
-      <tr>
-        <th class="align-middle text-center head">購入場所</th>
-        <td class="align-middle text-center td" colspan="2"><%= report.item.area %></td>
-        <th class="align-middle text-center head">スター数</th>
-        <td class="align-middle text-center td"colspan="2"><%= render "public/items/static_rate", item: report.item %></td>
-      </tr>
-      <tr>
-        <th class="align-middle text-center head">コメント数</th>
-        <td class="align-middle text-center td"><%= report.item.post_comments.count %>件</td>
-        <td class="align-middle text-center td" colspan="2"><%= report.item.view_counts.count %>回表示</td>
-        <td class="align-middle text-center td"><%= link_to "詳細を見る",admin_item_path(report.item), class: "text-dark" %></td>
-      </tr>
+    <div class="col-lg-8 col-12 offset-lg-2">
+     <div class="col-12 table-responsive-sm">
+      <table class="table text-nowrap table-bordered">
+        <tr class ="align-middle text-center">
+          <th class="user_name"><%= image_tag report.item.user.get_profile_image(30,30), class: "rounded-circle" %><%= report.item.user.name %>さん</th>
+          <th class="head" colspan="5">投稿画像</th>
+        </tr>
+         <tr class="align-middle text-center">
+           <td class="td" colspan="5"><%= image_tag report.item.product.get_image, size:'300x300' %></td>
+         </tr>
+         <tr class="align-middle text-center">
+          <th class="head">商品名</th>
+          <td class="td" colspan="2"><%= report.item.title %></td>
+          <th class="head">会社</th>
+          <td class="td" colspan="2"><%= report.item.company %></td>
+         </tr>
+         <tr class="align-middle text-center">
+           <th class="head">レビュー</th>
+           <td class="td" style="white-space: normal;" colspan="5"><%= report.item.body %></td>
+         </tr>
+         <tr class="align-middle text-center">
+          <th class="head">購入場所</th>
+          <td class="td" colspan="2"><%= report.item.area %></td>
+          <th class="head">スター数</th>
+          <td class="td"colspan="2"><%= render "public/items/static_rate", item: report.item %></td>
+        </tr>
+        <tr class="align-middle text-center">
+          <th class="head">コメント数</th>
+          <td class="td"><%= report.item.post_comments.count %>件</td>
+          <td class="td" colspan="2"><%= report.item.view_counts.count %>回表示</td>
+          <td class="td"><%= link_to "詳細を見る",admin_item_path(report.item), class: "text-dark" %></td>
+        </tr>
      </table>
+     </div>
     </div>
   </div>
  <div class= "row">
-  <div class="col-2 offset-8 mb-3 align-middle text-center background"><span>投稿日　</span><%= report.item.created_at.strftime('%Y/%m/%d') %></div>
+  <div class="col-md-3 col-6 offset-md-7 offset-3 mb-4 mt-lg-0 mt-3 align-middle text-center background"><span>投稿日　</span><%= report.item.created_at.strftime('%Y/%m/%d') %></div>
  </div>
  <div class= "row">
-   <div class= "col-8 offset-2">
-    <table class="table text-nowrap table-bordered">
-      <tr>
-        <th class="align-middle text-center head">報告者</th>
-        <td class="align-middle text-center td"><%= report.user.name %></td>
-      </tr>
-      <tr>
-        <th class="align-middle text-center head">報告内容</th>
-        <td class="align-middle text-center td"><%= report.report %></td>
-      </tr>
-    </table>
+   <div class= "col-lg-8 col-12 offset-lg-2">
+    <div class="col-12 table-responsive-sm">
+      <table class="table text-nowrap table-bordered">
+        <tr class="align-middle text-center">
+          <th class="head">報告者</th>
+          <td class="td"><%= report.user.name %></td>
+        </tr>
+        <tr class="align-middle text-center">
+          <th class="head">報告内容</th>
+          <td class="td"><%= report.report %></td>
+        </tr>
+      </table>
+    </div>
    </div>
  </div>
  <div class= "row">
-  <div class="col-2 offset-8 mb-5 align-middle text-center background"><span>報告日　</span><%= report.created_at.strftime('%Y/%m/%d') %></div>
+  <div class="col-md-3 col-6 offset-md-7 offset-3 mb-4 mt-lg-0 mt-3 align-middle text-center background"><span>報告日　</span><%= report.created_at.strftime('%Y/%m/%d') %></div>
  </div>
 <% end %>
   <div class="row justify-content-center">

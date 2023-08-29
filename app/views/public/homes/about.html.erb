@@ -5,38 +5,40 @@
     <h4 class= "col-4 offset-4 mt-5 background text-center">参加中の企業はいません</h4>
     <% else %>
     　<% @users.each do |user| %>
-       <table class='table table_group'>
-        <tbody>
-          <tr>
-            <td class="align-middle text-center" style="width: 20%">
-              <% if user_signed_in? %>
-              <%= link_to(user) do %>
-                <%= image_tag user.get_profile_image(90,90), class: 'img_icon' %><br>
-                <%= user.name %>
+    　<div class="col-12 table-responsive">
+         <table class='table table_group text-nowrap'>
+          <tbody>
+            <tr>
+              <td class="align-middle text-center" style="width: 20%">
+                <% if user_signed_in? %>
+                <%= link_to(user) do %>
+                  <%= image_tag user.get_profile_image(90,90), class: 'img_icon' %><br>
+                  <%= user.name %>
+                  <% end %>
+                <% else %>
+                  <%= image_tag user.get_profile_image(90,90), class: 'img_icon' %><br>
+                  <%= user.name %>
                 <% end %>
-              <% else %>
-                <%= image_tag user.get_profile_image(90,90), class: 'img_icon' %><br>
-                <%= user.name %>
-              <% end %>
-            </td>
-             <td class="align-middle text-center" style="width: 25%"><%= user.introduction %></td>
-             <td class="align-middle text-center" style="width: 20%"><%= user.address %></td>
-             <td class="align-middle text-center" style="width: 20%">
-              <%= link_to user_products_path(user) do %>
-                商品一覧を見る(<%= user.products.count %>)
-              <% end %>
-             </td>
-             <!--ログインしてない場合はフォローできないように-->
-             <% if user_signed_in? %>
-             <td class="align-middle text-center" style="width: 15%", id="follow_contents_<%= user.id %>">
-              <% if current_user != user %>
-                <%= render "public/relationships/relationship", user: user %>
-              <% end %>
-             </td>
-             <% end %>
-          </tr>
-        </tbody>
-       </table>
+              </td>
+               <td class="align-middle text-center" style="width: 25%"><%= user.introduction %></td>
+               <td class="align-middle text-center" style="width: 20%"><%= user.address %></td>
+               <td class="align-middle text-center" style="width: 20%">
+                <%= link_to user_products_path(user) do %>
+                  商品一覧を見る(<%= user.products.count %>)
+                <% end %>
+               </td>
+               <!--ログインしてない場合はフォローできないように-->
+               <% if user_signed_in? %>
+               <td class="align-middle text-center" style="width: 15%", id="follow_contents_<%= user.id %>">
+                <% if current_user != user %>
+                  <%= render "public/relationships/relationship", user: user %>
+                <% end %>
+               </td>
+               <% end %>
+            </tr>
+          </tbody>
+         </table>
+       </div>
       <% end %>
     <% end %>
   </div>

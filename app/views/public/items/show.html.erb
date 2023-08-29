@@ -1,56 +1,60 @@
 <div class='container py-5 px-sm-0'>
   <div class='row'>
-    <div class='col-md-3 '>
+    <div class='col-md-3'>
       <%= render 'public/users/info', user: @user %>
-      <%= render 'form', item: @new_item %>
+      <div class= "row d-none d-md-block">
+       <%= render 'form', item: @new_item %>
+      </div>
       <%= render 'public/genres/genre_search', genres: @genres %>
     </div>
-    <div class='col-md-8 offset-md-1'>
-      <h2><%= @user.name %>さんの投稿詳細</h2>
-      <table class="table text-nowrap table-bordered">
-      <tr class ="head">
-        <th class="align-middle text-center user_name head"><%= link_to(@item.user) do %>
-          <%= image_tag @item.user.get_profile_image(30,30), class: "rounded-circle" %>
-          <%= @item.user.name %>さん
-        <% end %>
-        </th>
-        <th class="align-middle text-center head" colspan="5">投稿画像
-        <% if @item.user == current_user %>
-          <%= link_to item_path(@item), method: :delete, "data-confirm" => "投稿を削除しますか？" do %>
-           <i class="fa-solid fa-eraser"></i>削除
+    <div class='col-md-8 offset-md-1 mt-3'>
+      <h4><%= @user.name %>さんの投稿</h4>
+      <div class="col-12 table-responsive-sm">
+        <table class="table text-nowrap table-bordered">
+        <tr class ="head align-middle text-center user_name">
+          <th><%= link_to(@item.user) do %>
+            <%= image_tag @item.user.get_profile_image(30,30), class: "rounded-circle" %>
+            <%= @item.user.name %>さん
           <% end %>
-        <% end %>
-        </th>
-      </tr>
-       <tr>
-         <td class="align-middle text-center td" colspan="5"><%= image_tag @item.product.get_image, size:'300x300' %></td>
-       </tr>
-       <tr>
-        <th class="align-middle text-center head">商品名</th>
-        <td class="align-middle text-center td" colspan="2"><%= @item.title %></td>
-        <th class="align-middle text-center head">会社</th>
-        <td class="align-middle text-center td" colspan="2"><%= @item.company %></td>
-      </tr>
-       <tr>
-         <th class="align-middle text-center head">レビュー</th>
-         <td class="align-middle text-center td" style="white-space: normal;" colspan="5"><%= @item.body %></td>
-       </tr>
-      <tr>
-        <th class="align-middle text-center head">購入場所</th>
-        <td class="align-middle text-center td" colspan="2"><%= @item.area %></td>
-        <th class="align-middle text-center head">スター数</th>
-        <td class="align-middle text-center td"colspan="2"><%= render "public/items/static_rate", item: @item %></td>
-      </tr>
-      <tr>
-         <th class="align-middle text-center head">コメント数</th>
-        <td class="align-middle text-center td", id="comment_count"><%= @item.post_comments.count %><span>件</span></td>
-        <td class="align-middle text-center td" colspan="2"><%= @item.view_counts.count %>回表示</td>
-        <td class="align-middle text-center td", id="favorite_buttons_<%= @item.id %>"><%= render 'public/favorites/favorite', item: @item %></td>
-      </tr>
-     </table>
-     <div class="row justify-content-around">
-      <div class="col-5 mb-3 align-middle text-center background "><strong><%= link_to "不適切な投稿として報告する" ,new_item_reports_path(@item), class: "text-dark" %></strong></div>
-      <div class="col-3  mb-3 align-middle text-center background"><span>投稿日　</span><%= @item.created_at.strftime('%Y/%m/%d') %></div>
+          </th>
+          <th class="align-middle text-center head" colspan="5">投稿画像
+          <% if @item.user == current_user %>
+            <%= link_to item_path(@item), method: :delete, "data-confirm" => "投稿を削除しますか？" do %>
+             <i class="fa-solid fa-eraser"></i>削除
+            <% end %>
+          <% end %>
+          </th>
+        </tr>
+         <tr class="align-middle text-center td">
+           <td colspan="5"><%= image_tag @item.product.get_image, size:'300x300' %></td>
+         </tr>
+         <tr class="align-middle text-center">
+          <th class="head">商品名</th>
+          <td class="td" colspan="2"><%= @item.title %></td>
+          <th class="head">会社</th>
+          <td class="td" colspan="2"><%= @item.company %></td>
+        </tr>
+         <tr class="align-middle text-center">
+           <th class="head">レビュー</th>
+           <td class="td" style="white-space: normal;" colspan="5"><%= @item.body %></td>
+         </tr>
+        <tr class="align-middle text-center">
+          <th class="head">購入場所</th>
+          <td class="td" colspan="2"><%= @item.area %></td>
+          <th class="head">スター数</th>
+          <td class="td"colspan="2"><%= render "public/items/static_rate", item: @item %></td>
+        </tr>
+        <tr class="align-middle text-center">
+          <th class="head">コメント数</th>
+          <td class="td", id="comment_count"><%= @item.post_comments.count %><span>件</span></td>
+          <td class="td" colspan="2"><%= @item.view_counts.count %>回表示</td>
+          <td class="td", id="favorite_buttons_<%= @item.id %>"><%= render 'public/favorites/favorite', item: @item %></td>
+        </tr>
+       </table>
+     </div>
+     <div class="row justify-content-around text-center align-middle">
+      <div class="col-lg-5 col-md-7 col-sm-7 col-8 mb-lg-5 my-sm-3 my-3 background"><strong><%= link_to "不適切な投稿として報告する" ,new_item_reports_path(@item), class: "text-dark" %></strong></div>
+      <div class="col-lg-5 col-md-7 col-sm-7 col-8 mb-lg-5 my-sm-3 mb-4 background"><span>投稿日　</span><%= @item.created_at.strftime('%Y/%m/%d') %></div>
      </div>
      <div id="post-comments">
       <%= render "public/post_comments/show" ,item: @item %><br>

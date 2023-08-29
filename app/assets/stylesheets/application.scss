@@ -154,3 +154,16 @@ footer{
      padding: 12px 20px;
   }
 }
+
+/* スマートフォンサイズ（576px）以下 */
+@media screen and (max-width:576px) {
+  // テーブルを段々に表示
+  .table-block th{
+    display: block;
+    width: 100%;
+  }
+  .table-block td{
+    display: block;
+    width: 100%;
+  }
+}

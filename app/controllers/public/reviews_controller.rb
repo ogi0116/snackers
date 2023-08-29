@@ -10,9 +10,8 @@ class Public::ReviewsController < ApplicationController
       flash[:notice] = "商品を評価しました"
       redirect_to user_products_path(@product.user)
     else
-      @product = @review.product
-      @reviews = @product.reviews
-      render :show
+      flash[:alert] = "評価に失敗しました"
+      redirect_to user_products_path(@product.user)
     end
   end
 
