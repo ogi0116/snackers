@@ -4,13 +4,13 @@
       <div class="container-fluid">
         <div class="row">
           <nav class="navbar navbar-expand-lg navbar-light w-100 d-flex flex-wrap">
-            <div class="col-md-2 col-12 justify-content-center pull-left flex-fill">
+            <div class="col-md-2 col-12 justify-content-center pull-left flex-fill d-none d-md-block">
               <%= link_to admin_root_path do %>
                 <%= image_tag 'snackers_logo.jpg',size: "170x50", class: 'img_logo' %>
               <% end %>
             </div>
             <div class="col-lg-9 col-md-10 col-12 offset-lg-1 offset-0 flex-fill justify-content-end">
-              <button class="navbar-toggler offset-10 mb-3" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <button class="navbar-toggler collapsed offset-10 mb-3" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" ></span>
               </button>
               <div class="row collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
@@ -35,15 +35,15 @@
                   </p>
               </div>
             </div>
-          </div>
-        </nav>
+          </nav>
+        </div>
       </div>
     <% end %>
   <% elsif  user_signed_in? %>
     <div class="container-fluid">
       <div class="row">
         <nav class="navbar navbar-expand-lg navbar-light w-100 d-flex flex-wrap">
-          <div class="col-md-2 col-12 justify-content-center pull-left flex-fill">
+          <div class="col-lg-2 col-md-4 col-12 justify-content-center pull-left flex-fill d-none d-md-block">
             <%= link_to user_path(current_user) do %>
               <%= image_tag 'snackers_logo.jpg',size: "170x50", class: 'img_logo' %>
             <% end %>
@@ -51,26 +51,26 @@
           <div class="col-lg-3 col-md-4 col-12 flex-fill">
             <p class="text-black flex-fill col-md-12 col-12 text-center">ようこそ、<%= current_user.name %>さん！</p>
           </div>
-          <div class="col-lg-7 col-md-6 col-12 flex-fill ">
+          <div class="col-lg-7 col-md-4 col-12 flex-fill ">
             <button class="navbar-toggler offset-10 mb-3" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon" ></span>
             </button>
             <div class="row collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
               <ul class="navbar-nav col-12 justify-content-end">
                 <div class="d-flex flex-wrap col-md-11 justify-content-end text-center">
-                  <p class="col-lg-2 col-12 flex-fill">
+                  <p class="col-lg-3 col-12 flex-fill">
                     <%= link_to "マイページ",user_path(current_user.id), class: "text-dark" %>
                   </p>
-                  <p class="col-lg-2 col-12 flex-fill">
+                  <p class="col-12 flex-fill d-lg-none">
                     <%= link_to "投稿する",new_item_path, class: "text-dark" %>
                   </p>
-                  <p class="col-lg-2 col-12 flex-fill">
+                  <p class="col-lg-3 col-12 flex-fill">
                     <%= link_to "投稿一覧",items_path, class: "text-dark" %>
                   </p>
-                  <p class="col-lg-2 col-12 flex-fill">
+                  <p class="col-lg-3 col-12 flex-fill">
                     <%= link_to "企業リスト",about_path, class: "text-dark" %>
                   </p>
-                  <p class="col-lg-2 col-12 flex-fill">
+                  <p class="col-lg-3 col-12 flex-fill">
                     <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-dark" %>
                   </p>
                   <p class="col-lg-1 col-12 flex-fill">
@@ -90,7 +90,7 @@
     <div class="container-fluid">
       <div class="row">
         <nav class="navbar navbar-expand-lg navbar-light w-100 d-flex flex-wrap">
-          <div class="col-md-2 col-12 justify-content-center pull-left flex-fill">
+          <div class="col-md-2 col-12 justify-content-center pull-left flex-fill d-none d-md-block">
             <%= link_to root_path do %>
               <%= image_tag 'snackers_logo.jpg',size: "170x50", class: 'img_logo' %>
             <% end %>
@@ -116,8 +116,7 @@
                   </p>
                 </div>
               </ul>
-            </div>
-
+             </div>
             </div>
           </div>
         </nav>

@@ -155,6 +155,11 @@ footer{
   }
 }
 
+.navbar-light .navbar-toggler {
+  border-color: rgba(0, 0, 0, 0);
+  outline: none;
+}
+
 /* スマートフォンサイズ（576px）以下 */
 @media screen and (max-width:576px) {
   // テーブルを段々に表示

@@ -23,7 +23,11 @@
       </tr>
       <tr class="align-middle text-center info_text">
         <th style="width:30%;">ステータス</th>
-        <th style="width:70%;"><%= user.position_status_i18n %></th>
+        <% if user.position_status == "normal" %>
+        <th class="text-success" style="width:70%;"><%= user.position_status_i18n %></th>
+        <% else %>
+        <th class="text-dark" style="width:70%;"><%= user.position_status_i18n %></th>
+        <% end %>
       </tr>
       <tr class="align-middle text-center info_text">
          <th style="width:50%;">フォロー数

@@ -1,4 +1,7 @@
 <div class= "container py-5 px-sm-0">
+<% if @reports.blank? %>
+ <h4 class= "col-4 offset-4 mt-5 background text-center">報告はありません</h4>
+<% end %>
 <% @reports.each do |report| %>
   <div class= "row">
     <div class="col-lg-8 col-12 offset-lg-2">
