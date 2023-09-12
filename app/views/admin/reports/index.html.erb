@@ -40,8 +40,9 @@
      </div>
     </div>
   </div>
- <div class= "row">
-  <div class="col-md-3 col-6 offset-md-7 offset-3 mb-4 mt-lg-0 mt-3 align-middle text-center background"><span>投稿日　</span><%= report.item.created_at.strftime('%Y/%m/%d') %></div>
+ <div class= "row justify-content-around text-center align-middle">
+   <div class="col-lg-2 col-md-5 col-sm-4 col-8 mb-lg-5 my-sm-3 my-3 background"><%= report.item.status_i18n %></div>
+  <div class="col-lg-2 col-md-5 col-sm-4 col-8 mb-lg-5 my-sm-3 my-3 background"><span>投稿日　</span><%= report.item.created_at.strftime('%Y/%m/%d') %></div>
  </div>
  <div class= "row">
    <div class= "col-lg-8 col-12 offset-lg-2">
@@ -60,7 +61,7 @@
    </div>
  </div>
  <div class= "row">
-  <div class="col-md-3 col-6 offset-md-7 offset-3 mb-4 mt-lg-0 mt-3 align-middle text-center background"><span>報告日　</span><%= report.created_at.strftime('%Y/%m/%d') %></div>
+  <div class="col-md-2 col-6 offset-md-8 offset-3 mb-4 mt-lg-0 mt-3 align-middle text-center background"><span>報告日　</span><%= report.created_at.strftime('%Y/%m/%d') %></div>
  </div>
 <% end %>
   <div class="row justify-content-center">

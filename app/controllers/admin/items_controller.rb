@@ -9,6 +9,12 @@ class Admin::ItemsController < ApplicationController
     @user = @item.user
   end
 
+  def update
+    @item = Item.find(params[:id])
+    @item.update(item_params)
+    redirect_back fallback_location: root_path
+  end
+
   def destroy
     item = Item.find(params[:id])
     item.destroy
@@ -16,4 +22,9 @@ class Admin::ItemsController < ApplicationController
     redirect_to admin_reports_path
   end
 
+  private
+
+  def item_params
+    params.require(:item).permit(:status)
+  end
 end

@@ -38,6 +38,9 @@ class Item < ApplicationRecord
     end
   end
 
+  #報告された投稿の処理結果を表示
+  enum status: { waiting: 0, keep: 1, finish: 2 }
+
   #投稿一覧表示並び替え
   scope :latest, -> { order(created_at: :desc) }
   scope :most_commented, -> { includes(:commented_users)

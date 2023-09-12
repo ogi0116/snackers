@@ -4,7 +4,19 @@
         <%= render 'admin/users/info', user: @item.user %>
     </div>
     <div class='col-md-8 offset-md-1'>
-      <h4><%= @item.user.name %>さんの投稿</h4>
+      <div class= "d-flex flex-wrap">
+        <div class="col-md-6 flex-fill">
+          <h4><%= @item.user.name %>さんの投稿</h4>
+        </div>
+        <div class="col-md-3 mb-1 flex-fill">
+          <%= form_with model: [:admin, @item], method: :patch , local: true do |f| %>
+          <%= f.select( :status, Item.statuses_i18n.invert, {}, class: 'form-control text-center')%>
+        </div>
+        <div class="col-md-3 mb-1 flex-fill">
+          <%= f.submit "更新", class: "btn btn-success" %>
+          <% end %>
+    　　</div>
+      </div>
       <div class="col-sm-12 table-responsive-sm">
         <table class="table text-nowrap table-bordered">
          <tr class ="align-middle text-center">

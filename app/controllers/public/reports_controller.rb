@@ -11,6 +11,7 @@ class Public::ReportsController < ApplicationController
     report = current_user.reports.new(report_params)
     report.item_id = item.id
     if report.save
+      item.update(status: 0)
       flash[:notice] = "管理者に報告しました"
       redirect_to complete_item_path(item)
     else
