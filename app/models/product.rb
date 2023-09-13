@@ -12,9 +12,12 @@ class Product < ApplicationRecord
   validates :price, presence: true
   validates :active_status, presence: true
   validates :image,presence: true
+  validates :is_secret, inclusion: { in: [true, false] }
 
   #販売ステータスの設定
   enum active_status: { "sale": 0, "limited_time_sale": 1, "end_of_sale":2 }
+
+  enum is_secret: { 公開中: false, 非公開: true }
 
   #商品の評価を1人1回に設定
   def reviewed_by?(user)

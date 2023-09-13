@@ -23,6 +23,7 @@
               <td><%= link_to product.name, user_product_path(@user, product) %></td>
               <td><%= product.price %><span>円</span></td>
               <td><%= product.genre.name %></td>
+               <td><%= product.is_secret %></td>
               <td class="average-review-rating" data-score=<%= product.reviews.average(:all_rating) %>></div>
               　<%= product.reviews.average(:all_rating).to_f.round(1) %>
               </td>

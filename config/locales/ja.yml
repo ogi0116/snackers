@@ -12,6 +12,9 @@
           sale: "販売中"
           limited_time_sale: "期間限定販売"
           end_of_sale: "販売終了"
+       is_secret:
+          secret: "非公開"
+          release: "公開中"
       item:
        status:
           waiting: "対応待ち"

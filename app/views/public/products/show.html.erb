@@ -1,9 +1,7 @@
 <div class='container py-5 px-sm-0'>
-    <div class='row'>
-        <div class='col-lg-2 col-md-3 mb-5 justify-content-sm-center text-center'>
-            <h4>商品詳細</h4>
+        <div class='col-10 mb-5 justify-content-sm-center'>
+            <%= render 'public/products/status_form', product: @product, user: @user %>
         </div>
-    </div>
     <div class='row'>
         <!--画像をインライン要素からブロック要素に変換するとmx-autoが効く-->
         <div class='col-md-3 offset-md-0 col-sm-4 col-8 mb-5 d-block mx-auto'>
@@ -52,4 +50,4 @@
        <% end %>
     </div>
 </div>
-
+</div>

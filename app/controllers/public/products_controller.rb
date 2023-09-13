@@ -42,9 +42,35 @@ class Public::ProductsController < ApplicationController
   def update
     @user = User.find(params[:user_id])
     @product = Product.find(params[:id])
+
     if current_user == @user
       @product.update(product_params)
-      redirect_to user_product_path(@user)
+      redirect_to user_psroduct_path(@user)
+    else
+      render "edit"
+      flash[:alert] = "更新に失敗しました"
+    end
+  end
+
+  def update
+    @user = User.find(params[:user_id])
+    @product = Product.find(params[:id])
+
+    if current_user == @user
+      if params[:is_secret] == "release"
+        flash[:notice] = "商品を公開しました"
+        @product.is_secret = false
+      elsif params[:is_secret] == "secret"
+        flash[:notice] = "商品を非公開にしました"
+        @product.is_secret = true
+      end
+
+      if @product.save
+        redirect_to user_product_path(@user)
+      else
+        render "edit"
+        flash[:alert] = "更新に失敗しました"
+      end
     else
       render "edit"
       flash[:alert] = "更新に失敗しました"
@@ -54,7 +80,7 @@ class Public::ProductsController < ApplicationController
    private
 
    def product_params
-     params.require(:product).permit(:name, :introduction, :price, :image, :active_status, :genre_id ,:user_id, :item_id)
+     params.require(:product).permit(:name, :introduction, :price, :image, :active_status, :genre_id ,:user_id, :item_id, :is_secret, :release)
    end
 
 end
