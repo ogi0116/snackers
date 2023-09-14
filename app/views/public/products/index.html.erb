@@ -4,38 +4,15 @@
     <h4>商品一覧</h4>
     </div>
   </div>
-    <% if @products.blank? %>
-      <h4 class= "col-4 offset-4 mt-5 background text-center">投稿した商品はありません</h4>
-    <% else %>
-      <div class= "row">
-        <div class="col-12 table-responsive-sm">
-          <table class='table table_group text-nowrap'>
-            <tr class="head align-middle text-center">
-              <th>商品名</th>
-              <th>税抜価格</th>
-              <th>ジャンル</th>
-              <th>5点満点評価</th>
-              <th>評価数</th>
-              <th>ステータス</th>
-            </tr>
-            <% @products.each do |product| %>
-            <tr class="td mb-sm-0 align-middle text-center">
-              <td><%= link_to product.name, user_product_path(@user, product) %></td>
-              <td><%= product.price %><span>円</span></td>
-              <td><%= product.genre.name %></td>
-               <td><%= product.is_secret %></td>
-              <td class="average-review-rating" data-score=<%= product.reviews.average(:all_rating) %>></div>
-              　<%= product.reviews.average(:all_rating).to_f.round(1) %>
-              </td>
-              <td><%= product.reviews.count %><span>人</span></td>
-              <td><%= product.active_status_i18n %></td>
-            </tr>
-            <% end %>
-          </table>
-        </div>
-      </div>
-    <% end %>
-  <% if current_user == @user %>
+  <%= render 'public/products/product_all', products: @release_products %>
+
+　<% if current_user == @user %>
+  <div class="row">
+    <div class="col-12">
+    <h4>非公開商品一覧</h4>
+    </div>
+  </div>
+  <%= render 'public/products/product_all', products: @secret_products %>
   <div class="row justify-content-center">
     <div class= "my-5">
         <%= link_to new_user_product_path(@user), class: "btn btn-success" do %>
@@ -45,6 +22,6 @@
   </div>
   <% end %>
   <div class="row justify-content-center">
-     <%= paginate @products %>
+     <%= paginate @release_products %>
 　</div>
 </div>

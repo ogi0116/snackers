@@ -8,7 +8,7 @@
           <tr>
             <td>
               <%= link_to genre_path(genre.id),class: "text-dark" do %>
-                <%= genre.name %>(<%= genre.products.count %>)
+                <%= genre.name %>(<%= genre.products.where(is_secret: false).count %>)
               <% end %>
             </td>
           </tr>

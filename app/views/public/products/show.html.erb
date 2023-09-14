@@ -1,6 +1,8 @@
 <div class='container py-5 px-sm-0'>
         <div class='col-10 mb-5 justify-content-sm-center'>
-            <%= render 'public/products/status_form', product: @product, user: @user %>
+        　<% if @product.user == current_user %>
+         　<%= render 'public/products/status_form', product: @product, user: @user %>
+        　<% end %>
         </div>
     <div class='row'>
         <!--画像をインライン要素からブロック要素に変換するとmx-autoが効く-->
@@ -30,7 +32,15 @@
         </div>
         <div class='group mb-3 text-center row justify-content-between'>
             <div class='col-md-3 col-12'>ステータス</div>
-            <div class='col-md-9 col-12'><%= @product.active_status_i18n %></div>
+            <div class='col-md-9 col-12'>
+                <% if @product.active_status == "sale" %>
+                <div class= "text-success"><%= @product.active_status_i18n %></div>
+                <% elsif @product.active_status == "limited_time_sale" %>
+                 <div class= "text-warning"><%= @product.active_status_i18n %></div>
+                 <% else %>
+                 <div class= "text-secondary"><%= @product.active_status_i18n %></div>
+                 <% end %>
+            </div>
         </div>
         <!-- スター投稿フォーム-->
         <% if @product.reviewed_by?(current_user) %>

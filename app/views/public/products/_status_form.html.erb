@@ -8,16 +8,16 @@
   <label for="postTypeToggle" class="toggle_label"></label>
 </div>
  <div class="btn-group col-md-1 col-2" role="group" id="buttonGroup">
-    <%= f.submit I18n.t('product.is_secret.release'), id: 'releaseButton', name: 'is_secret', class: "btn btn-primary" %>
-    <%= f.submit I18n.t('product.is_secret.secret'), id: 'secretButton',  name: 'is_secret', class: "btn btn-danger" %>
+    <%= f.submit '公開中', id: 'releaseButton', name: 'is_secret', class: "btn btn-primary" %>
+    <%= f.submit '非公開', id: 'secretButton',  name: 'is_secret', class: "btn btn-danger" %>
   </div>
 </div>
 
 <script>
 $(document).ready(function() {
   // ボタンの要素を生成
-  var secretButton = $('<%= f.submit I18n.t('product.is_secret.release'), id: "releaseButton", name: 'is_secret', class: "btn btn-primary btn-sm" %>');
-  var releaseButton = $('<%= f.submit I18n.t('product.is_secret.secret'), id: "secretButton", name: 'is_secret', class: "btn btn-danger btn-sm" %>');
+  var releaseButton = $('<%= f.submit "公開中", id: "releaseButton", name: 'is_secret', class: "btn btn-primary btn-sm" %>');
+  var secretButton = $('<%= f.submit "非公開", id: "secretButton", name: 'is_secret', class: "btn btn-danger btn-sm" %>');
 
   // トグルスイッチの変更イベント
   $('#postTypeToggle').change(function() {

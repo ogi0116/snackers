@@ -26,7 +26,15 @@
         　<%= product.reviews.average(:all_rating).to_f.round(1) %>
         </td>
         <td><%= product.reviews.count %><span>人</span></td>
-        <td><%= product.active_status_i18n %></td>
+        <td>
+          <% if product.active_status == "sale" %>
+          <div class= "text-success"><%= product.active_status_i18n %></div>
+          <% elsif product.active_status == "limited_time_sale" %>
+           <div class= "text-warning"><%= product.active_status_i18n %></div>
+           <% else %>
+           <div class= "text-secondary"><%= product.active_status_i18n %></div>
+           <% end %>
+        </td>
       </tr>
       <% end %>
     </table>

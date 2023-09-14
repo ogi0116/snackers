@@ -9,7 +9,9 @@ class Public::ProductsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @products = @user.products.page(params[:page])
+    @release_products = @user.products.where(is_secret: false).page(params[:page])
+    @secret_products = @user.products.where(is_secret: true)
+    @products = @user.products
     @reviews = Review.all
   end
 
@@ -44,25 +46,15 @@ class Public::ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     if current_user == @user
-      @product.update(product_params)
-      redirect_to user_psroduct_path(@user)
-    else
-      render "edit"
-      flash[:alert] = "更新に失敗しました"
-    end
-  end
-
-  def update
-    @user = User.find(params[:user_id])
-    @product = Product.find(params[:id])
-
-    if current_user == @user
-      if params[:is_secret] == "release"
+      if params[:is_secret] == "公開中"
         flash[:notice] = "商品を公開しました"
         @product.is_secret = false
-      elsif params[:is_secret] == "secret"
+      elsif params[:is_secret] == "非公開"
         flash[:notice] = "商品を非公開にしました"
         @product.is_secret = true
+      else
+        flash[:notice] = "商品の設定を更新しました"
+        @product.update(product_params)
       end
 
       if @product.save
