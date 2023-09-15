@@ -79,6 +79,22 @@ def get_profile_image(width, height)
   profile_image.variant(resize_to_limit: [width, height]).processed
 end
 
+# もし参加企業Pick UPで取得できない場合のデフォルト値を設定
+if @random_company1.nil?
+  @random_company1 = User.new(name: "参加企業募集中")
+  @random_company1.profile_image.attach(io: File.open('app/assets/images/no_image.jpg'), filename: 'no_image.jpg', content_type: 'image/jpeg')
+end
+
+if @random_company2.nil?
+  @random_company2 = User.new(name: "参加企業募集中")
+  @random_company2.profile_image.attach(io: File.open('app/assets/images/no_image.jpg'), filename: 'no_image.jpg', content_type: 'image/jpeg')
+end
+
+if @random_company3.nil?
+  @random_company3 = User.new(name: "参加企業募集中")
+  @random_company3.profile_image.attach(io: File.open('app/assets/images/no_image.jpg'), filename: 'no_image.jpg', content_type: 'image/jpeg')
+end
+
 
 
 end

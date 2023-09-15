@@ -200,6 +200,32 @@ footer{
   left: calc(100% - 1.25em);
 }
 
+/* 企業アイコンPick UP機能追加 */
+.slideshow-row {
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+  position: relative;
+}
+
+.slide {
+  width: 33.33%; /* 3つのスライドを横に並べるために幅を1/3に設定 */
+  height: 150px;
+  object-fit: contain;
+  position: static; /* positionを変更 */
+}
+
+.slide get_profile_image {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.slide.fade:first-child {
+  opacity: 1;
+}
 /* スマートフォンサイズ（576px）以下 */
 @media screen and (max-width:576px) {
   // テーブルを段々に表示
