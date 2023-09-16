@@ -1,9 +1,7 @@
 class Public::HomesController < ApplicationController
   def top
-    @random_company1 = User.where(position_status: :company).order("RANDOM()").first
-    @random_company2 = User.where(position_status: :company).order("RANDOM()").second
-    @random_company3 = User.where(position_status: :company).order("RANDOM()").third
-  
+    @users = User.where(position_status: :company)
+    @company_users = @users.sort_by { |user| user.created_at }.reverse.first(5)
   end
 
   #企業ステータスに設定したユーザーを一覧表示 User.companyでも可能
