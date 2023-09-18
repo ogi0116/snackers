@@ -24,11 +24,12 @@
           <%= f.radio_button :is_deleted, :true %>
           <%= f.label :is_active_true, "退会" %>
       </div>
-      <div class="form-group text-center col-12">
-        <span class= "mr-5">対応ステータス</span>
-          <%= @report.report_status_i18n %>
-            <%= f.select :report_status, Report.report_statuses.keys.map { |k| [t("enums.report.report_status.#{k}"), k] } %>
+
+      <div class = "form-group col-12">
+        <label for="inputAddress">認証ステータス</label><br>
+        <%= f.select( :certification_status, User.certification_statuses_i18n.invert, {}, class: 'form-control text-center')%>
       </div>
+
       <div class = "form-group row justify-content-center">
         <%= f.submit "更新する",class: "btn btn-success" %>
       </div>

@@ -8,7 +8,9 @@
      <div class="col-12 table-responsive-sm">
       <table class="table text-nowrap table-bordered">
         <tr class ="align-middle text-center">
-          <th class="user_name"><%= image_tag report.item.user.get_profile_image(30,30), class: "rounded-circle" %><%= report.item.user.name %>さん</th>
+          <th class="user_name"><%= image_tag report.item.user.get_profile_image(30,30), class: "rounded-circle" %><%= report.item.user.name %>さん
+          <%= render 'layouts/user_certification', user: report.item.user %>
+          </th>
           <th class="head" colspan="5">投稿画像</th>
         </tr>
          <tr class="align-middle text-center">

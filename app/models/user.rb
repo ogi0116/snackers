@@ -24,6 +24,9 @@ class User < ApplicationRecord
   validates :address,length: { maximum:30 }
   validates :is_deleted, inclusion: { in: [true, false] }
 
+  #認証マークの付与
+  enum certification_status:  { "unachieved": 0, "achieved": 1, "admin": 2 }
+  #企業ステータスの場合わけ
   enum position_status: { "normal": 0, "company": 1 }
   #検索機能の日本語化
   enum range: { "User": 0, "Item": 1 }

@@ -11,7 +11,9 @@
       </tr>
       <tr class="align-middle text-center info_text">
     	  <th style="width:30%;">ユーザー名</th>
-    	  <th style="width:70%;"><%= user.name %></th>
+    	  <th style="width:70%;"><%= user.name %>
+    	  <%= render 'layouts/user_certification', user: user %>
+    	  </th>
       </tr>
       <tr class="align-middle text-center info_text">
     	  <th style="width:30%;">自己紹介</th>

@@ -1,0 +1,7 @@
+<% if user.certification_status == "unachieved" %>
+ <div></div>
+<% elsif user.certification_status == "achieved" %>
+ <i class="fa-regular fa-circle-check text-success"></i>
+<% else %>
+ <i class="fa-regular fa-circle-check text-danger"></i>
+  <% end %>

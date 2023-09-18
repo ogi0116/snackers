@@ -8,6 +8,7 @@
           <th class="user_name">
             <%= image_tag @item.user.get_profile_image(30,30), class: "rounded-circle" %>
             <%= @item.user.name %>さん
+            <%= render 'layouts/user_certification', user: @item.user %>
           </th>
           <th class="head" colspan="5">投稿画像 </th>
         </tr>
