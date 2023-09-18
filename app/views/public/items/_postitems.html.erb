@@ -1,3 +1,5 @@
+
+
 <% if items.blank? %>
  <h4 class= "col-4 offset-4 mt-5 background text-center">投稿はありません</h4>
 <% end %>
@@ -6,8 +8,9 @@
   <div class="table-responsive-sm">
    <table class="table text-nowrap table-bordered w-100">
       <tr class ="align-middle text-center">
-         <th class="user_name"><%= image_tag item.user.get_profile_image(30,30), class: "rounded-circle" %><%= item.user.name %>さん</th>
-         <th class="head" colspan="5">投稿画像
+         <th class="user_name">
+          <%= image_tag item.user.get_profile_image(30,30), class: "rounded-circle" %><%= item.user.name %>さん</th>
+         <th class="head" colspan="5"> <a data-toggle="collapse" href="#collapse1" class= "text-secondary">▼</a>投稿画像
          <% if item.user == current_user %>
            <%= link_to item_path(item), method: :delete do %>
             <i class="fa-solid fa-eraser"></i>削除
@@ -15,7 +18,7 @@
          <% end %>
          </th>
        </tr>
-        <tr class="align-middle text-center td">
+        <tr class="align-middle text-center td panel-collapse collapse" id="collapse1">
           <td colspan="5"><%= image_tag item.product.get_image, size:'300x300' %></td>
         </tr>
         <tr class="align-middle text-center">

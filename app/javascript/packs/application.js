@@ -19,6 +19,7 @@ ActiveStorage.start()
 
 window.$ = window.jQuery = require('jquery');
 
+//import "slider.js";
 
 import Raty from "raty.js"
 window.raty = function(elem,opt) {

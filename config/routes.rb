@@ -23,7 +23,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
       get :complete, on: :member
     end
     resources :users, only: [:show, :edit, :update] do
-       resources :products, only: [:new, :index, :show, :create, :create, :edit, :update] do
+       resources :products, only: [:new, :index, :show, :create, :edit, :update] do
          resources :reviews, only: [:create]
        end
        get :unscribe, on: :member

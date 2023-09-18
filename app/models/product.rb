@@ -14,6 +14,7 @@ class Product < ApplicationRecord
   validates :image,presence: true
   validates :is_secret, inclusion: { in: [true, false] }
 
+
   #販売ステータスの設定
   enum active_status: { "sale": 0, "limited_time_sale": 1, "end_of_sale":2 }
   #商品の評価を1人1回に設定
