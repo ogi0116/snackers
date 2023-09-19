@@ -12,7 +12,6 @@ class Public::ProductsController < ApplicationController
     @secret_products = @user.products.where(is_secret: false)
     @products = @user.products
     @reviews = Review.all
-
   end
 
   def create

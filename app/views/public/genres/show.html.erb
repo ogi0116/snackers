@@ -1,7 +1,7 @@
 <div class='container py-5 px-sm-0'>
   <div class='row'>
     <div class= 'col-lg-9 col-md-8 col-sm-10 col-9 offset-lg-1 offset-md-2 offset-1'>
-    <h4 class="mb-4">ジャンル検索 [<%= @genre.name %>]<span style= font-size:20px>(全<%= @genre.products.count %>件)</span></h4>
+    <h4 class="mb-4">ジャンル検索 [<%= @genre.name %>]<span style= font-size:20px>(全<%= @genre.products.where(is_secret: true).count %>件)</span></h4>
     </div>
   </div>
   <div class= 'row'>
