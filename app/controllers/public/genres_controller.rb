@@ -4,6 +4,6 @@ class Public::GenresController < ApplicationController
   def show
     @genre = Genre.find(params[:id])
     @genres = Genre.all
-    @genre_pages = @genre.products.where(is_secret: false).order("created_at DESC").page(params[:page])
+    @genre_pages = @genre.products.where(is_secret: true).order("created_at DESC").page(params[:page])
   end
 end
