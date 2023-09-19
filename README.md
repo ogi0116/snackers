@@ -48,6 +48,7 @@
 - ユーザーは投稿時、企業側が登録した画像を選択して投稿することができる。
 
 ## 設計書
+- テーブル定義書( https://docs.google.com/spreadsheets/d/1tIv7ZyRaqPhM6_0ooEOnR8nilEcs5-yo/edit?usp=sharing&ouid=112900852956141295354&rtpof=true&sd=true  )
 ​
 ## 開発環境
 - OS：Linux(CentOS)
@@ -57,7 +58,5 @@
 - IDE：Cloud9
 ​
 ## 使用素材
-使用検討中：いらすとや ( https://www.irasutoya.com )
-           : illustAC( https://www.ac-illust.com )
-
-折りたたむ
+- いらすとや ( https://www.irasutoya.com )
+- illustAC( https://www.ac-illust.com )
