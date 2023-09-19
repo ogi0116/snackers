@@ -1,7 +1,6 @@
 class Public::ProductsController < ApplicationController
    before_action :authenticate_user!
 
-
   def new
      @user = User.find(params[:user_id])
      @product = Product.new
@@ -13,6 +12,7 @@ class Public::ProductsController < ApplicationController
     @secret_products = @user.products.where(is_secret: false)
     @products = @user.products
     @reviews = Review.all
+
   end
 
   def create

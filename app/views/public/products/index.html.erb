@@ -4,7 +4,7 @@
     <h4>商品一覧</h4>
     </div>
   </div>
-  <%= render 'public/products/product_all', products: @release_products %>
+  <%= render 'public/products/product_all', products: @secret_products %>
 
 　<% if current_user == @user %>
   <div class="row">
@@ -12,7 +12,7 @@
     <h4>非公開商品一覧</h4>
     </div>
   </div>
-  <%= render 'public/products/product_all', products: @secret_products %>
+  <%= render 'public/products/product_all', products:  @release_products %>
   <div class="row justify-content-center">
     <div class= "my-5">
         <%= link_to new_user_product_path(@user), class: "btn btn-success" do %>
