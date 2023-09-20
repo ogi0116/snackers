@@ -49,9 +49,9 @@
 
 ## 設計書
 - テーブル定義書( https://docs.google.com/spreadsheets/d/1tIv7ZyRaqPhM6_0ooEOnR8nilEcs5-yo/edit?usp=sharing&ouid=112900852956141295354&rtpof=true&sd=true  )
-- <img width="1005" alt="er_figure_snackers" src="https://github.com/ogi0116/snackers/assets/135587780/06b9f89c-521b-4fa2-a6dd-2d9aacd15fee">
 
-​
+​![Uploading er_figure_snackers.png…]()
+
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
