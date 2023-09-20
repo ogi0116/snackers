@@ -24,7 +24,7 @@
                <td class="align-middle text-center" style="width: 20%"><%= user.address %></td>
                <td class="align-middle text-center" style="width: 20%">
                 <%= link_to user_products_path(user) do %>
-                  商品一覧を見る(<%= user.products.count %>)
+                  商品一覧を見る(<%= user.products.where(is_secret: true).count %>)
                 <% end %>
                </td>
                <!--ログインしてない場合はフォローできないように-->
