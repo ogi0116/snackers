@@ -49,7 +49,8 @@
 
 ## 設計書
 - テーブル定義書( https://docs.google.com/spreadsheets/d/1tIv7ZyRaqPhM6_0ooEOnR8nilEcs5-yo/edit?usp=sharing&ouid=112900852956141295354&rtpof=true&sd=true  )
-<img width="1111" alt="er_figure2_snackers" src="https://github.com/ogi0116/snackers/assets/135587780/af9836ff-56f1-4f9c-b9fe-72f664eaa9ff">
+
+<img width="1177" alt="er_figure_complate" src="https://github.com/ogi0116/snackers/assets/135587780/ccb51991-445c-4ab8-bb8c-3f87451feff3">
 
 
 ## 開発環境
