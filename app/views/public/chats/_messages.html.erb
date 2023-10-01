@@ -4,7 +4,7 @@
          <%= image_tag chat.user.get_profile_image(80,80),class: "img_icon" %><br>
        </div>
        <div class= "col-10 mb-3 w-70">
-         <span><%= chat.user.name %>さん</span><br>
+         <span><%= chat.user.name %>さん <%= chat.created_at.strftime('%Y/%m/%d') %></span><br>
         <div class="says text-center">
             <%= chat.message %>
         </div>

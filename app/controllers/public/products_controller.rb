@@ -1,5 +1,6 @@
 class Public::ProductsController < ApplicationController
    before_action :authenticate_user!
+   before_action :ensure_current_user, {only: [:edit, :update, :show]}
 
   def new
      @user = User.find(params[:user_id])
@@ -74,4 +75,12 @@ class Public::ProductsController < ApplicationController
      params.require(:product).permit(:name, :introduction, :price, :image, :active_status, :genre_id ,:user_id, :item_id, :is_secret,)
    end
 
+  def ensure_current_user
+     @user = User.find(params[:user_id])
+     @product = Product.find(params[:id])
+    if @product.is_secret == false && current_user.id != params[:user_id].to_i
+       flash[:alert]="閲覧権限がありません"
+       redirect_to user_products_path(@user)
+    end
+  end
 end

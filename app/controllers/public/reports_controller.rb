@@ -27,5 +27,4 @@ class Public::ReportsController < ApplicationController
   def report_params
     params.require(:report).permit(:report)
   end
-
 end

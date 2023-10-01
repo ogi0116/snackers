@@ -1,6 +1,6 @@
 <div class= "container py-5 px-sm-0">
   <div class= "row">
-    <h4 class= "col-12">フォロー一覧</h4>
+    <h4 class= "col-12"><%= @user.name %>さんのフォローしているユーザー一覧</h4>
     <%= render 'public/users/user_list', users: @users %>
   </div>
    <div class="row justify-content-center">

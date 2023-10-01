@@ -53,13 +53,13 @@ class Public::UsersController < ApplicationController
   end
 
   def follows
-    user = User.find(params[:id])
-    @users = user.followings.order("created_at DESC").page(params[:page])
+    @user = User.find(params[:id])
+    @users = @user.followings.order("created_at DESC").page(params[:page])
   end
 
   def followers
-    user = User.find(params[:id])
-    @users = user.followers.order("created_at DESC").page(params[:page])
+    @user = User.find(params[:id])
+    @users = @user.followers.order("created_at DESC").page(params[:page])
   end
 
   private
