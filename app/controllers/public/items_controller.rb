@@ -2,7 +2,7 @@ class Public::ItemsController < ApplicationController
    before_action :authenticate_user!
   def new
     @item = Item.new
-    @products = Product.all
+    @products = Product.where(is_secret: true)
   end
 
   def create
@@ -15,15 +15,14 @@ class Public::ItemsController < ApplicationController
      @items = Item.order("created_at DESC").page(params[:page])
      @user = current_user
      @genres = Genre.all
-     @item = Item.new
-     @products = Product.all
+     @products = Product.where(is_secret: true)
      flash[:alert] = "投稿に失敗しました"
      render 'index'
     end
   end
 
   def index
-    @products = Product.all
+    @products = Product.where(is_secret: true)
     @items = Item.order("created_at DESC").page(params[:page])
     @user = current_user
     @item = Item.new
@@ -45,7 +44,7 @@ class Public::ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @genres = Genre.all
-    @products = Product.all
+    @products = Product.where(is_secret: true)
     unless ViewCount.find_by(user_id: current_user.id, item_id: @item.id)
       current_user.view_counts.create(item_id: @item.id)
     end
@@ -53,6 +52,23 @@ class Public::ItemsController < ApplicationController
     @post_comment = PostComment.new
     @user = @item.user
   end
+
+  def edit
+    @item = Item.find(params[:id])
+    @products = Product.where(is_secret: true)
+  end
+
+  def update
+    item = Item.find(params[:id])
+    if item.update(item_params)
+      flash[:notice] = "変更を保存しました"
+     redirect_to item_path(item)
+    else
+     flash[:alert] ="変更に失敗しました"
+     render "edit"
+    end
+  end
+
 
   def destroy
     item = Item.find(params[:id])

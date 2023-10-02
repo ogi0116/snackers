@@ -13,7 +13,11 @@
          <th class="head" colspan="5"> <a data-toggle="collapse" href="#collapse1" class= "text-secondary">▼</a>投稿画像
          <% if item.user == current_user %>
            <%= link_to item_path(item), method: :delete do %>
-            <i class="fa-solid fa-eraser"></i>削除
+            <i class="fa-solid fa-eraser text-danger"></i><span class="text-danger">削除</span>
+           <% end %>
+
+           <%= link_to edit_item_path(item) do %>
+             <i class="fa-solid fa-pencil text-success"></i><span class="text-success">編集</span>
            <% end %>
          <% end %>
          </th>
@@ -50,5 +54,3 @@
   <div class="col-lg-4 col-md-5 col-sm-4 col-8 mb-lg-5 my-sm-3 mb-4 background"><span>投稿日　</span><%= item.created_at.strftime('%Y/%m/%d') %></div>
  </div>
  <% end %>
-
-

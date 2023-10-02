@@ -1,6 +1,11 @@
-<h4 class="align-middle text-center">おかしを紹介する</h4>
-<%= form_with model: item,local:true do |f| %>
-
+<%= form_with model: item, local: true do |f| %>
+  <h4 class="align-middle text-center">
+    <% if f.object.new_record? %>
+     おかしを紹介する
+    <% else %>
+     投稿を編集する
+    <% end %>
+  </h4>
   <div class="form-group row justify-content-center">
     <div class="form-inline form_text">
   　　<%= f.collection_select(:product_id, @products, :id, :product_display, {prompt: "商品画像を選ぶ"}, :required => true ,class: 'form-control') %>
@@ -27,7 +32,7 @@
   <div class="form-group row justify-content-center">
     <div class="form-inline form_text">
       <label>レビュー</label>
-      <%= f.text_area :body, class: 'form-control item_introduction ml-1 form w-15', rows: 8, placeholder:"ここにレビューを記述します" %>
+      <%= f.text_area :body, class: 'form-control item_introduction ml-1 form w-15', rows: 8, placeholder:"ここにレビューを記述します (上限 100字まで)" %>
     </div>
   </div>
   <!-- スターの表示 -->
@@ -57,7 +62,12 @@
       <%= render "static_rate", item: item %>
     </div>
   <% end %>
+
   <div class="form-group row justify-content-center">
+    <% if f.object.new_record? %>
       <%= f.submit "新規登録", class: 'btn btn-success px-5' %>
+    <% else %>
+      <%= f.submit "変更を保存", class: 'btn btn-success px-5' %>
+    <% end %>
   </div>
 <% end %>

@@ -14,15 +14,18 @@
         <tr class ="head align-middle text-center user_name">
           <th><%= link_to(@item.user) do %>
             <%= image_tag @item.user.get_profile_image(30,30), class: "rounded-circle" %>
-            <%= @item.user.name %>さん
+            <span class= "text-success"><%= @item.user.name %>さん</span>
             <%= render 'layouts/user_certification', user: @item.user %>
           <% end %>
           </th>
           <th class="align-middle text-center head" colspan="5">投稿画像
           <% if @item.user == current_user %>
             <%= link_to item_path(@item), method: :delete, "data-confirm" => "投稿を削除しますか？" do %>
-             <i class="fa-solid fa-eraser"></i>削除
+             <i class="fa-solid fa-eraser text-danger"></i><span class="text-danger">削除</span>
             <% end %>
+           <%= link_to edit_item_path(@item) do %>
+             <i class="fa-solid fa-pencil text-success"></i><span class="text-success">編集</span>
+           <% end %>
           <% end %>
           </th>
         </tr>
