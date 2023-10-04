@@ -1,6 +1,7 @@
 class Public::ProductsController < ApplicationController
    before_action :authenticate_user!
-   before_action :ensure_current_user, {only: [:edit, :update, :show]}
+   before_action :ensure_current_user, {only: [:update, :show]}
+   before_action :set_current_user, {only: [:edit]}
 
   def new
      @user = User.find(params[:user_id])
@@ -47,25 +48,23 @@ class Public::ProductsController < ApplicationController
 
     if current_user == @user
       if params[:is_secret] == "公開中"
-        flash[:notice] = "商品を公開しました"
         @product.is_secret = true
       elsif params[:is_secret] == "非公開"
-        flash[:notice] = "商品を非公開にしました"
         @product.is_secret = false
       else
-        flash[:notice] = "商品の設定を更新しました"
-        @product.update!(product_params)
+        @product.update(product_params)
       end
 
-      if @product.save!
+      if @product.save
         redirect_to user_product_path(@user)
+        flash[:notice] = "商品の設定を更新しました"
       else
-        render "edit"
         flash[:alert] = "更新に失敗しました"
+        render "edit"
       end
     else
+       flash[:alert] = "更新に失敗しました"
       render "edit"
-      flash[:alert] = "更新に失敗しました"
     end
   end
 
@@ -83,4 +82,14 @@ class Public::ProductsController < ApplicationController
        redirect_to user_products_path(@user)
     end
   end
+
+  def set_current_user
+     @user = User.find(params[:user_id])
+     @product = Product.find(params[:id])
+    if @product.user != current_user
+       flash[:alert]="編集権限がありません"
+       redirect_to user_products_path(@user)
+    end
+  end
+
 end

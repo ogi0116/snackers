@@ -31,6 +31,7 @@
         models:
           product: 商品
           item: 投稿
+          user: ユーザー
         attributes:
           product:
             id: 商品ID
@@ -51,6 +52,12 @@
             area: 購入場所
             star: 評価
             status: ステータス
+          user:
+            email: メールアドレス
+            name: ユーザー名
+            password: パスワード
+            position_status: ステータス
+            password_confirmation: パスワード(確認用)
   date:
     abbr_day_names:
     - 日

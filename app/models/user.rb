@@ -23,6 +23,7 @@ class User < ApplicationRecord
   validates :introduction,length: { maximum:100 }
   validates :address,length: { maximum:30 }
   validates :is_deleted, inclusion: { in: [true, false] }
+  validates :position_status, presence: true
 
   #認証マークの付与
   enum certification_status:  { "unachieved": 0, "achieved": 1, "admin": 2 }

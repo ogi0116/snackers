@@ -1,5 +1,6 @@
 class Public::ItemsController < ApplicationController
    before_action :authenticate_user!
+   before_action :ensure_current_user, {only: [:edit, :update]}
   def new
     @item = Item.new
     @products = Product.where(is_secret: true)
@@ -64,6 +65,8 @@ class Public::ItemsController < ApplicationController
       flash[:notice] = "変更を保存しました"
      redirect_to item_path(item)
     else
+     @item = Item.find(params[:id])
+     @products = Product.where(is_secret: true)
      flash[:alert] ="変更に失敗しました"
      render "edit"
     end
@@ -82,5 +85,13 @@ class Public::ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:user_id, :title, :body, :company, :area, :image, :star, :product_id, :status)
   end
+
+ def ensure_current_user
+    @item = Item.find(params[:id])
+   if @item.user != current_user
+      flash[:alert]="編集権限がありません"
+      redirect_to item_path(@item)
+   end
+ end
 
 end

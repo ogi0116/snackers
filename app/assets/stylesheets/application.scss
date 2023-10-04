@@ -140,6 +140,20 @@ footer{
     border: 2px solid #DDDDDD;
 }
 
+.product-img{
+    max-width: 120%;
+    height: auto;
+    object-fit: cover; // or contain;
+}
+
+.item_img{
+    max-width: 50%;
+    height: auto;
+    object-fit: cover; // or contain;
+}
+
+
+
 // フラッシュメッセージ設定
 #flash-notifications{
   color: white;
@@ -263,6 +277,17 @@ footer{
 }
 
 
+
+/* タブレット縦置きサイズ（768px）以下 */
+@media screen and (max-width:768px) {
+
+  .product-img{
+      max-width: 180%;
+      height: auto;
+      object-fit: cover; // or contain;
+  }
+}
+
 /* スマートフォンサイズ（576px）以下 */
 @media screen and (max-width:576px) {
   // テーブルを段々に表示
@@ -274,4 +299,11 @@ footer{
     display: block;
     width: 100%;
   }
+
+  .product-img{
+      max-width: 100%;
+      height: auto;
+      object-fit: cover; // or contain;
+  }
+
 }
