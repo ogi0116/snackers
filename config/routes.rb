@@ -34,7 +34,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
       get :followers, on: :member
     end
     resources :genres, only: [:show]
-    resources :chats, only: [:show, :create]
+    resources :chats, only: [:show, :create] do
+    post :mark_as_read, on: :member
+    end
+    resources :notifications, only: [:index]
   end
 
   namespace :admin do

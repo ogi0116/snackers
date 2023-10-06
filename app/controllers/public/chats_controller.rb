@@ -26,6 +26,12 @@ class Public::ChatsController < ApplicationController
     #redirect_back fallback_location: root_path 非同期通信化
   end
 
+  def mark_as_read
+    @chat = Chat.find(params[:id])
+    @chat.update(read: true)
+    redirect_back fallback_location: root_path
+  end
+
   private
   def chat_params
     params.require(:chat).permit(:message, :room_id)

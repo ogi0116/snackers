@@ -1,0 +1,9 @@
+<%= link_to transition_path(notification) do %>
+    <%= link_to notification.subject.user.name, user_path(notification.subject.user) %>
+  があなたの
+    <%= link_to '投稿', item_path(notification.subject.user) %>
+  にいいねしました
+   <div class="text-center">
+    <%= notification.created_at %>
+  </div>
+<% end %>

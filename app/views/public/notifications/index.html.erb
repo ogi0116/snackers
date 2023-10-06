@@ -1,0 +1,8 @@
+<% if @notifications.present? %>
+  <% @notifications.each do |notification| %>
+    <%= render "#{notification.action_type}", notification: notification %>
+  <% end %>
+<% else %>
+  <div class="text-center">
+    お知らせはありません
+<% end %>
