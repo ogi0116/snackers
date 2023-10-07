@@ -1,4 +1,3 @@
-
     <% chats.each do |chat| %>
       <% if chat.user_id == current_user.id %>
        <div class="col-2 text-right mb-3 w-30">
@@ -6,11 +5,6 @@
        </div>
        <div class= "col-10 mb-3 w-70">
          <span><%= chat.user.name %>さん <%= chat.created_at.strftime('%Y/%m/%d') %></span>
-    <% if chat.read == true %>
-      <span class="text-success"><i class="fa-regular fa-circle-check"></i></span>
-    <% else %>
-      <span class="text-secondary"><i class="fa-regular fa-circle-check"></i></span>
-    <% end %>
          <br>
         <div class="says text-center">
             <%= chat.message %>
@@ -18,18 +12,9 @@
       </div>
       <% else %>
        <div class= "col-10 text-right mb-3 w-70">
-         <span><%= chat.created_at.strftime('%Y/%m/%d') %> <%= chat.user.name %>さん</span>
-
-    <% if chat.read == true %>
-      <span class="text-success"><i class="fa-regular fa-circle-check"></i></span>
-    <% else %>
-      <span class="text-secondary"><i class="fa-regular fa-circle-check"></i></span>
-    <% end %>
-
+         <span><%= chat.user.name %>さん</span><br>
         <div class="other-user-says text-center">
             <%= chat.message %>
-              <!-- 相手ユーザー用のリンク -->
-    <%= link_to '既読にする', mark_as_read_chat_path(chat), method: :post %>
         </div>
       </div>
        <div class="col-2 text-left mb-3 w-30">
@@ -37,5 +22,3 @@
        </div>
       <% end %>
     <% end %>
-
-

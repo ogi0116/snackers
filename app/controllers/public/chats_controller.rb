@@ -8,6 +8,7 @@ class Public::ChatsController < ApplicationController
 
     unless user_rooms.nil?
       @room = user_rooms.room #変数@roomにユーザー（自分と相手）と紐づいているroomを代入
+
     else
       @room = Room.new
       @room.save
@@ -26,22 +27,8 @@ class Public::ChatsController < ApplicationController
     #redirect_back fallback_location: root_path 非同期通信化
   end
 
-  def mark_as_read
-    @chat = Chat.find(params[:id])
-    @chat.update(read: true)
-    redirect_back fallback_location: root_path
-  end
-
   private
   def chat_params
     params.require(:chat).permit(:message, :room_id)
   end
-
-  def reject_non_related
-    user = User.find(params[:id])
-    unless current_user.followed_by?(user) && user.followed_by?(current_user)
-      redirect_to books_path
-    end
-  end
-
 end

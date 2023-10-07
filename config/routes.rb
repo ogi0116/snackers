@@ -35,9 +35,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     end
     resources :genres, only: [:show]
     resources :chats, only: [:show, :create] do
-    post :mark_as_read, on: :member
     end
-    resources :notifications, only: [:index]
+    resources :notifications, only: [:index] do
+    patch :checked, on: :member
+    end
   end
 
   namespace :admin do

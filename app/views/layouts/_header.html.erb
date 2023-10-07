@@ -48,13 +48,10 @@
           </div>
           <div class="col-lg-3 col-md-4 col-12 flex-fill">
             <p class="text-black flex-fill col-md-12 col-12 text-center">ようこそ、<%= current_user.name %>さん！
-              <%= link_to notifications_path, class: "nav-link" do %>
-              <i class="fa-sharp fa-solid fa-bell"></i>
+              <%= link_to notifications_path do %>
+              <span class= "text-warning"><i class="fa-sharp fa-solid fa-bell"></i></span>
               <% end %>
             </p>
-
-
-
           </div>
           <div class="col-lg-7 col-md-4 col-12 flex-fill ">
             <button class="navbar-toggler offset-10 mb-3" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

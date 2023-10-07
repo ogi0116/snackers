@@ -1,8 +1,22 @@
-<% if @notifications.present? %>
-  <% @notifications.each do |notification| %>
-    <%= render "#{notification.action_type}", notification: notification %>
-  <% end %>
-<% else %>
-  <div class="text-center">
-    お知らせはありません
-<% end %>
+<div class= "container py-5 px-sm-0">
+  <div class= "row">
+    <div class="col-10 offset-1">
+    <% if @notifications.present? %>
+      <h4>通知一覧<span class= "text-warning"><i class="fa-sharp fa-solid fa-bell"></i></span></h4>
+      <table class='table table_group'>
+      <% @notifications.each do |notification| %>
+      <tr>
+       <td><%= render notification.action_type, notification: notification %></td>
+      </tr>
+      <% end %>
+      </table>
+    <% else %>
+      <div class="text-center">
+      通知はありません
+    <% end %>
+    </div>
+  </div>
+</div>
+
+
+

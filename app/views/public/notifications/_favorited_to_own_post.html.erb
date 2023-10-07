@@ -1,9 +1,8 @@
-<%= link_to transition_path(notification) do %>
+  <%= link_to transition_path(notification) do %>
+    <%= image_tag notification.subject.user.get_profile_image(30,30),class: "img_icon" %>
     <%= link_to notification.subject.user.name, user_path(notification.subject.user) %>
-  があなたの
-    <%= link_to '投稿', item_path(notification.subject.user) %>
-  にいいねしました
-   <div class="text-center">
-    <%= notification.created_at %>
-  </div>
-<% end %>
+    さんがあなたの
+    <%= link_to '投稿', item_path(notification.subject.item) %>
+    にいいねしました！(<%= notification.subject.created_at.strftime('%Y/%m/%d') %>)
+  <% end %>
+
