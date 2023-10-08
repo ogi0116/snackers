@@ -38,6 +38,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     end
     resources :notifications, only: [:index] do
     patch :checked, on: :member
+    delete :destroy_all, on: :collection
     end
   end
 
