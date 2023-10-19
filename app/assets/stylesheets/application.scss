@@ -61,36 +61,21 @@ footer{
   background-color: #FFFFEE;
 }
 
-.table_group2 {
-  background-color: #FFFFEE;
-  opacity: 0.6
-}
-
 /* ベルのアイコンの色 */
 i.far.fa-bell.fa-lg {
-  color: #4220C7;
+  color: #FFD700	;
   transition: color 0.3s;
-}
-
-/* ホバー時のベルのアイコンの色 */
-i.far.fa-bell.fa-lg:hover  {
-  color: #655DFC;
 }
 
 /* 通知件数 */
 .notification-count {
   position: absolute;
-  top: 54%;
+  top: 50%;
   left: 70%;
   transform: translate(-50%, -50%);
-  color: #4220C7;
+  color: #FFFFEE;
   font-size: 12px;
   transition: color 0.3s;
-}
-
-/* ホバー時の通知件数 */
-.notification-count:hover {
-  color: #655DFC;
 }
 
 /* 円マーク */
@@ -98,16 +83,11 @@ i.far.fa-bell.fa-lg:hover  {
   position: absolute;
   padding-left: 1rem;
   padding-top: 0rem;
-  color: #efa04c;
+  color: #FFD700;
   transition: color 0.3s;
   &.orange {
     color: #efa04c;
   }
-}
-
-/* 円マークのホバー時 */
-.n-circle:hover {
-  color: #f4c986;
 }
 
 /* モーダルの背景 */
@@ -132,10 +112,11 @@ i.far.fa-bell.fa-lg:hover  {
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #E6FFE9;
   max-width: 80%;
-  width: 500px;
+  width: 600px;
   overflow-y: auto;
-  max-height: 600px;
+  max-height: 700px;
 }
 
 /* モーダルのアニメーション */

@@ -5,6 +5,9 @@ class Public::ChatsController < ApplicationController
     @user = User.find(params[:id]) #チャットする相手
     rooms = current_user.user_rooms.pluck(:room_id) #ログイン中のユーザーの部屋情報を全て取得
     user_rooms = UserRoom.find_by(user_id: @user.id, room_id: rooms)#その中にチャットする相手とのルームがあるか確認
+    @notifications = current_user.notifications.order(created_at: :desc)
+    @unchecked_notifications = @notifications.where(checked: false).order(created_at: :desc)
+    @checked_notifications = @notifications.where(checked: true).order(created_at: :desc)
 
     unless user_rooms.nil?
       @room = user_rooms.room #変数@roomにユーザー（自分と相手）と紐づいているroomを代入

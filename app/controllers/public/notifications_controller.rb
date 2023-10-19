@@ -5,7 +5,6 @@ class Public::NotificationsController < ApplicationController
     @notifications = current_user.notifications.order(created_at: :desc)
     @unchecked_notifications = @notifications.where(checked: false).order(created_at: :desc)
     @checked_notifications = @notifications.where(checked: true).order(created_at: :desc)
-    @unchecked_notifications.update(checked: true)
   end
 
    def checked
@@ -19,7 +18,7 @@ class Public::NotificationsController < ApplicationController
     notifications = current_user.notifications
     checked_notifications = notifications.where(checked: true)
     checked_notifications.destroy_all
-    redirect_to notifications_path
+    head :no_content
   end
 
 end

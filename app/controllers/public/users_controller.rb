@@ -58,11 +58,17 @@ class Public::UsersController < ApplicationController
   def follows
     @user = User.find(params[:id])
     @users = @user.followings.order("created_at DESC").page(params[:page])
+    @notifications = current_user.notifications.order(created_at: :desc)
+    @unchecked_notifications = @notifications.where(checked: false).order(created_at: :desc)
+    @checked_notifications = @notifications.where(checked: true).order(created_at: :desc)
   end
 
   def followers
     @user = User.find(params[:id])
     @users = @user.followers.order("created_at DESC").page(params[:page])
+    @notifications = current_user.notifications.order(created_at: :desc)
+    @unchecked_notifications = @notifications.where(checked: false).order(created_at: :desc)
+    @checked_notifications = @notifications.where(checked: true).order(created_at: :desc)
   end
 
   private
