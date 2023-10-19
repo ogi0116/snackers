@@ -48,11 +48,30 @@
           </div>
           <div class="col-lg-3 col-md-4 col-12 flex-fill">
             <p class="text-black flex-fill col-md-12 col-12 text-center">ようこそ、<%= current_user.name %>さん！
-              <%= link_to notifications_path do %>
-              <span class= "text-warning"><i class="fa-sharp fa-solid fa-bell"></i></span>
-              <% end %>
             </p>
           </div>
+
+                <div class="bell-container mr-3">
+                  <a href="javascript:void(0)" id="notifications-link">
+                    <% if unchecked_notifications.any? %>
+                      <span class="fa-stack" style="vertical-align: middle;">
+                        <i class="far fa-bell fa-lg fa-stack-1x" style="font-size: 1.5em;"></i>
+                          <i class="fas fa-circle n-circle fa-stack-1x">
+                            <span class="notification-count"><%= unchecked_notifications.count %></span>
+                          </i>
+                      </span>
+                      <i class="far fa-bell fa-lg" style="font-size: 1.5em;"></i>
+                    <% end %>
+                  </a>
+                </div>
+
+                <!-- 通知一覧を表示するモーダルウィンドウ -->
+                <div id="notifications-modal" class="modal">
+                  <div class="common-modal-content"></div>
+                </div>
+
+
+
           <div class="col-lg-7 col-md-4 col-12 flex-fill ">
             <button class="navbar-toggler offset-10 mb-3" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon" ></span>
@@ -126,3 +145,43 @@
     </div>
   <% end %>
 </header>
+
+
+<script>
+  $(document).ready(function() {
+    $('#notifications-link').click(function() {
+      // 通知を確認済みに更新するアクションを呼び出す
+      $.ajax({
+        url: '<%= checked_notification_path(current_user) %>',
+        type: 'POST',
+        success: function() {
+          $('.n-circle').removeClass('orange');
+          $('#notifications-link').html('<i class="far fa-bell fa-lg" style="font-size: 1.5em;"></i>');
+
+          // 通知モーダルを表示する処理
+          $.ajax({
+            url: '<%= notifications_path(@user) %>',
+            type: 'GET',
+            success: function(response) {
+              $('#notifications-modal .common-modal-content').html(response);
+              $('#notifications-modal').addClass('fade-in').show();
+            }
+          });
+        }
+      });
+    });
+
+  // モーダル内のクリックイベントを停止
+  $('#notifications-modal .modal-content').on('click', function(event) {
+    event.stopPropagation(); // イベントの伝播を停止
+  });
+
+  // モーダル外（背景）をクリックしたときにモーダルを閉じる
+  $('#notifications-modal').on('click', function() {
+    $(this).addClass('fade-out');
+    setTimeout(() => {
+      $(this).hide().removeClass('fade-out');
+    }, 300);
+  });
+});
+</script>

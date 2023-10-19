@@ -7,6 +7,9 @@ class Public::UsersController < ApplicationController
     @items = @user.items.order("created_at DESC").page(params[:page])
     @item = Item.new
     @products = Product.where(is_secret: true)
+    @notifications = current_user.notifications.order(created_at: :desc)
+    @unchecked_notifications = @notifications.where(checked: false).order(created_at: :desc)
+    @checked_notifications = @notifications.where(checked: true).order(created_at: :desc)
   end
 
 

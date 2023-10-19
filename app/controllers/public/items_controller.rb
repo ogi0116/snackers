@@ -4,6 +4,9 @@ class Public::ItemsController < ApplicationController
   def new
     @item = Item.new
     @products = Product.where(is_secret: true)
+    @notifications = current_user.notifications.order(created_at: :desc)
+    @unchecked_notifications = @notifications.where(checked: false).order(created_at: :desc)
+    @checked_notifications = @notifications.where(checked: true).order(created_at: :desc)
   end
 
   def create
@@ -28,6 +31,9 @@ class Public::ItemsController < ApplicationController
     @user = current_user
     @item = Item.new
     @genres = Genre.all
+    @notifications = current_user.notifications.order(created_at: :desc)
+    @unchecked_notifications = @notifications.where(checked: false).order(created_at: :desc)
+    @checked_notifications = @notifications.where(checked: true).order(created_at: :desc)
 
     if params[:latest]
       @items = Item.latest.page(params[:page])
@@ -44,6 +50,9 @@ class Public::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @notifications = current_user.notifications.order(created_at: :desc)
+    @unchecked_notifications = @notifications.where(checked: false).order(created_at: :desc)
+    @checked_notifications = @notifications.where(checked: true).order(created_at: :desc)
     @genres = Genre.all
     @products = Product.where(is_secret: true)
     unless ViewCount.find_by(user_id: current_user.id, item_id: @item.id)

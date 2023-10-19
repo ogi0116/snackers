@@ -15,7 +15,14 @@
   </head>
 
   <body>
-     <%= render 'layouts/header' %>
+     <% if user_signed_in? %>
+      <%= render 'layouts/header', unchecked_notifications: @unchecked_notifications %>
+     <% else %>
+      <%= render 'layouts/header'%>
+     <% end %>
+
+
+
      <%= render 'layouts/notification' %>
     <div id="main">
       <%= yield %>

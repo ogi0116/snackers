@@ -37,8 +37,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :chats, only: [:show, :create] do
     end
     resources :notifications, only: [:index] do
-    patch :checked, on: :member
     delete :destroy_all, on: :collection
+    post :checked, on: :member
     end
   end
 

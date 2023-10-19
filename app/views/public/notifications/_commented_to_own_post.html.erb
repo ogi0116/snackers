@@ -4,7 +4,4 @@
      さんがあなたの
       <%= link_to '投稿', item_path(notification.subject.item) %>
       にコメントしました！(<%= notification.subject.created_at.strftime('%Y/%m/%d') %>)
-      <%= link_to checked_notification_path(notification), method: :PATCH do %>
-      <span class= text-success><i class="fa-solid fa-check"></i></span>
-      <% end %>
 </td>

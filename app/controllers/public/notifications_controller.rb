@@ -1,16 +1,18 @@
 class Public::NotificationsController < ApplicationController
+  protect_from_forgery
 
   def index
     @notifications = current_user.notifications.order(created_at: :desc)
     @unchecked_notifications = @notifications.where(checked: false).order(created_at: :desc)
     @checked_notifications = @notifications.where(checked: true).order(created_at: :desc)
+    @unchecked_notifications.update(checked: true)
   end
 
    def checked
      # 通知を確認済みに更新
-      @notification = Notification.find(params[:id])
-      @notification.update(checked: true)
-      redirect_to notifications_path
+      @notifications = Notification.all
+      @notifications.update(checked: true)
+      head :no_content
    end
 
   def destroy_all
