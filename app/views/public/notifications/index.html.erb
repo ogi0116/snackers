@@ -3,7 +3,7 @@
   <div class= "row">
   <% if @checked_notifications.present? %>
     <div class="col-12">
-    <h4>通知一覧<span class= "text-warning"><i class="fa-sharp fa-solid fa-bell"></i></span>
+    <h4>通知一覧<i class="far fa-bell fa-lg"></i>
       <%= link_to "通知をクリアする", destroy_all_notifications_path, method: :delete,"data-confirm" => "これまでの通知を削除しますか？", class: "ml-2 btn btn-outline-secondary btn-sm"%>
       </h4>
       <table class='table'>
